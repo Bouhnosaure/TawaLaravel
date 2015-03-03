@@ -22,6 +22,9 @@
                     <p> {{ $event->description }} </p>
                 </article>
             @endforeach
+
+            {!! $events->render() !!}
+
         </div>
     </div>
 @stop

@@ -28,6 +28,10 @@
                 timepicker: true,
                 lang: this.lang
             });
+        },
+        googlemaps_autocomplete: function (target) {
+            var input = document.getElementById(target);
+            new google.maps.places.Autocomplete(input);
         }
     };
 }(jQuery));

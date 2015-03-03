@@ -25,11 +25,39 @@ class Event extends Model implements SluggableInterface
 
     protected $hidden = [];
 
+    protected $dates = ['start_time','end_time'];
+
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to' => 'slug',
     );
 
+    /**
+     * SCOPES
+     */
+    public function scopeNotFinished($query)
+    {
+        $query->where('end_time', '>=', Carbon::now());
+    }
+
+    public function scopeFinished($query)
+    {
+        $query->where('end_time', '<=', Carbon::now());
+    }
+
+    public function scopeNotStarted($query)
+    {
+        $query->where('start_time', '>=', Carbon::now());
+    }
+
+    public function scopeStarted($query)
+    {
+        $query->where('start_time', '<=', Carbon::now());
+    }
+
+    /**
+     * MUTATORS
+     */
     public function setUserIdAttribute($id)
     {
         $this->attributes['user_id'] = $id;

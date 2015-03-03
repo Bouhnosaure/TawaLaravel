@@ -43,6 +43,18 @@
                 {!! Form::text('end_time', null, ['class' => 'form-control']) !!}
             </div>
 
+            <!--- Ville  Field --->
+            <div class="form-group">
+                {!! Form::label('location', 'Ville :') !!}
+                {!! Form::text('location', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <!--- Adresse  Field --->
+            <div class="form-group">
+                {!! Form::label('address', 'Adresse :') !!}
+                {!! Form::text('address', null, ['class' => 'form-control']) !!}
+            </div>
+
             <!---  Field --->
             <div class="form-group">
                 {!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
@@ -56,10 +68,12 @@
 @stop
 
 @section('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var App = new $.App('fr');
             App.datetimepicker_event();
+            App.googlemaps_autocomplete('location');
         });
     </script>
 @stop

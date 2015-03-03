@@ -3,11 +3,13 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
+use Illuminate\Support\Str;
 use Request;
 
-class EventsController extends Controller {
+class EventsController extends Controller
+{
 
-	public function index()
+    public function index()
     {
 
         $events = Event::all();
@@ -32,65 +34,10 @@ class EventsController extends Controller {
     public function store()
     {
         $input = Request::all();
-
-        $event = new Event;
-        $event->user_id = 1;
-        $event->name =  Request::get('name');
-        $event->slug =  Request::get('name').'1';
-        $event->description =  Request::get('description');
-        $event->start_time =  Request::get('start_time');
-        $event->end_time =  Request::get('end_time');
-        $event->save();
+        Event::create($input);
 
         return redirect('events');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

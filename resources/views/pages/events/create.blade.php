@@ -17,6 +17,8 @@
 
             {!! Form::open(['route' => 'events.store']) !!}
 
+            {!! Form::hidden('user_id', 1) !!}
+
             <!--- name Field --->
             <div class="form-group">
                 {!! Form::label('name', 'Name :') !!}
@@ -56,25 +58,8 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#start_time").datepicker({
-                regional: "fr",
-                minDate: 0,
-                maxDate: "+24M",
-                showButtonPanel: true,
-                onClose: function (selectedDate) {
-                    $("#end_time").datepicker("option", "minDate", selectedDate);
-                }
-            });
-
-            $("#end_time").datepicker({
-                regional: "fr",
-                minDate: 0,
-                maxDate: "+24M",
-                showButtonPanel: true,
-                onClose: function (selectedDate) {
-                    $("#start_time").datepicker("option", "maxDate", selectedDate);
-                }
-            });
+            var App = new $.App('fr');
+            App.datetimepicker_event();
         });
     </script>
 @stop

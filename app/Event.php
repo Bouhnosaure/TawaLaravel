@@ -1,23 +1,16 @@
 <?php namespace App;
 
+use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Event extends Model implements SluggableInterface
 {
+    use SluggableTrait;
 
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'events';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'description',
@@ -26,14 +19,30 @@ class Event extends Model
         'location',
         'address',
         'is_private',
-        'is_valid'
+        'is_valid',
+        'user_id'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = [];
+
+    protected $sluggable = array(
+        'build_from' => 'name',
+        'save_to' => 'slug',
+    );
+
+    public function setUserIdAttribute($id)
+    {
+        $this->attributes['user_id'] = $id;
+    }
+
+    public function setStartTimeAttribute($date)
+    {
+        $this->attributes['start_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
+    }
+
+    public function setEndTimeAttribute($date)
+    {
+        $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);;
+    }
 
 }

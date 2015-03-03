@@ -135,8 +135,11 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+        //added
         'Illuminate\Html\HtmlServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+        'Jenssegers\Date\DateServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -194,9 +197,11 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+        //added
         'HTML' => 'Illuminate\Html\HtmlFacade',
         'Form' => 'Illuminate\Html\FormFacade',
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Date'            => 'Jenssegers\Date\Date',
 
 	],
 

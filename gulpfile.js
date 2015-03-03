@@ -16,7 +16,8 @@ var paths = {
     "jquery": "./vendor/bower_components/jquery/",
     "bootstrap": "./vendor/bower_components/bootstrap-sass-official/assets/",
     "fontawesome": "./vendor/bower_components/font-awesome/",
-    "jqueryui": "./vendor/bower_components/jquery-ui/"
+    "jqueryui": "./vendor/bower_components/jquery-ui/",
+    "jqueryuidatetime": "./vendor/bower_components/datetimepicker/"
 }
 
 
@@ -36,7 +37,7 @@ elixir(function (mix) {
             paths.jquery + "dist/jquery.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.jqueryui + "jquery-ui.js",
-            paths.jqueryui + "ui/i18n/datepicker-fr.js",
+            paths.jqueryuidatetime + "jquery.datetimepicker.js",
             paths.assets + "js/app.js"
         ], "public/js/app.js", "./")
         .version(["public/css/app.css", "public/js/app.js"])

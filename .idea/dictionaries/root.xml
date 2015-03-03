@@ -2,16 +2,21 @@
   <dictionary name="root">
     <words>
       <w>barryvdh</w>
+      <w>cviebrock</w>
       <w>debugbar</w>
       <w>fontawesome</w>
       <w>javascripts</w>
+      <w>jenssegers</w>
       <w>jqueryui</w>
+      <w>jqueryuidatetime</w>
       <w>latlng</w>
       <w>phpinfo</w>
       <w>pickadate</w>
       <w>scss</w>
+      <w>sluggable</w>
       <w>symfony</w>
       <w>tawacovoiturage</w>
+      <w>timepicker</w>
     </words>
   </dictionary>
 </component>

@@ -1,10 +1,10 @@
 <ul class="nav navbar-nav navbar-right">
     @if (Auth::guest())
         <li>
-            <a href="/auth/login">{{ trans('auth.login') }}</a>
+            <a href="{{action('Auth\AuthController@getLogin')}}">{{ trans('auth.login') }}</a>
         </li>
         <li>
-            <a href="/auth/register">{{ trans('auth.register') }}</a>
+            <a href="{{action('Auth\AuthController@getRegister')}}">{{ trans('auth.register') }}</a>
         </li>
     @else
         <li class="dropdown">
@@ -13,7 +13,7 @@
             </a>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a href="/auth/logout">{{ trans('auth.logout') }}</a>
+                    <a href="{{action('Auth\AuthController@getLogout')}}">{{ trans('auth.logout') }}</a>
                 </li>
             </ul>
         </li>

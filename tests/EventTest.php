@@ -1,17 +1,19 @@
 <?php
 
-class ExampleTest extends TestCase {
+class EventTest extends TestCase {
 
 	/**
-	 * A basic functional test example.
+	 * test if app is bootable
 	 *
 	 * @return void
 	 */
-	public function testBasicExample()
+	public function testCreateNewEventForm()
 	{
 		$response = $this->call('GET', '/');
 
 		$this->assertEquals(200, $response->getStatusCode());
 	}
+
+
 
 }

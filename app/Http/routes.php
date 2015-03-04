@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', array('as' => 'home', 'uses' => 'PagesController@index'));
+Route::get('/', array('as' => 'index', 'uses' => 'PagesController@index'));
 Route::get('about', array('as' => 'about', 'uses' => 'PagesController@about'));
 
 Route::resource('events','EventsController');
 
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController'
+]);
 

@@ -6,6 +6,7 @@ use App\Event;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -51,7 +52,8 @@ class EventsController extends Controller
      */
     public function store(EventRequest $request)
     {
-        Event::create($request->all());
+        $event = new Event($request->all());
+        Auth::user()->events()->save($event);
         return redirect('events');
     }
 

@@ -29,8 +29,7 @@ class EventRequest extends Request
             'end_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'location' => 'required',
             'address' => 'required',
-            //'is_private' => 'required',
-            'user_id' => 'required'
+            //'is_private' => 'required'
         ];
 
         if($this->method() == 'PATCH'){

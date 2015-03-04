@@ -1,5 +1,3 @@
-{!! Form::hidden('user_id', 1) !!}
-
 @if($create)
     <!--- name Field --->
     <div class="form-group">

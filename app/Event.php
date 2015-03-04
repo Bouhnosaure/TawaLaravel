@@ -19,8 +19,7 @@ class Event extends Model implements SluggableInterface
         'location',
         'address',
         'is_private',
-        'is_valid',
-        'user_id'
+        'is_valid'
     ];
 
     protected $hidden = [];
@@ -73,12 +72,32 @@ class Event extends Model implements SluggableInterface
     //MUTATORS
 
     /**
+     * Mutate start_time to FR with Carbon
+     * @param $date
+     * @return string
+     */
+    public function getStartTimeAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y - H:i');
+    }
+
+    /**
      * Mutate start_time from FR to Carbon date
      * @param $date
      */
     public function setStartTimeAttribute($date)
     {
         $this->attributes['start_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
+    }
+
+    /**
+     * Mutate end_time to FR with Carbon
+     * @param $date
+     * @return string
+     */
+    public function getEndTimeAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y - H:i');
     }
 
     /**
@@ -89,6 +108,10 @@ class Event extends Model implements SluggableInterface
     {
         $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);;
     }
+
+
+
+
 
     //RELATIONS
 

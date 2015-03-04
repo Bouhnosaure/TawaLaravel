@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'fr',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -140,6 +140,7 @@ return [
         'Barryvdh\Debugbar\ServiceProvider',
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
+        'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -202,6 +203,7 @@ return [
         'Form' => 'Illuminate\Html\FormFacade',
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
         'Date'            => 'Jenssegers\Date\Date',
+        'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 
 	],
 

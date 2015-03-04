@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>about</h1>
+    <h1>{{ trans('general.about') }}</h1>
 
 @stop
 

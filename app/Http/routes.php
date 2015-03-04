@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', array('as' => 'home', 'uses' => 'PagesController@index'));
-Route::get('about', array('as' => 'about', 'uses' => 'PagesController@about'));
+Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
-Route::resource('events','EventsController');
+    Route::get('/', array('as' => 'home', 'uses' => 'PagesController@index'));
+    Route::get('/home', array('as' => 'home', 'uses' => 'PagesController@index'));
+    Route::get('about', array('as' => 'about', 'uses' => 'PagesController@about'));
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController'
-]);
+    Route::resource('events', 'EventsController');
+
+    Route::controllers([
+        'auth' => 'Auth\AuthController',
+        'password' => 'Auth\PasswordController'
+    ]);
+
+});
 

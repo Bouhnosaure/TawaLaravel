@@ -1,7 +1,7 @@
 @if($create)
     <!--- name Field --->
     <div class="form-group">
-        {!! Form::label('name', 'Name :') !!}
+        {!! Form::label('name', Lang::get('events.name-field')) !!}
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
 @else
@@ -11,31 +11,31 @@
 
         <!--- description Field --->
 <div class="form-group">
-    {!! Form::label('description', 'description :') !!}
+    {!! Form::label('description', Lang::get('events.description-field')) !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Date debut Field --->
 <div class="form-group">
-    {!! Form::label('start_time', 'Date debut:') !!}
+    {!! Form::label('start_time', Lang::get('events.start-time-field')) !!}
     {!! Form::text('start_time', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Date Fin Field --->
 <div class="form-group">
-    {!! Form::label('end_time', 'Date Fin:') !!}
+    {!! Form::label('end_time', Lang::get('events.end-time-field')) !!}
     {!! Form::text('end_time', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Ville  Field --->
 <div class="form-group">
-    {!! Form::label('location', 'Ville :') !!}
+    {!! Form::label('location', Lang::get('events.location-field')) !!}
     {!! Form::text('location', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Adresse  Field --->
 <div class="form-group">
-    {!! Form::label('address', 'Adresse :') !!}
+    {!! Form::label('address', Lang::get('events.address-field')) !!}
     {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
 

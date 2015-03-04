@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
 
     /**
      * Show All Events
@@ -18,7 +22,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::latest('created_at')->NotFinished()->paginate(3);
+        $events = Event::latest('created_at')->NotFinished()->paginate(15);
         return view('pages.events.index')->with('events', $events);
     }
 

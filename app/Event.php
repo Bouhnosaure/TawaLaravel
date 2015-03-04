@@ -106,7 +106,7 @@ class Event extends Model implements SluggableInterface
      */
     public function setEndTimeAttribute($date)
     {
-        $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);;
+        $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
     }
 
 

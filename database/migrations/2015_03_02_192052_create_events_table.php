@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->string('address');
             $table->string('latlng');
+            $table->string('image_min');
             $table->boolean('is_private');
             $table->boolean('is_valid');
             $table->integer('user_id')->unsigned();

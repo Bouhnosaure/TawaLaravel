@@ -7,7 +7,7 @@
 
             <p> {{ $event->description }} </p>
 
-            <a href="{{ route('events.edit', [ 'id' => $event->id ]) }}">Editer</a>
+            <a href="{{ action('EventsController@edit', [ 'id' => $event->id ]) }}">{{ trans('events.edit-action') }}</a>
         </div>
     </div>
 @stop

@@ -3,15 +3,15 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>Create Event</h1>
+            <h1>Edit : {{ $event->name }}</h1>
 
             <hr/>
 
             @include('errors.list')
 
-            {!! Form::open(['route' => 'events.store']) !!}
+            {!! Form::model($event, ['method' => 'PATCH', 'route' => ['events.update', $event->id ]]) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>'Créer', 'create' => true])
+            @include('pages.events.partials.form',['submitButtonName'=>'Modifier', 'create' => false])
 
             {!! Form::close() !!}
 

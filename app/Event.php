@@ -25,52 +25,81 @@ class Event extends Model implements SluggableInterface
 
     protected $hidden = [];
 
-    protected $dates = ['start_time','end_time'];
+    protected $dates = ['start_time', 'end_time'];
 
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to' => 'slug',
     );
 
+    //SCOPES
+
     /**
-     * SCOPES
+     * Scope event not finished
+     * @param $query
      */
     public function scopeNotFinished($query)
     {
         $query->where('end_time', '>=', Carbon::now());
     }
 
+    /**
+     * Scope event finished
+     * @param $query
+     */
     public function scopeFinished($query)
     {
         $query->where('end_time', '<=', Carbon::now());
     }
 
+    /**
+     * Scope event not started
+     * @param $query
+     */
     public function scopeNotStarted($query)
     {
         $query->where('start_time', '>=', Carbon::now());
     }
 
+    /**
+     * Scope event started
+     * @param $query
+     */
     public function scopeStarted($query)
     {
         $query->where('start_time', '<=', Carbon::now());
     }
 
-    /**
-     * MUTATORS
-     */
-    public function setUserIdAttribute($id)
-    {
-        $this->attributes['user_id'] = $id;
-    }
+    //MUTATORS
 
+    /**
+     * Mutate start_time from FR to Carbon date
+     * @param $date
+     */
     public function setStartTimeAttribute($date)
     {
         $this->attributes['start_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
     }
 
+    /**
+     * Mutate end_time from FR to Carbon date
+     * @param $date
+     */
     public function setEndTimeAttribute($date)
     {
         $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);;
+    }
+
+    //RELATIONS
+
+
+    /**
+     * An event is owned by an user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
 }

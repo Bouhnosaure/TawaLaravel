@@ -31,4 +31,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+    /**
+     * An user can have many events
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events()
+    {
+
+        return $this->hasMany('App\Event');
+
+    }
+
 }

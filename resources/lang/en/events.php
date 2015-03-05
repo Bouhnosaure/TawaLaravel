@@ -21,5 +21,9 @@ return [
 	'location-field'     => 'Location :',
 	'address-field'     => 'Address :',
 
+    'create-success' => 'Event create successful',
+    'update-success' => 'Event update successful',
+    'delete-success' => 'Event delete successful',
+
 
 ];

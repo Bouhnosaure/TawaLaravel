@@ -13,7 +13,8 @@
 		"jenssegers/date": "~2.0",
 		"guzzlehttp/guzzle": "~4.0",
 		"fzaninotto/faker": "dev-master",
-		"mcamara/laravel-localization": "1.0.*"
+		"mcamara/laravel-localization": "1.0.*",
+		"laracasts/flash": "~1.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

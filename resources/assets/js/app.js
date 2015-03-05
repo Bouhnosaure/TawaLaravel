@@ -32,6 +32,9 @@
         googlemaps_autocomplete: function (target) {
             var input = document.getElementById(target);
             new google.maps.places.Autocomplete(input);
+        },
+        enable_flash_modal: function () {
+            $('#flash-overlay-modal').modal();
         }
     };
 }(jQuery));

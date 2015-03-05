@@ -12,6 +12,7 @@ return [
     'home' => 'Tawa!',
     'tooglenav' => 'Toggle navigation',
     'lang' => 'Langage',
+    'close' => 'Fermer',
 
     'about' => 'A propos',
     'lorem' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,

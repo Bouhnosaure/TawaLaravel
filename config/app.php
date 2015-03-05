@@ -141,6 +141,7 @@ return [
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
         'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -198,12 +199,14 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
         //added
         'HTML' => 'Illuminate\Html\HtmlFacade',
         'Form' => 'Illuminate\Html\FormFacade',
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
         'Date'            => 'Jenssegers\Date\Date',
         'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+        'Flash' => 'Laracasts\Flash\Flash',
 
 	],
 

@@ -7,6 +7,8 @@ use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Laracasts\Flash\Flash;
 
 class EventsController extends Controller
 {
@@ -23,6 +25,7 @@ class EventsController extends Controller
     public function index()
     {
         $events = Event::latest('created_at')->NotFinished()->paginate(15);
+
         return view('pages.events.index')->with('events', $events);
     }
 
@@ -58,6 +61,9 @@ class EventsController extends Controller
     public function store(EventRequest $request)
     {
         Auth::user()->events()->create($request->all());
+
+        Flash::success(Lang::get('events.create-success'));
+
         return redirect('events');
     }
 
@@ -82,7 +88,10 @@ class EventsController extends Controller
     public function update(Event $event, EventRequest $request)
     {
         $event->update($request->all());
-        return redirect('events');
+
+        Flash::success(Lang::get('events.update-success'));
+
+        return redirect(action('EventsController@show', $event->toArray()));
     }
 
 

@@ -28,13 +28,14 @@ class EventsController extends Controller
 
     /**
      * Show One Event
+     * Model biding in Providers/RouteServiceProvider
+     * Instead of $event = Event::findOrFail($id);
      *
-     * @param $id
+     * @param Event $event
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        $event = Event::findOrFail($id);
         return view('pages.events.show')->with('event', $event);
     }
 
@@ -56,33 +57,30 @@ class EventsController extends Controller
      */
     public function store(EventRequest $request)
     {
-        $event = new Event($request->all());
-        Auth::user()->events()->save($event);
+        Auth::user()->events()->create($request->all());
         return redirect('events');
     }
 
     /**
      *  Show edit Form to edit an event
      *
-     * @param $id
+     * @param Event $event
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        $event = Event::findOrFail($id);
         return view('pages.events.edit')->with('event', $event);
     }
 
     /**
      * Handles update of an event
      *
-     * @param $id
+     * @param Event $event
      * @param EventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, EventRequest $request)
+    public function update(Event $event, EventRequest $request)
     {
-        $event = Event::findOrFail($id);
         $event->update($request->all());
         return redirect('events');
     }

@@ -1,55 +1,43 @@
 <?php namespace App;
 
+use App\Presenters\CarpoolingPresenter;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
-class Event extends Model implements SluggableInterface
+class Carpooling extends Model implements SluggableInterface, HasPresenter
 {
+
     use SluggableTrait;
 
-    protected $table = 'events';
+    protected $table = 'carpoolings';
 
     protected $fillable = [
-        'name',
         'description',
         'start_time',
-        'end_time',
-        'location',
-        'is_private',
-        'is_valid'
+        'seats',
+        'price',
+        'is_flexible',
+        'is_luggage'
     ];
 
     protected $hidden = [];
 
-    protected $dates = ['start_time', 'end_time'];
+    protected $dates = ['start_time'];
 
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to' => 'slug',
     );
 
+    public function getPresenterClass()
+    {
+        return CarpoolingPresenter::class;
+    }
+
     //SCOPES
-
-    /**
-     * Scope event not finished
-     * @param $query
-     */
-    public function scopeNotFinished($query)
-    {
-        $query->where('end_time', '>=', Carbon::now());
-    }
-
-    /**
-     * Scope event finished
-     * @param $query
-     */
-    public function scopeFinished($query)
-    {
-        $query->where('end_time', '<=', Carbon::now());
-    }
-
     /**
      * Scope event not started
      * @param $query
@@ -89,41 +77,24 @@ class Event extends Model implements SluggableInterface
         $this->attributes['start_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
     }
 
-    /**
-     * Mutate end_time to FR with Carbon
-     * @param $date
-     * @return string
-     */
-    public function getEndTimeAttribute($date)
-    {
-        return Carbon::parse($date)->format('d/m/Y - H:i');
-    }
-
-    /**
-     * Mutate end_time from FR to Carbon date
-     * @param $date
-     */
-    public function setEndTimeAttribute($date)
-    {
-        $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
-    }
-
-
     //RELATIONS
 
-
     /**
-     * An event is owned by an user
+     * A Carpooling has One event
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function event()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Event');
     }
 
-    public function carpoolings()
+    /**
+     * A Carpooling has many Stopovers (waypoints)
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stopovers()
     {
-        return $this->hasMany('App\Carpooling');
+        return $this->hasMany('App\Stopover');
     }
 
 }

@@ -28,7 +28,6 @@ class EventRequest extends Request
             'start_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'end_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'location' => 'required',
-            'address' => 'required',
             //'is_private' => 'required'
         ];
 

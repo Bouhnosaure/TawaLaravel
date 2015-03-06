@@ -5,4 +5,7 @@
     <li>
         <a href="{{action('EventsController@index')}}">{{ trans('menu.events') }}</a>
     </li>
+    <li>
+        <a href="{{action('CarpoolingsController@index')}}">{{ trans('menu.carpoolings') }}</a>
+    </li>
 </ul>

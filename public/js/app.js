@@ -30004,7 +30004,7 @@ Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0
             var input = document.getElementById(target);
             new google.maps.places.Autocomplete(input);
         },
-        enable_flash_modal: function(){
+        enable_flash_modal: function () {
             $('#flash-overlay-modal').modal();
         }
     };

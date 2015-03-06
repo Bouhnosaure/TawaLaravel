@@ -18,6 +18,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('about', array('as' => 'about', 'uses' => 'PagesController@about'));
 
     Route::resource('events', 'EventsController');
+    Route::resource('carpoolings', 'CarpoolingsController');
 
     Route::controllers([
         'auth' => 'Auth\AuthController',

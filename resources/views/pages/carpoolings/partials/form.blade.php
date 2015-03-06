@@ -1,15 +1,4 @@
-@if($create)
-    <!--- name Field --->
-    <div class="form-group">
-        {!! Form::label('name', Lang::get('events.name-field')) !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    </div>
-@else
-    {!! Form::hidden('name', null) !!}
-@endif
-
-
-        <!--- description Field --->
+<!--- description Field --->
 <div class="form-group">
     {!! Form::label('description', Lang::get('events.description-field')) !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
@@ -21,17 +10,14 @@
     {!! Form::text('start_time', null, ['class' => 'form-control']) !!}
 </div>
 
-<!--- Date Fin Field --->
-<div class="form-group">
-    {!! Form::label('end_time', Lang::get('events.end-time-field')) !!}
-    {!! Form::text('end_time', null, ['class' => 'form-control']) !!}
-</div>
-
 <!--- Ville  Field --->
 <div class="form-group">
     {!! Form::label('location', Lang::get('events.location-field')) !!}
     {!! Form::text('location', null, ['class' => 'form-control']) !!}
 </div>
+
+
+
 
 <!---  Field --->
 <div class="form-group">

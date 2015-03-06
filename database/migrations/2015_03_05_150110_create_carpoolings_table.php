@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateCarpoolingsTable extends Migration
 {
 
     /**
@@ -13,30 +13,29 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('carpoolings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
+
             $table->string('slug')->unique();
-            $table->text('description');
 
             $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->text('description');
+            $table->integer('seats');
+            $table->decimal('price');
+            $table->boolean('is_flexible');
+            $table->boolean('is_luggage');
 
-            $table->string('location');
-            $table->string('lat');
-            $table->string('lng');
-
-            $table->string('image_min');
-
-            $table->boolean('is_private');
-            $table->boolean('is_valid');
 
             $table->integer('user_id')->unsigned();
+            $table->integer('event_id')->unsigned();
+
             $table->timestamps();
         });
 
-        Schema::table('events', function ($table) {
+        Schema::table('carpoolings', function ($table) {
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -47,7 +46,7 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('carpoolings');
     }
 
 }

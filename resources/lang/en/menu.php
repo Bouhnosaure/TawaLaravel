@@ -10,5 +10,6 @@ return [
 
     'about' => 'About',
     'events'     => 'Events',
+    'carpoolings'     => 'Carpoolings',
 
 ];

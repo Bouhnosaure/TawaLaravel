@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>Events</h1>
+            <h1>{{ trans('carpoolings.carpoolings') }}</h1>
             <a href="{{ action('CarpoolingsController@create') }}">{{ trans('carpoolings.create-action') }}</a>
         </div>
         <hr/>

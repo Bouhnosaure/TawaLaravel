@@ -2,8 +2,10 @@
   <dictionary name="root">
     <words>
       <w>barryvdh</w>
+      <w>bootstraptouchspin</w>
       <w>carpoolings</w>
       <w>cviebrock</w>
+      <w>datetimepicker</w>
       <w>debugbar</w>
       <w>dropdown</w>
       <w>fillable</w>
@@ -24,6 +26,7 @@
       <w>symfony</w>
       <w>tawacovoiturage</w>
       <w>timepicker</w>
+      <w>touchspin</w>
     </words>
   </dictionary>
 </component>

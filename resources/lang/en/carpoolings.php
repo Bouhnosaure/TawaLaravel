@@ -8,7 +8,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 
-	'carpooling' => 'carpooling|carpoolings',
+	'carpoolings' => 'Carpoolings',
 
     'view-action' => 'Show carpoolings',
     'create-action' => 'Create carpooling',

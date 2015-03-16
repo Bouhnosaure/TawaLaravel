@@ -34,9 +34,10 @@ class CarpoolingsController extends Controller
      * @param Event $event
      * @return Response
      */
-    public function create(Event $event)
+    public function create()
     {
-        return view('pages.carpoolings.create')->with($event);
+        $events = Event::latest('created_at')->NotFinished()->lists('name','id');
+        return view('pages.carpoolings.create')->with('events', $events);
     }
 
     /**

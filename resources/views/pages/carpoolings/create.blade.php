@@ -3,15 +3,15 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('events.create-action') }}</h1>
+            <h1>{{ trans('carpoolings.create-action') }}</h1>
 
             <hr/>
 
             @include('errors.list')
 
-            {!! Form::open(['action' => 'EventsController@store']) !!}
+            {!! Form::open(['action' => 'CarpoolingsController@store']) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>Lang::get('events.create-action'), 'create' => true])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.create-action'), 'create' => true])
 
             {!! Form::close() !!}
 
@@ -27,4 +27,5 @@
 @section('js-apps-cope')
     App.datetimepicker_event();
     App.googlemaps_autocomplete('location');
+    App.enable_touchspin('seats');
 @stop

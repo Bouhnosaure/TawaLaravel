@@ -8,7 +8,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 
-	'event' => 'event|svents',
+	'events' => 'Events',
 
     'view-action' => 'Show events',
     'create-action' => 'Create an event',

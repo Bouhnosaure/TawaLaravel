@@ -8,7 +8,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 
-	'carpooling' => 'covoiturage|covoituragess',
+	'carpoolings' => 'Covoiturages',
 
     'view-action' => 'Voir les covoiturages',
     'create-action' => 'Créer un covoiturage',

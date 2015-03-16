@@ -35,6 +35,12 @@
         },
         enable_flash_modal: function () {
             $('#flash-overlay-modal').modal();
+        },
+        enable_touchspin: function (element) {
+            $("#" + element).TouchSpin({
+                min: 1,
+                max: 10
+            });
         }
     };
 }(jQuery));

@@ -29969,6 +29969,681 @@ var tooltip = $.widget( "ui.tooltip", {
 Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0};Date.prototype.dateFormat=function(b){if(b=="unixtime"){return parseInt(this.getTime()/1000);}if(Date.formatFunctions[b]==null){Date.createNewFormat(b);}var a=Date.formatFunctions[b];return this[a]();};Date.createNewFormat=function(format){var funcName="format"+Date.formatFunctions.count++;Date.formatFunctions[format]=funcName;var code="Date.prototype."+funcName+" = function() {return ";var special=false;var ch="";for(var i=0;i<format.length;++i){ch=format.charAt(i);if(!special&&ch=="\\"){special=true;}else{if(special){special=false;code+="'"+String.escape(ch)+"' + ";}else{code+=Date.getFormatCode(ch);}}}eval(code.substring(0,code.length-3)+";}");};Date.getFormatCode=function(a){switch(a){case"d":return"String.leftPad(this.getDate(), 2, '0') + ";case"D":return"Date.dayNames[this.getDay()].substring(0, 3) + ";case"j":return"this.getDate() + ";case"l":return"Date.dayNames[this.getDay()] + ";case"S":return"this.getSuffix() + ";case"w":return"this.getDay() + ";case"z":return"this.getDayOfYear() + ";case"W":return"this.getWeekOfYear() + ";case"F":return"Date.monthNames[this.getMonth()] + ";case"m":return"String.leftPad(this.getMonth() + 1, 2, '0') + ";case"M":return"Date.monthNames[this.getMonth()].substring(0, 3) + ";case"n":return"(this.getMonth() + 1) + ";case"t":return"this.getDaysInMonth() + ";case"L":return"(this.isLeapYear() ? 1 : 0) + ";case"Y":return"this.getFullYear() + ";case"y":return"('' + this.getFullYear()).substring(2, 4) + ";case"a":return"(this.getHours() < 12 ? 'am' : 'pm') + ";case"A":return"(this.getHours() < 12 ? 'AM' : 'PM') + ";case"g":return"((this.getHours() %12) ? this.getHours() % 12 : 12) + ";case"G":return"this.getHours() + ";case"h":return"String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + ";case"H":return"String.leftPad(this.getHours(), 2, '0') + ";case"i":return"String.leftPad(this.getMinutes(), 2, '0') + ";case"s":return"String.leftPad(this.getSeconds(), 2, '0') + ";case"O":return"this.getGMTOffset() + ";case"T":return"this.getTimezone() + ";case"Z":return"(this.getTimezoneOffset() * -60) + ";default:return"'"+String.escape(a)+"' + ";}};Date.parseDate=function(a,c){if(c=="unixtime"){return new Date(!isNaN(parseInt(a))?parseInt(a)*1000:0);}if(Date.parseFunctions[c]==null){Date.createParser(c);}var b=Date.parseFunctions[c];return Date[b](a);};Date.createParser=function(format){var funcName="parse"+Date.parseFunctions.count++;var regexNum=Date.parseRegexes.length;var currentGroup=1;Date.parseFunctions[format]=funcName;var code="Date."+funcName+" = function(input) {\nvar y = -1, m = -1, d = -1, h = -1, i = -1, s = -1, z = -1;\nvar d = new Date();\ny = d.getFullYear();\nm = d.getMonth();\nd = d.getDate();\nvar results = input.match(Date.parseRegexes["+regexNum+"]);\nif (results && results.length > 0) {";var regex="";var special=false;var ch="";for(var i=0;i<format.length;++i){ch=format.charAt(i);if(!special&&ch=="\\"){special=true;}else{if(special){special=false;regex+=String.escape(ch);}else{obj=Date.formatCodeToRegex(ch,currentGroup);currentGroup+=obj.g;regex+=obj.s;if(obj.g&&obj.c){code+=obj.c;}}}}code+="if (y > 0 && z > 0){\nvar doyDate = new Date(y,0);\ndoyDate.setDate(z);\nm = doyDate.getMonth();\nd = doyDate.getDate();\n}";code+="if (y > 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n{return new Date(y, m, d, h, i, s);}\nelse if (y > 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n{return new Date(y, m, d, h, i);}\nelse if (y > 0 && m >= 0 && d > 0 && h >= 0)\n{return new Date(y, m, d, h);}\nelse if (y > 0 && m >= 0 && d > 0)\n{return new Date(y, m, d);}\nelse if (y > 0 && m >= 0)\n{return new Date(y, m);}\nelse if (y > 0)\n{return new Date(y);}\n}return null;}";Date.parseRegexes[regexNum]=new RegExp("^"+regex+"$");eval(code);};Date.formatCodeToRegex=function(b,a){switch(b){case"D":return{g:0,c:null,s:"(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};case"j":case"d":return{g:1,c:"d = parseInt(results["+a+"], 10);\n",s:"(\\d{1,2})"};case"l":return{g:0,c:null,s:"(?:"+Date.dayNames.join("|")+")"};case"S":return{g:0,c:null,s:"(?:st|nd|rd|th)"};case"w":return{g:0,c:null,s:"\\d"};case"z":return{g:1,c:"z = parseInt(results["+a+"], 10);\n",s:"(\\d{1,3})"};case"W":return{g:0,c:null,s:"(?:\\d{2})"};case"F":return{g:1,c:"m = parseInt(Date.monthNumbers[results["+a+"].substring(0, 3)], 10);\n",s:"("+Date.monthNames.join("|")+")"};case"M":return{g:1,c:"m = parseInt(Date.monthNumbers[results["+a+"]], 10);\n",s:"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"};case"n":case"m":return{g:1,c:"m = parseInt(results["+a+"], 10) - 1;\n",s:"(\\d{1,2})"};case"t":return{g:0,c:null,s:"\\d{1,2}"};case"L":return{g:0,c:null,s:"(?:1|0)"};case"Y":return{g:1,c:"y = parseInt(results["+a+"], 10);\n",s:"(\\d{4})"};case"y":return{g:1,c:"var ty = parseInt(results["+a+"], 10);\ny = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",s:"(\\d{1,2})"};case"a":return{g:1,c:"if (results["+a+"] == 'am') {\nif (h == 12) { h = 0; }\n} else { if (h < 12) { h += 12; }}",s:"(am|pm)"};case"A":return{g:1,c:"if (results["+a+"] == 'AM') {\nif (h == 12) { h = 0; }\n} else { if (h < 12) { h += 12; }}",s:"(AM|PM)"};case"g":case"G":case"h":case"H":return{g:1,c:"h = parseInt(results["+a+"], 10);\n",s:"(\\d{1,2})"};case"i":return{g:1,c:"i = parseInt(results["+a+"], 10);\n",s:"(\\d{2})"};case"s":return{g:1,c:"s = parseInt(results["+a+"], 10);\n",s:"(\\d{2})"};case"O":return{g:0,c:null,s:"[+-]\\d{4}"};case"T":return{g:0,c:null,s:"[A-Z]{3}"};case"Z":return{g:0,c:null,s:"[+-]\\d{1,5}"};default:return{g:0,c:null,s:String.escape(b)};}};Date.prototype.getTimezone=function(){return this.toString().replace(/^.*? ([A-Z]{3}) [0-9]{4}.*$/,"$1").replace(/^.*?\(([A-Z])[a-z]+ ([A-Z])[a-z]+ ([A-Z])[a-z]+\)$/,"$1$2$3");};Date.prototype.getGMTOffset=function(){return(this.getTimezoneOffset()>0?"-":"+")+String.leftPad(Math.floor(Math.abs(this.getTimezoneOffset())/60),2,"0")+String.leftPad(Math.abs(this.getTimezoneOffset())%60,2,"0");};Date.prototype.getDayOfYear=function(){var a=0;Date.daysInMonth[1]=this.isLeapYear()?29:28;for(var b=0;b<this.getMonth();++b){a+=Date.daysInMonth[b];}return a+this.getDate();};Date.prototype.getWeekOfYear=function(){var b=this.getDayOfYear()+(4-this.getDay());var a=new Date(this.getFullYear(),0,1);var c=(7-a.getDay()+4);return String.leftPad(Math.ceil((b-c)/7)+1,2,"0");};Date.prototype.isLeapYear=function(){var a=this.getFullYear();return((a&3)==0&&(a%100||(a%400==0&&a)));};Date.prototype.getFirstDayOfMonth=function(){var a=(this.getDay()-(this.getDate()-1))%7;return(a<0)?(a+7):a;};Date.prototype.getLastDayOfMonth=function(){var a=(this.getDay()+(Date.daysInMonth[this.getMonth()]-this.getDate()))%7;return(a<0)?(a+7):a;};Date.prototype.getDaysInMonth=function(){Date.daysInMonth[1]=this.isLeapYear()?29:28;return Date.daysInMonth[this.getMonth()];};Date.prototype.getSuffix=function(){switch(this.getDate()){case 1:case 21:case 31:return"st";case 2:case 22:return"nd";case 3:case 23:return"rd";default:return"th";}};String.escape=function(a){return a.replace(/('|\\)/g,"\\$1");};String.leftPad=function(d,b,c){var a=new String(d);if(c==null){c=" ";}while(a.length<b){a=c+a;}return a;};Date.daysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31];Date.monthNames=["January","February","March","April","May","June","July","August","September","October","November","December"];Date.dayNames=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];Date.y2kYear=50;Date.monthNumbers={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};Date.patterns={ISO8601LongPattern:"Y-m-d H:i:s",ISO8601ShortPattern:"Y-m-d",ShortDatePattern:"n/j/Y",LongDatePattern:"l, F d, Y",FullDateTimePattern:"l, F d, Y g:i:s A",MonthDayPattern:"F d",ShortTimePattern:"g:i A",LongTimePattern:"g:i:s A",SortableDateTimePattern:"Y-m-d\\TH:i:s",UniversalSortableDateTimePattern:"Y-m-d H:i:sO",YearMonthPattern:"F, Y"};
 }());
 
+(function($) {
+  'use strict';
+
+  var _currentSpinnerId = 0;
+
+  function _scopedEventName(name, id) {
+    return name + '.touchspin_' + id;
+  }
+
+  function _scopeEventNames(names, id) {
+    return $.map(names, function(name) {
+      return _scopedEventName(name, id);
+    });
+  }
+
+  $.fn.TouchSpin = function(options) {
+
+    if (options === 'destroy') {
+      this.each(function() {
+        var originalinput = $(this),
+            originalinput_data = originalinput.data();
+        $(document).off(_scopeEventNames([
+          'mouseup',
+          'touchend',
+          'touchcancel',
+          'mousemove',
+          'touchmove',
+          'scroll',
+          'scrollstart'], originalinput_data.spinnerid).join(' '));
+      });
+      return;
+    }
+
+    var defaults = {
+      min: 0,
+      max: 100,
+      initval: '',
+      step: 1,
+      decimals: 0,
+      stepinterval: 100,
+      forcestepdivisibility: 'round', // none | floor | round | ceil
+      stepintervaldelay: 500,
+      verticalbuttons: false,
+      verticalupclass: 'glyphicon glyphicon-chevron-up',
+      verticaldownclass: 'glyphicon glyphicon-chevron-down',
+      prefix: '',
+      postfix: '',
+      prefix_extraclass: '',
+      postfix_extraclass: '',
+      booster: true,
+      boostat: 10,
+      maxboostedstep: false,
+      mousewheel: true,
+      buttondown_class: 'btn btn-default',
+      buttonup_class: 'btn btn-default'
+    };
+
+    var attributeMap = {
+      min: 'min',
+      max: 'max',
+      initval: 'init-val',
+      step: 'step',
+      decimals: 'decimals',
+      stepinterval: 'step-interval',
+      verticalbuttons: 'vertical-buttons',
+      verticalupclass: 'vertical-up-class',
+      verticaldownclass: 'vertical-down-class',
+      forcestepdivisibility: 'force-step-divisibility',
+      stepintervaldelay: 'step-interval-delay',
+      prefix: 'prefix',
+      postfix: 'postfix',
+      prefix_extraclass: 'prefix-extra-class',
+      postfix_extraclass: 'postfix-extra-class',
+      booster: 'booster',
+      boostat: 'boostat',
+      maxboostedstep: 'max-boosted-step',
+      mousewheel: 'mouse-wheel',
+      buttondown_class: 'button-down-class',
+      buttonup_class: 'button-up-class'
+    };
+
+    return this.each(function() {
+
+      var settings,
+          originalinput = $(this),
+          originalinput_data = originalinput.data(),
+          container,
+          elements,
+          value,
+          downSpinTimer,
+          upSpinTimer,
+          downDelayTimeout,
+          upDelayTimeout,
+          spincount = 0,
+          spinning = false;
+
+      init();
+
+
+      function init() {
+        if (originalinput.data('alreadyinitialized')) {
+          return;
+        }
+
+        originalinput.data('alreadyinitialized', true);
+        _currentSpinnerId += 1;
+        originalinput.data('spinnerid', _currentSpinnerId);
+
+
+        if (!originalinput.is('input')) {
+          console.log('Must be an input.');
+          return;
+        }
+
+        _initSettings();
+        _setInitval();
+        _checkValue();
+        _buildHtml();
+        _initElements();
+        _hideEmptyPrefixPostfix();
+        _bindEvents();
+        _bindEventsInterface();
+        elements.input.css('display', 'block');
+      }
+
+      function _setInitval() {
+        if (settings.initval !== '' && originalinput.val() === '') {
+          originalinput.val(settings.initval);
+        }
+      }
+
+      function changeSettings(newsettings) {
+        _updateSettings(newsettings);
+        _checkValue();
+
+        var value = elements.input.val();
+
+        if (value !== '') {
+          value = Number(elements.input.val());
+          elements.input.val(value.toFixed(settings.decimals));
+        }
+      }
+
+      function _initSettings() {
+        settings = $.extend({}, defaults, originalinput_data, _parseAttributes(), options);
+      }
+
+      function _parseAttributes() {
+        var data = {};
+        $.each(attributeMap, function(key, value) {
+          var attrName = 'bts-' + value + '';
+          if (originalinput.is('[data-' + attrName + ']')) {
+            data[key] = originalinput.data(attrName);
+          }
+        });
+        return data;
+      }
+
+      function _updateSettings(newsettings) {
+        settings = $.extend({}, settings, newsettings);
+      }
+
+      function _buildHtml() {
+        var initval = originalinput.val(),
+            parentelement = originalinput.parent();
+
+        if (initval !== '') {
+          initval = Number(initval).toFixed(settings.decimals);
+        }
+
+        originalinput.data('initvalue', initval).val(initval);
+        originalinput.addClass('form-control');
+
+        if (parentelement.hasClass('input-group')) {
+          _advanceInputGroup(parentelement);
+        }
+        else {
+          _buildInputGroup();
+        }
+      }
+
+      function _advanceInputGroup(parentelement) {
+        parentelement.addClass('bootstrap-touchspin');
+
+        var prev = originalinput.prev(),
+            next = originalinput.next();
+
+        var downhtml,
+            uphtml,
+            prefixhtml = '<span class="input-group-addon bootstrap-touchspin-prefix">' + settings.prefix + '</span>',
+            postfixhtml = '<span class="input-group-addon bootstrap-touchspin-postfix">' + settings.postfix + '</span>';
+
+        if (prev.hasClass('input-group-btn')) {
+          downhtml = '<button class="' + settings.buttondown_class + ' bootstrap-touchspin-down" type="button">-</button>';
+          prev.append(downhtml);
+        }
+        else {
+          downhtml = '<span class="input-group-btn"><button class="' + settings.buttondown_class + ' bootstrap-touchspin-down" type="button">-</button></span>';
+          $(downhtml).insertBefore(originalinput);
+        }
+
+        if (next.hasClass('input-group-btn')) {
+          uphtml = '<button class="' + settings.buttonup_class + ' bootstrap-touchspin-up" type="button">+</button>';
+          next.prepend(uphtml);
+        }
+        else {
+          uphtml = '<span class="input-group-btn"><button class="' + settings.buttonup_class + ' bootstrap-touchspin-up" type="button">+</button></span>';
+          $(uphtml).insertAfter(originalinput);
+        }
+
+        $(prefixhtml).insertBefore(originalinput);
+        $(postfixhtml).insertAfter(originalinput);
+
+        container = parentelement;
+      }
+
+      function _buildInputGroup() {
+        var html;
+
+        if (settings.verticalbuttons) {
+          html = '<div class="input-group bootstrap-touchspin"><span class="input-group-addon bootstrap-touchspin-prefix">' + settings.prefix + '</span><span class="input-group-addon bootstrap-touchspin-postfix">' + settings.postfix + '</span><span class="input-group-btn-vertical"><button class="' + settings.buttondown_class + ' bootstrap-touchspin-up" type="button"><i class="' + settings.verticalupclass + '"></i></button><button class="' + settings.buttonup_class + ' bootstrap-touchspin-down" type="button"><i class="' + settings.verticaldownclass + '"></i></button></span></div>';
+        }
+        else {
+          html = '<div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="' + settings.buttondown_class + ' bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix">' + settings.prefix + '</span><span class="input-group-addon bootstrap-touchspin-postfix">' + settings.postfix + '</span><span class="input-group-btn"><button class="' + settings.buttonup_class + ' bootstrap-touchspin-up" type="button">+</button></span></div>';
+        }
+
+        container = $(html).insertBefore(originalinput);
+
+        $('.bootstrap-touchspin-prefix', container).after(originalinput);
+
+        if (originalinput.hasClass('input-sm')) {
+          container.addClass('input-group-sm');
+        }
+        else if (originalinput.hasClass('input-lg')) {
+          container.addClass('input-group-lg');
+        }
+      }
+
+      function _initElements() {
+        elements = {
+          down: $('.bootstrap-touchspin-down', container),
+          up: $('.bootstrap-touchspin-up', container),
+          input: $('input', container),
+          prefix: $('.bootstrap-touchspin-prefix', container).addClass(settings.prefix_extraclass),
+          postfix: $('.bootstrap-touchspin-postfix', container).addClass(settings.postfix_extraclass)
+        };
+      }
+
+      function _hideEmptyPrefixPostfix() {
+        if (settings.prefix === '') {
+          elements.prefix.hide();
+        }
+
+        if (settings.postfix === '') {
+          elements.postfix.hide();
+        }
+      }
+
+      function _bindEvents() {
+        originalinput.on('keydown', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 38) {
+            if (spinning !== 'up') {
+              upOnce();
+              startUpSpin();
+            }
+            ev.preventDefault();
+          }
+          else if (code === 40) {
+            if (spinning !== 'down') {
+              downOnce();
+              startDownSpin();
+            }
+            ev.preventDefault();
+          }
+        });
+
+        originalinput.on('keyup', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 38) {
+            stopSpin();
+          }
+          else if (code === 40) {
+            stopSpin();
+          }
+        });
+
+        originalinput.on('blur', function() {
+          _checkValue();
+        });
+
+        elements.down.on('keydown', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 32 || code === 13) {
+            if (spinning !== 'down') {
+              downOnce();
+              startDownSpin();
+            }
+            ev.preventDefault();
+          }
+        });
+
+        elements.down.on('keyup', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 32 || code === 13) {
+            stopSpin();
+          }
+        });
+
+        elements.up.on('keydown', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 32 || code === 13) {
+            if (spinning !== 'up') {
+              upOnce();
+              startUpSpin();
+            }
+            ev.preventDefault();
+          }
+        });
+
+        elements.up.on('keyup', function(ev) {
+          var code = ev.keyCode || ev.which;
+
+          if (code === 32 || code === 13) {
+            stopSpin();
+          }
+        });
+
+        elements.down.on('mousedown.touchspin', function(ev) {
+          elements.down.off('touchstart.touchspin');  // android 4 workaround
+
+          if (originalinput.is(':disabled')) {
+            return;
+          }
+
+          downOnce();
+          startDownSpin();
+
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+
+        elements.down.on('touchstart.touchspin', function(ev) {
+          elements.down.off('mousedown.touchspin');  // android 4 workaround
+
+          if (originalinput.is(':disabled')) {
+            return;
+          }
+
+          downOnce();
+          startDownSpin();
+
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+
+        elements.up.on('mousedown.touchspin', function(ev) {
+          elements.up.off('touchstart.touchspin');  // android 4 workaround
+
+          if (originalinput.is(':disabled')) {
+            return;
+          }
+
+          upOnce();
+          startUpSpin();
+
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+
+        elements.up.on('touchstart.touchspin', function(ev) {
+          elements.up.off('mousedown.touchspin');  // android 4 workaround
+
+          if (originalinput.is(':disabled')) {
+            return;
+          }
+
+          upOnce();
+          startUpSpin();
+
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+
+        elements.up.on('mouseout touchleave touchend touchcancel', function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.stopPropagation();
+          stopSpin();
+        });
+
+        elements.down.on('mouseout touchleave touchend touchcancel', function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.stopPropagation();
+          stopSpin();
+        });
+
+        elements.down.on('mousemove touchmove', function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.stopPropagation();
+          ev.preventDefault();
+        });
+
+        elements.up.on('mousemove touchmove', function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.stopPropagation();
+          ev.preventDefault();
+        });
+
+        $(document).on(_scopeEventNames(['mouseup', 'touchend', 'touchcancel'], _currentSpinnerId).join(' '), function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.preventDefault();
+          stopSpin();
+        });
+
+        $(document).on(_scopeEventNames(['mousemove', 'touchmove', 'scroll', 'scrollstart'], _currentSpinnerId).join(' '), function(ev) {
+          if (!spinning) {
+            return;
+          }
+
+          ev.preventDefault();
+          stopSpin();
+        });
+
+        originalinput.on('mousewheel DOMMouseScroll', function(ev) {
+          if (!settings.mousewheel || !originalinput.is(':focus')) {
+            return;
+          }
+
+          var delta = ev.originalEvent.wheelDelta || -ev.originalEvent.deltaY || -ev.originalEvent.detail;
+
+          ev.stopPropagation();
+          ev.preventDefault();
+
+          if (delta < 0) {
+            downOnce();
+          }
+          else {
+            upOnce();
+          }
+        });
+      }
+
+      function _bindEventsInterface() {
+        originalinput.on('touchspin.uponce', function() {
+          stopSpin();
+          upOnce();
+        });
+
+        originalinput.on('touchspin.downonce', function() {
+          stopSpin();
+          downOnce();
+        });
+
+        originalinput.on('touchspin.startupspin', function() {
+          startUpSpin();
+        });
+
+        originalinput.on('touchspin.startdownspin', function() {
+          startDownSpin();
+        });
+
+        originalinput.on('touchspin.stopspin', function() {
+          stopSpin();
+        });
+
+        originalinput.on('touchspin.updatesettings', function(e, newsettings) {
+          changeSettings(newsettings);
+        });
+      }
+
+      function _forcestepdivisibility(value) {
+        switch (settings.forcestepdivisibility) {
+          case 'round':
+            return (Math.round(value / settings.step) * settings.step).toFixed(settings.decimals);
+          case 'floor':
+            return (Math.floor(value / settings.step) * settings.step).toFixed(settings.decimals);
+          case 'ceil':
+            return (Math.ceil(value / settings.step) * settings.step).toFixed(settings.decimals);
+          default:
+            return value;
+        }
+      }
+
+      function _checkValue() {
+        var val, parsedval, returnval;
+
+        val = originalinput.val();
+
+        if (val === '') {
+          return;
+        }
+
+        if (settings.decimals > 0 && val === '.') {
+          return;
+        }
+
+        parsedval = parseFloat(val);
+
+        if (isNaN(parsedval)) {
+          parsedval = 0;
+        }
+
+        returnval = parsedval;
+
+        if (parsedval.toString() !== val) {
+          returnval = parsedval;
+        }
+
+        if (parsedval < settings.min) {
+          returnval = settings.min;
+        }
+
+        if (parsedval > settings.max) {
+          returnval = settings.max;
+        }
+
+        returnval = _forcestepdivisibility(returnval);
+
+        if (Number(val).toString() !== returnval.toString()) {
+          originalinput.val(returnval);
+          originalinput.trigger('change');
+        }
+      }
+
+      function _getBoostedStep() {
+        if (!settings.booster) {
+          return settings.step;
+        }
+        else {
+          var boosted = Math.pow(2, Math.floor(spincount / settings.boostat)) * settings.step;
+
+          if (settings.maxboostedstep) {
+            if (boosted > settings.maxboostedstep) {
+              boosted = settings.maxboostedstep;
+              value = Math.round((value / boosted)) * boosted;
+            }
+          }
+
+          return Math.max(settings.step, boosted);
+        }
+      }
+
+      function upOnce() {
+        _checkValue();
+
+        value = parseFloat(elements.input.val());
+        if (isNaN(value)) {
+          value = 0;
+        }
+
+        var initvalue = value,
+            boostedstep = _getBoostedStep();
+
+        value = value + boostedstep;
+
+        if (value > settings.max) {
+          value = settings.max;
+          originalinput.trigger('touchspin.on.max');
+          stopSpin();
+        }
+
+        elements.input.val(Number(value).toFixed(settings.decimals));
+
+        if (initvalue !== value) {
+          originalinput.trigger('change');
+        }
+      }
+
+      function downOnce() {
+        _checkValue();
+
+        value = parseFloat(elements.input.val());
+        if (isNaN(value)) {
+          value = 0;
+        }
+
+        var initvalue = value,
+            boostedstep = _getBoostedStep();
+
+        value = value - boostedstep;
+
+        if (value < settings.min) {
+          value = settings.min;
+          originalinput.trigger('touchspin.on.min');
+          stopSpin();
+        }
+
+        elements.input.val(value.toFixed(settings.decimals));
+
+        if (initvalue !== value) {
+          originalinput.trigger('change');
+        }
+      }
+
+      function startDownSpin() {
+        stopSpin();
+
+        spincount = 0;
+        spinning = 'down';
+
+        originalinput.trigger('touchspin.on.startspin');
+        originalinput.trigger('touchspin.on.startdownspin');
+
+        downDelayTimeout = setTimeout(function() {
+          downSpinTimer = setInterval(function() {
+            spincount++;
+            downOnce();
+          }, settings.stepinterval);
+        }, settings.stepintervaldelay);
+      }
+
+      function startUpSpin() {
+        stopSpin();
+
+        spincount = 0;
+        spinning = 'up';
+
+        originalinput.trigger('touchspin.on.startspin');
+        originalinput.trigger('touchspin.on.startupspin');
+
+        upDelayTimeout = setTimeout(function() {
+          upSpinTimer = setInterval(function() {
+            spincount++;
+            upOnce();
+          }, settings.stepinterval);
+        }, settings.stepintervaldelay);
+      }
+
+      function stopSpin() {
+        clearTimeout(downDelayTimeout);
+        clearTimeout(upDelayTimeout);
+        clearInterval(downSpinTimer);
+        clearInterval(upSpinTimer);
+
+        switch (spinning) {
+          case 'up':
+            originalinput.trigger('touchspin.on.stopupspin');
+            originalinput.trigger('touchspin.on.stopspin');
+            break;
+          case 'down':
+            originalinput.trigger('touchspin.on.stopdownspin');
+            originalinput.trigger('touchspin.on.stopspin');
+            break;
+        }
+
+        spincount = 0;
+        spinning = false;
+      }
+
+    });
+
+  };
+
+})(jQuery);
+
 (function ($) { //an IIFE so safely alias jQuery to $
     $.App = function (lang) {
         this.lang = lang;
@@ -30006,6 +30681,12 @@ Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0
         },
         enable_flash_modal: function () {
             $('#flash-overlay-modal').modal();
+        },
+        enable_touchspin: function (element) {
+            $("#" + element).TouchSpin({
+                min: 1,
+                max: 10
+            });
         }
     };
 }(jQuery));

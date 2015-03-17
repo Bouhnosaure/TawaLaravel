@@ -18,7 +18,8 @@ var paths = {
     "fontawesome": "./vendor/bower_components/font-awesome/",
     "jqueryui": "./vendor/bower_components/jquery-ui/",
     "jqueryuidatetime": "./vendor/bower_components/datetimepicker/",
-    "bootstraptouchspin": "./vendor/bower_components/bootstrap-touchspin/src/"
+    "bootstraptouchspin": "./vendor/bower_components/bootstrap-touchspin/src/",
+    "tageditor": "./vendor/bower_components/jquery-tag-editor/"
 }
 
 
@@ -26,7 +27,7 @@ elixir(function (mix) {
 
     mix.copy(paths.bootstrap + 'fonts/', 'public/fonts')
         .copy(paths.fontawesome + 'fonts/', 'public/fonts')
-        .copy(paths.jqueryui + 'themes/base/images', 'public/img/ui')
+        .copy(paths.tageditor + 'delete.png', 'public/img/delete.png')
         .sass("app.scss", "public/css/", {
             includePaths: [
                 paths.bootstrap + 'stylesheets/',
@@ -40,6 +41,8 @@ elixir(function (mix) {
             paths.jqueryui + "jquery-ui.js",
             paths.jqueryuidatetime + "jquery.datetimepicker.js",
             paths.bootstraptouchspin + "jquery.bootstrap-touchspin.js",
+            paths.tageditor + "jquery.caret.min.js",
+            paths.tageditor + "jquery.tag-editor.js",
             paths.assets + "js/app.js"
         ], "public/js/app.js", "./")
         .version(["public/css/app.css", "public/js/app.js"])

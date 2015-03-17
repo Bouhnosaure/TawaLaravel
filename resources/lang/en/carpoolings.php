@@ -21,6 +21,9 @@ return [
 	'price-field'     => 'Price :',
 	'flexible-field'     => 'I can wait for a passenger :',
 	'luggage-field'     => 'I allow big luggages :',
+    'event-field'     => 'Event :',
+    'seats-field'     => 'Available seats :',
+    'stopovers-field'     => 'Stop overs :',
 
     'create-success' => 'Carpooling create successful',
     'update-success' => 'Carpooling update successful',

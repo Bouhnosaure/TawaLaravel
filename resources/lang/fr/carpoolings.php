@@ -21,6 +21,9 @@ return [
 	'price-field'     => 'Prix :',
 	'flexible-field'     => 'Attendre un passager ne me dérange pas :',
 	'luggage-field'     => 'J\'accepte les grands bagages :',
+    'event-field'     => 'Evenement :',
+    'seats-field'     => 'Sièges disponibles :',
+    'stopovers-field'     => 'Points d\'arrêts :',
 
     'create-success' => 'Covoiturage crée avec success',
     'update-success' => 'Covoiturage mis à jour avec success',

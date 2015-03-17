@@ -28,4 +28,5 @@
     App.datetimepicker_event();
     App.googlemaps_autocomplete('location');
     App.enable_touchspin('seats');
+    App.enable_tageditor('stopovers');
 @stop

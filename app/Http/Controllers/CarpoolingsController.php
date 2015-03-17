@@ -5,6 +5,7 @@ use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CarpoolingRequest;
 use Illuminate\Http\Request;
 
 class CarpoolingsController extends Controller
@@ -30,24 +31,24 @@ class CarpoolingsController extends Controller
 
     /**
      * Show the form for creating a new carpooling.
-     *
-     * @param Event $event
      * @return Response
+     * @internal param Event $event
      */
     public function create()
     {
-        $events = Event::latest('created_at')->NotFinished()->lists('name','id');
+        $events = Event::latest('created_at')->NotFinished()->lists('name', 'id');
         return view('pages.carpoolings.create')->with('events', $events);
     }
 
     /**
      * Store a newly created carpooling in storage.
      *
+     * @param CarpoolingRequest $request
      * @return Response
      */
-    public function store()
+    public function store(CarpoolingRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

@@ -41,6 +41,11 @@
                 min: 1,
                 max: 10
             });
+        },
+        enable_tageditor: function (element) {
+            $("#" + element).tagEditor({
+
+            });
         }
     };
 }(jQuery));

@@ -6,7 +6,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CarpoolingRequest;
+use App\Services\CarpoolingService;
+use App\Stopover;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Laracasts\Flash\Flash;
 
 class CarpoolingsController extends Controller
 {
@@ -44,22 +49,27 @@ class CarpoolingsController extends Controller
      * Store a newly created carpooling in storage.
      *
      * @param CarpoolingRequest $request
+     * @param CarpoolingService $service
      * @return Response
      */
-    public function store(CarpoolingRequest $request)
+    public function store(CarpoolingRequest $request, CarpoolingService $service)
     {
-        dd($request->all());
+        $service->create($request->all());
+
+        Flash::success(Lang::get('carpoolings.create-success'));
+
+        return redirect('carpoolings');
     }
 
     /**
      * Display the specified carpooling.
      *
-     * @param  int $id
+     * @param Carpooling $carpooling
      * @return Response
      */
-    public function show($id)
+    public function show(Carpooling $carpooling)
     {
-        //
+        return view('pages.carpoolings.show')->with('carpooling', $carpooling);
     }
 
     /**

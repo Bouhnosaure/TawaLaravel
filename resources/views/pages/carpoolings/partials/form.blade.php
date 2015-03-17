@@ -1,8 +1,8 @@
 @if($create)
     <!--- description Field --->
     <div class="form-group">
-        {!! Form::label('event', Lang::get('carpoolings.event-field')) !!}
-        {!! Form::select('event', $events, null, ['class' => 'form-control']) !!}
+        {!! Form::label('event_id', Lang::get('carpoolings.event-field')) !!}
+        {!! Form::select('event_id', $events, null, ['class' => 'form-control']) !!}
     </div>
     @endif
 

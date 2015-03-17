@@ -23,7 +23,7 @@ class CarpoolingRequest extends Request
     public function rules()
     {
         $rules =  [
-            'event' => 'required',
+            'event_id' => 'required|integer',
             'description' => 'required|min:10',
             'start_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'location' => 'required',

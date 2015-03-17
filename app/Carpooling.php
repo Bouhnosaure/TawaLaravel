@@ -15,6 +15,7 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
     protected $table = 'carpoolings';
 
     protected $fillable = [
+        'event_id',
         'description',
         'start_time',
         'seats',

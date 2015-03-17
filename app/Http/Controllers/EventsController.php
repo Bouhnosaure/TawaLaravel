@@ -25,7 +25,6 @@ class EventsController extends Controller
     public function index()
     {
         $events = Event::latest('created_at')->NotFinished()->paginate(15);
-
         return view('pages.events.index')->with('events', $events);
     }
 

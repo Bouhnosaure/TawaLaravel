@@ -43,9 +43,7 @@
             });
         },
         enable_tageditor: function (element) {
-            $("#" + element).tagEditor({
-
-            });
+            $("#" + element).tagEditor({});
         }
     };
 }(jQuery));

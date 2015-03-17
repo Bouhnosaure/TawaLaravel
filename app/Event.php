@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Carbon\Carbon;
+use Conner\Tagging\TaggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model implements SluggableInterface
 {
     use SluggableTrait;
+    use TaggableTrait;
 
     protected $table = 'events';
 
@@ -18,7 +20,8 @@ class Event extends Model implements SluggableInterface
         'end_time',
         'location',
         'is_private',
-        'is_valid'
+        'is_valid',
+        'tags'
     ];
 
     protected $hidden = [];
@@ -108,6 +111,26 @@ class Event extends Model implements SluggableInterface
         $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
     }
 
+    /**
+     * get tags with taggabletrait
+     * @param $tags
+     * @return string
+     */
+    public function getTagsAttribute($tags)
+    {
+        return implode(",", $this->tagNames());
+    }
+
+
+    /**
+     * Set tags with taggabletrait
+     * @param $tags
+     */
+    public function setTagsAttribute($tags)
+    {
+        $this->retag(explode(",", $tags));
+    }
+
 
     //RELATIONS
 
@@ -121,6 +144,10 @@ class Event extends Model implements SluggableInterface
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * an event has many tags
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function carpoolings()
     {
         return $this->hasMany('App\Carpooling');

@@ -20,6 +20,7 @@ return [
 	'end-time-field'     => 'Date et heure de fin :',
 	'location-field'     => 'Ville :',
 	'address-field'     => 'Adresse :',
+	'tags-field'     => 'Tags :',
 
     'create-success' => 'Evenement crée avec success',
     'update-success' => 'Evenement mis à jour avec success',

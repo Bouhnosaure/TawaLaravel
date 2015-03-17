@@ -144,6 +144,7 @@ return [
         'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
+        'Conner\Tagging\TaggingServiceProvider',
 
 		/*
 		 * Application Service Providers...

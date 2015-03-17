@@ -33,6 +33,12 @@
     {!! Form::text('location', null, ['class' => 'form-control']) !!}
 </div>
 
+<!--- Tags Field --->
+<div class="form-group">
+    {!! Form::label('tags', Lang::get('events.tags-field')) !!}
+    {!! Form::text('tags', null, ['class' => 'form-control']) !!}
+</div>    
+    
 <!---  Field --->
 <div class="form-group">
     {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary']) !!}

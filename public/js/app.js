@@ -31031,9 +31031,7 @@ Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0
             });
         },
         enable_tageditor: function (element) {
-            $("#" + element).tagEditor({
-
-            });
+            $("#" + element).tagEditor({});
         }
     };
 }(jQuery));

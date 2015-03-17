@@ -22,16 +22,17 @@ class EventRequest extends Request
      */
     public function rules()
     {
-        $rules =  [
+        $rules = [
             'name' => 'required|unique:events|min:3',
             'description' => 'required|min:10',
             'start_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'end_time' => ['required', 'date' => 'date_format:"d/m/Y - H:i"'],
             'location' => 'required',
+            'tags' => array('regex:/^([-\w\s]+,)*[-\w\s]+$/'),
             //'is_private' => 'required'
         ];
 
-        if($this->method() == 'PATCH'){
+        if ($this->method() == 'PATCH') {
             $rules['name'] = 'required|min:3';
         }
 

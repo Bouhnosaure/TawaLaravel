@@ -22,7 +22,7 @@ class CreateStopoversTable extends Migration
         });
 
         Schema::table('stopovers', function (Blueprint $table) {
-            $table->foreign('carpooling_id')->references('id')->on('carpoolings');
+            $table->foreign('carpooling_id')->references('id')->on('carpoolings')->onDelete('cascade');
         });
     }
 

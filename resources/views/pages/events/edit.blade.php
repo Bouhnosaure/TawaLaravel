@@ -27,4 +27,5 @@
 @section('js-apps-cope')
     App.datetimepicker_event();
     App.googlemaps_autocomplete('location');
+    App.enable_tageditor('tags');
 @stop

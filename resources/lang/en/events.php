@@ -20,6 +20,7 @@ return [
 	'end-time-field'     => 'Datetime end  :',
 	'location-field'     => 'Location :',
 	'address-field'     => 'Address :',
+    'tags-field'     => 'Tags :',
 
     'create-success' => 'Event create successful',
     'update-success' => 'Event update successful',

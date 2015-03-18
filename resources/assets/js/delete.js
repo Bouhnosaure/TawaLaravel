@@ -16,7 +16,7 @@
         if (this.$preview.css("display") != "inline" && height != "0px" && height != "none")this.$preview.css("line-height", height);
         this.$remove = this.$element.find('[data-dismiss="fileupload"]');
         this.$element.find('[data-trigger="fileupload"]').on("click.fileupload", $.proxy(this.trigger, this));
-        this.listen()
+        this.listen()jquery-tag-editor
     };
     Fileupload.prototype = {
         listen: function () {

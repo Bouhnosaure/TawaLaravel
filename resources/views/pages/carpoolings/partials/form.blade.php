@@ -4,7 +4,9 @@
         {!! Form::label('event_id', Lang::get('carpoolings.event-field')) !!}
         {!! Form::select('event_id', $events, null, ['class' => 'form-control']) !!}
     </div>
-    @endif
+@else
+    {!! Form::hidden('event_id', null) !!}
+@endif
 
             <!--- description Field --->
     <div class="form-group">

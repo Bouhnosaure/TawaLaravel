@@ -23,9 +23,8 @@ class CarpoolingsController extends Controller
 
     /**
      * Display a listing of the carpooling.
-     *
-     * @param Event $event
      * @return Response
+     * @internal param Event $event
      */
     public function index()
     {
@@ -75,23 +74,29 @@ class CarpoolingsController extends Controller
     /**
      * Show the form for editing the specified carpooling.
      *
-     * @param  int $id
+     * @param Carpooling $carpooling
      * @return Response
      */
-    public function edit($id)
+    public function edit(Carpooling $carpooling)
     {
-        //
+        return view('pages.carpoolings.edit')->with('carpooling', $carpooling);
     }
 
     /**
      * Update the specified carpooling in storage.
      *
-     * @param  int $id
+     * @param Carpooling $carpooling
+     * @param CarpoolingRequest $request
+     * @param CarpoolingService $service
      * @return Response
      */
-    public function update($id)
+    public function update(Carpooling $carpooling, CarpoolingRequest $request, CarpoolingService $service)
     {
-        //
+        $carpooling = $service->edit($carpooling, $request->all());
+
+        Flash::success(Lang::get('carpoolings.create-success'));
+
+        return redirect(action('CarpoolingsController@show', $carpooling->toArray()));
     }
 
     /**

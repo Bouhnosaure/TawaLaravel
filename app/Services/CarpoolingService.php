@@ -17,10 +17,21 @@ class CarpoolingService
      */
     public function create(array $data)
     {
-
         $carpooling = Auth::user()->carpoolings()->create($data);
         $carpooling->stopovers()->saveMany($this->extractStopovers($data));
+        return $carpooling;
+    }
 
+    /**
+     * @param Carpooling $carpooling
+     * @param array $data
+     * @return mixed
+     */
+    public function edit(Carpooling $carpooling, array $data)
+    {
+        $carpooling->update($data);
+        $carpooling->stopovers()->delete();
+        $carpooling->stopovers()->saveMany($this->extractStopovers($data));
         return $carpooling;
     }
 

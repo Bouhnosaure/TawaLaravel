@@ -3,15 +3,15 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('events.edit-action') }} : {{ $event->name }}</h1>
+            <h1>{{ trans('carpoolings.edit-action') }} : {{ $carpooling->name }}</h1>
 
             <hr/>
 
             @include('errors.list')
 
-            {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventsController@update', $event->id ]]) !!}
+            {!! Form::model($carpooling, ['method' => 'PATCH', 'action' => ['CarpoolingsController@update', $carpooling->id ]]) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>Lang::get('events.edit-action'), 'create' => false])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.edit-action'), 'create' => false])
 
             {!! Form::close() !!}
 
@@ -27,4 +27,6 @@
 @section('js-apps-cope')
     App.datetimepicker_event();
     App.googlemaps_autocomplete('location');
+    App.enable_touchspin('seats');
+    App.enable_tageditor('stopovers');
 @stop

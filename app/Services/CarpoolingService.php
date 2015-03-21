@@ -45,14 +45,15 @@ class CarpoolingService
         $i = 0;
         $stopovers = array();
         $stopovers[] = new Stopover(['location' => $data['location'], 'carpooling_order' => 0]);
+
         if ($data['stopovers'] != "") {
             $stopovers_raw = explode(",", $data['stopovers']);
-            for ($i = 1, $size = count($stopovers_raw); $i < $size; ++$i) {
-                $stopovers[] = new Stopover(['location' => $stopovers_raw[$i], 'carpooling_order' => $i]);
+            foreach ($stopovers_raw as $stopover) {
+                ++$i;
+                $stopovers[] = new Stopover(['location' => $stopover, 'carpooling_order' => $i]);
             }
-        } else {
-            ++$i;
         }
+        ++$i;
         $event = Event::findOrFail($data['event_id']);
         $stopovers[] = new Stopover(['location' => $event->location, 'carpooling_order' => $i]);
 

@@ -29,7 +29,7 @@ class CarpoolingRequest extends Request
             'location' => 'required',
             'price' => 'required|digits_between:0,100',
             'seats' => 'required|digits_between:1,10|integer',
-            'stopovers' => array('regex:/^([-\w\s]+,)*[-\w\s]+$/'),
+            'stopovers' => array('regex:/^([-\w\s\.\,\;\'\"]+,)*[-\w\s\.\,\;\'\"]+$/'),
         ];
 
         return $rules;

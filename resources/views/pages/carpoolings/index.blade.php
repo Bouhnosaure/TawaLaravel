@@ -23,7 +23,7 @@
                             -> {{ $carpooling->arrival }}
                         </h4>
                     </a>
-                    <h5>@ {{ $carpooling->location }}</h5>
+                    <h5>@ {{ $carpooling->event->name }}</h5>
 
                     <p class="list-group-item-text">{{ $carpooling->description }}</p>
                 </div>

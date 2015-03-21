@@ -6,7 +6,7 @@
     </div>
 @else
     {!! Form::hidden('event_id', null) !!}
-@endif
+    @endif
 
             <!--- description Field --->
     <div class="form-group">
@@ -19,12 +19,20 @@
         {!! Form::label('start_time', Lang::get('carpoolings.start-time-field')) !!}
         {!! Form::text('start_time', null, ['class' => 'form-control']) !!}
     </div>
+    @if($create)
+        <!--- Ville  Field --->
+        <div class="form-group">
+            {!! Form::label('location', Lang::get('carpoolings.location-field')) !!}
+            {!! Form::text('location', null, ['class' => 'form-control']) !!}
+        </div>
+    @else
+        <!--- Ville  Field --->
+        <div class="form-group">
+            {!! Form::label('location', Lang::get('carpoolings.location-field')) !!}
+            {!! Form::text('location', $carpooling->departure, ['class' => 'form-control']) !!}
+        </div>
+    @endif
 
-    <!--- Ville  Field --->
-    <div class="form-group">
-        {!! Form::label('location', Lang::get('carpoolings.location-field')) !!}
-        {!! Form::text('location', null, ['class' => 'form-control']) !!}
-    </div>
 
     <!--- Price Field --->
     <div class="form-group">
@@ -41,13 +49,21 @@
         {!! Form::text('seats', 1, ['class' => 'form-control']) !!}
     </div>
 
-    <!--- Stopovers Field --->
-    <div class="form-group">
-        {!! Form::label('stopovers', Lang::get('carpoolings.stopovers-field')) !!}
-        {!! Form::text('stopovers', null, ['class' => 'form-control']) !!}
-    </div>
+    @if($create)
+        <!--- Stopovers Field --->
+        <div class="form-group">
+            {!! Form::label('stopovers', Lang::get('carpoolings.stopovers-field')) !!}
+            {!! Form::text('stopovers', null, ['class' => 'form-control']) !!}
+        </div>
+    @else
+        <!--- Stopovers Field --->
+        <div class="form-group">
+            {!! Form::label('stopovers', Lang::get('carpoolings.stopovers-field')) !!}
+            {!! Form::text('stopovers', $carpooling->stopovers_between, ['class' => 'form-control']) !!}
+        </div>
+    @endif
 
-    <!---  Field --->
-    <div class="form-group">
-        {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary']) !!}
-    </div>
+                <!---  Field --->
+        <div class="form-group">
+            {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary']) !!}
+        </div>

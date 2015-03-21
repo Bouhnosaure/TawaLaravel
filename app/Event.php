@@ -1,12 +1,14 @@
 <?php namespace App;
 
+use App\Presenters\EventPresenter;
 use Carbon\Carbon;
 use Conner\Tagging\TaggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
-class Event extends Model implements SluggableInterface
+class Event extends Model implements SluggableInterface, HasPresenter
 {
     use SluggableTrait;
     use TaggableTrait;
@@ -32,6 +34,16 @@ class Event extends Model implements SluggableInterface
         'build_from' => 'name',
         'save_to' => 'slug',
     );
+
+    /**
+     * Get the presenter class.
+     *
+     * @return string
+     */
+    public function getPresenterClass()
+    {
+        return EventPresenter::class;
+    }
 
     //SCOPES
 
@@ -152,5 +164,6 @@ class Event extends Model implements SluggableInterface
     {
         return $this->hasMany('App\Carpooling');
     }
+
 
 }

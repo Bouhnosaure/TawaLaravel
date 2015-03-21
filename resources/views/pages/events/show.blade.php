@@ -19,19 +19,18 @@
             <div class="row">
                 @foreach($event->carpoolings as $carpooling)
 
-                    {{dd($carpooling->departure)}}
-
                     <div class="media event-list">
                         <div class="media-left">
                             <a href="{{ action('CarpoolingsController@show', [ 'id' => $carpooling->id ]) }}">
-                                <img class="media-object events-list-img" src="{{ $carpooling->event->image_min }}" alt="{{ $carpooling->event->name }}">
+                                <img class="media-object events-list-img" src="{{ $carpooling->event->image_min }}"
+                                     alt="{{ $carpooling->event->name }}">
                             </a>
                         </div>
                         <div class="media-body">
                             <a href="{{ action('CarpoolingsController@show', [ 'id' => $carpooling->id ]) }}">
                                 <h4 class="media-heading">
-                                    {{ $carpooling->departure }}
-                                    -> {{ $carpooling->arrival }}
+                                    {{ $event->presentsCarpooling($carpooling)->departure }}
+                                    -> {{$event->presentsCarpooling($carpooling)->arrival }}
                                 </h4>
                             </a>
                             <h5>@ {{ $carpooling->event->name }}</h5>

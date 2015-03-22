@@ -13,9 +13,4 @@ class EventPresenter extends BasePresenter
     {
         $this->wrappedObject = $resource;
     }
-
-    public function presentsCarpooling(Carpooling $carpooling)
-    {
-        return new CarpoolingPresenter($carpooling);
-    }
 }

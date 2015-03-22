@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
+use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
 use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Carpooling extends Model implements SluggableInterface, HasPresenter
@@ -76,6 +77,16 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
     public function setStartTimeAttribute($date)
     {
         $this->attributes['start_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
+    }
+
+    //CUSTOM ATTRIBUTES
+
+    public function getPresentDepartureAttribute(){
+        return AutoPresenter::decorate($this)->departure;
+    }
+
+    public function getPresentArrivalAttribute(){
+        return AutoPresenter::decorate($this)->arrival;
     }
 
     //RELATIONS

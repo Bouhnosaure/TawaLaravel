@@ -32,11 +32,14 @@ class CreateEventsTable extends Migration
             $table->boolean('is_valid');
 
             $table->integer('user_id')->unsigned();
+            $table->integer('categorie_id')->unsigned();
+
             $table->timestamps();
         });
 
         Schema::table('events', function ($table) {
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('categorie_id')->references('id')->on('categories');
         });
     }
 

@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CarpoolingRequest;
+use App\Repositories\CarpoolingRepositoryInterface;
+use App\Repositories\EventRepositoryInterface;
 use App\Services\CarpoolingService;
 use App\Stopover;
 use Illuminate\Http\Request;
@@ -15,10 +17,25 @@ use Laracasts\Flash\Flash;
 
 class CarpoolingsController extends Controller
 {
+    /**
+     * @var CarpoolingRepository
+     */
+    private $carpoolingRepository;
+    /**
+     * @var EventRepositoryInterface
+     */
+    private $eventRepository;
 
-    public function __construct()
+
+    /**
+     * @param CarpoolingRepositoryInterface $carpoolingRepository
+     * @param EventRepositoryInterface $eventRepository
+     */
+    public function __construct(CarpoolingRepositoryInterface $carpoolingRepository, EventRepositoryInterface $eventRepository)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->carpoolingRepository = $carpoolingRepository;
+        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -28,7 +45,7 @@ class CarpoolingsController extends Controller
      */
     public function index()
     {
-        $carpoolings = Carpooling::latest('created_at')->NotStarted()->paginate(15);
+        $carpoolings = $this->carpoolingRepository->paginate(15);
 
         return view('pages.carpoolings.index')->with('carpoolings', $carpoolings);
     }
@@ -40,7 +57,7 @@ class CarpoolingsController extends Controller
      */
     public function create()
     {
-        $events = Event::latest('created_at')->NotFinished()->lists('name', 'id');
+        $events = $this->eventRepository->getList();
         return view('pages.carpoolings.create')->with('events', $events);
     }
 
@@ -53,7 +70,7 @@ class CarpoolingsController extends Controller
      */
     public function store(CarpoolingRequest $request, CarpoolingService $service)
     {
-        $service->create($request->all());
+        $service->create(Auth::user(), $request->all());
 
         Flash::success(Lang::get('carpoolings.create-success'));
 
@@ -63,36 +80,38 @@ class CarpoolingsController extends Controller
     /**
      * Display the specified carpooling.
      *
-     * @param Carpooling $carpooling
+     * @param $id
      * @return Response
      */
-    public function show(Carpooling $carpooling)
+    public function show($id)
     {
+        $carpooling = $this->carpoolingRepository->getById($id);
         return view('pages.carpoolings.show')->with('carpooling', $carpooling);
     }
 
     /**
      * Show the form for editing the specified carpooling.
      *
-     * @param Carpooling $carpooling
+     * @param $id
      * @return Response
      */
-    public function edit(Carpooling $carpooling)
+    public function edit($id)
     {
+        $carpooling = $this->carpoolingRepository->getById($id);
         return view('pages.carpoolings.edit')->with('carpooling', $carpooling);
     }
 
     /**
      * Update the specified carpooling in storage.
      *
-     * @param Carpooling $carpooling
+     * @param $id
      * @param CarpoolingRequest $request
      * @param CarpoolingService $service
      * @return Response
      */
-    public function update(Carpooling $carpooling, CarpoolingRequest $request, CarpoolingService $service)
+    public function update($id, CarpoolingRequest $request, CarpoolingService $service)
     {
-        $carpooling = $service->edit($carpooling, $request->all());
+        $carpooling = $service->edit($id, $request->all());
 
         Flash::success(Lang::get('carpoolings.create-success'));
 
@@ -107,7 +126,11 @@ class CarpoolingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->carpoolingRepository->delete($id);
+
+        Flash::success(Lang::get('carpoolings.delete-success'));
+
+        return redirect(action('CarpoolingsController@index'));
     }
 
 }

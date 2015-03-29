@@ -144,7 +144,7 @@ return [
         'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
-        'Conner\Tagging\TaggingServiceProvider',
+        'Laracasts\Generators\GeneratorsServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -155,6 +155,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ViewComposerServiceProvider',
+		'App\Providers\DatabaseServiceProvider',
+		'App\Providers\ObserverServiceProvider',
 
 	],
 

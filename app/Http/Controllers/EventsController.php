@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Event;
 use App\Http\Requests\EventRequest;
-use Illuminate\Http\Request;
+use App\Repositories\EventRepositoryInterface;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
@@ -12,9 +11,20 @@ use Laracasts\Flash\Flash;
 
 class EventsController extends Controller
 {
-    public function __construct()
+    /**
+     * @var EventRepository
+     */
+    private $eventRepository;
+
+
+    /**
+     * @param EventRepositoryInterface $eventRepository
+     */
+    public function __construct(EventRepositoryInterface $eventRepository)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+
+        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -24,20 +34,21 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::latest('created_at')->NotFinished()->paginate(15);
+        $events = $this->eventRepository->paginate(15);
+
         return view('pages.events.index')->with('events', $events);
     }
 
     /**
      * Show One Event
-     * Model biding in Providers/RouteServiceProvider
-     * Instead of $event = Event::findOrFail($id);
      *
-     * @param Event $event
+     * @param $id
      * @return \Illuminate\View\View
      */
-    public function show(Event $event)
+    public function show($id)
     {
+        $event = $this->eventRepository->getById($id);
+
         return view('pages.events.show')->with('event', $event);
     }
 
@@ -48,7 +59,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('pages.events.create');
+        $categories = Categorie::all()->lists('name', 'id');
+        return view('pages.events.create')->with('categories', $categories);
     }
 
     /**
@@ -59,7 +71,8 @@ class EventsController extends Controller
      */
     public function store(EventRequest $request)
     {
-        Auth::user()->events()->create($request->all());
+
+        $this->eventRepository->create(Auth::user(), $request->all());
 
         Flash::success(Lang::get('events.create-success'));
 
@@ -69,28 +82,46 @@ class EventsController extends Controller
     /**
      *  Show edit Form to edit an event
      *
-     * @param Event $event
+     * @param $id
      * @return \Illuminate\View\View
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
-        return view('pages.events.edit')->with('event', $event);
+        $event = $this->eventRepository->getById($id);
+        $categories = Categorie::all()->lists('name', 'id');
+
+        return view('pages.events.edit')->with(['event' => $event, 'categories' => $categories]);
     }
 
     /**
      * Handles update of an event
      *
-     * @param Event $event
+     * @param $id
      * @param EventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Event $event, EventRequest $request)
+    public function update($id, EventRequest $request)
     {
-        $event->update($request->all());
+        $this->eventRepository->update($id, $request->all());
 
         Flash::success(Lang::get('events.update-success'));
 
-        return redirect(action('EventsController@show', $event->toArray()));
+        return redirect(action('EventsController@show', $id));
+    }
+
+    /**
+     * Remove the specified event from storage.
+     *
+     * @param $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $this->eventRepository->delete($id);
+
+        Flash::success(Lang::get('events.delete-success'));
+
+        return redirect(action('EventsController@index'));
     }
 
 

@@ -31,7 +31,8 @@ class EventTableSeeder extends Seeder
                 'image_min' => $faker->imageUrl(400, 400),
                 'is_private' => $faker->boolean(),
                 'is_valid' => $faker->boolean(),
-                'user_id' => 1
+                'user_id' => 1,
+                'categorie_id' => $faker->numberBetween('1','10')
             ]);
 
 

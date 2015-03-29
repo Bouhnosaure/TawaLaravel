@@ -2,37 +2,53 @@
 
 use App\Carpooling;
 use App\Event;
+use App\Repositories\CarpoolingRepositoryInterface;
+use App\Repositories\EventRepositoryInterface;
 use App\Stopover;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class CarpoolingService
 {
+    /**
+     * @var CarpoolingRepositoryInterface
+     */
+    private $carpoolingRepository;
+    /**
+     * @var EventRepositoryInterface
+     */
+    private $eventRepository;
+
+    /**
+     * @param CarpoolingRepositoryInterface $carpoolingRepository
+     * @param EventRepositoryInterface $eventRepository
+     */
+    public function __construct(CarpoolingRepositoryInterface $carpoolingRepository, EventRepositoryInterface $eventRepository)
+    {
+        $this->carpoolingRepository = $carpoolingRepository;
+        $this->eventRepository = $eventRepository;
+    }
 
     /**
      * handles creation process for carpooling
      *
+     * @param User $user
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create(array $data)
+    public function create(User $user, array $data)
     {
-        $carpooling = Auth::user()->carpoolings()->create($data);
-        $carpooling->stopovers()->saveMany($this->extractStopovers($data));
-        return $carpooling;
+        return $this->carpoolingRepository->create($user, $data, $this->extractStopovers($data));
     }
 
     /**
-     * @param Carpooling $carpooling
+     * @param $id
      * @param array $data
      * @return mixed
      */
-    public function edit(Carpooling $carpooling, array $data)
+    public function edit($id, array $data)
     {
-        $carpooling->update($data);
-        $carpooling->stopovers()->delete();
-        $carpooling->stopovers()->saveMany($this->extractStopovers($data));
-        return $carpooling;
+        return $this->carpoolingRepository->update($id, $data, $this->extractStopovers($data));
     }
 
     /**
@@ -54,7 +70,7 @@ class CarpoolingService
             }
         }
         ++$i;
-        $event = Event::findOrFail($data['event_id']);
+        $event = $this->eventRepository->getById($data['event_id']);
         $stopovers[] = new Stopover(['location' => $event->location, 'carpooling_order' => $i]);
 
         return $stopovers;

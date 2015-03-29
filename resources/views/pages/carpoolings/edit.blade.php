@@ -15,6 +15,7 @@
 
             {!! Form::close() !!}
 
+            @include('pages.carpoolings.partials.delete')
 
         </div>
     </div>

@@ -15,6 +15,8 @@
 
             {!! Form::close() !!}
 
+            @include('pages.events.partials.delete')
+
 
         </div>
     </div>

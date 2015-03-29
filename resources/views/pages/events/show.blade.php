@@ -10,12 +10,6 @@
 
             <p> {{ $event->description }} </p>
 
-            <ul>
-                @foreach($event->tagNames() as $tag)
-                    <li>{{$tag}}</li>
-                @endforeach
-            </ul>
-
             <div class="row">
                 @foreach($event->carpoolings as $carpooling)
 

@@ -2,7 +2,6 @@
 
 use App\Presenters\EventPresenter;
 use Carbon\Carbon;
-use Conner\Tagging\TaggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +10,6 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 class Event extends Model implements SluggableInterface, HasPresenter
 {
     use SluggableTrait;
-    use TaggableTrait;
 
     protected $table = 'events';
 
@@ -23,6 +21,7 @@ class Event extends Model implements SluggableInterface, HasPresenter
         'location',
         'is_private',
         'is_valid',
+        'categorie_id',
         'tags'
     ];
 
@@ -123,26 +122,6 @@ class Event extends Model implements SluggableInterface, HasPresenter
         $this->attributes['end_time'] = Carbon::createFromFormat('d/m/Y - H:i', $date);
     }
 
-    /**
-     * get tags with taggabletrait
-     * @param $tags
-     * @return string
-     */
-    public function getTagsAttribute($tags)
-    {
-        return implode(",", $this->tagNames());
-    }
-
-
-    /**
-     * Set tags with taggabletrait
-     * @param $tags
-     */
-    public function setTagsAttribute($tags)
-    {
-        $this->retag(explode(",", $tags));
-    }
-
 
     //RELATIONS
 
@@ -154,6 +133,15 @@ class Event extends Model implements SluggableInterface, HasPresenter
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * An event is qualified by a category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function categorie()
+    {
+        return $this->belongsTo('App\Categorie');
     }
 
     /**

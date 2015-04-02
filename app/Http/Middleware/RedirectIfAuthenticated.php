@@ -35,7 +35,7 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(action('PageController@index'));
+			return new RedirectResponse(action('PagesController@index'));
 		}
 
 		return $next($request);

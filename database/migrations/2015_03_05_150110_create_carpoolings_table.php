@@ -15,7 +15,7 @@ class CreateCarpoolingsTable extends Migration
     {
         Schema::create('carpoolings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            //$table->string('name');
 
             $table->string('slug')->unique();
 

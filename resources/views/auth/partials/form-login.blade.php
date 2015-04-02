@@ -34,7 +34,7 @@
 <!--- Submit Field --->
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('auth.login'), ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit(Lang::get('auth.login'), ['class' => 'btn btn-primary', 'name' => 'submit-login']) !!}
         <a class="btn btn-link" href="{{ action('Auth\PasswordController@getEmail') }}">{{ trans('auth.forgot') }}</a>
     </div>
 </div>

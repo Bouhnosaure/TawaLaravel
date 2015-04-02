@@ -20,11 +20,14 @@
 		"behat/behat": "~3.0",
 		"behat/mink": "~1.6",
 		"behat/mink-extension": "~2.0",
-		"laracasts/behat-laravel-extension": "~1.0" 
+		"laracasts/behat-laravel-extension": "~1.0",
+        "codeception/codeception": "2.x@dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
-		"phpspec/phpspec": "~2.1"
+		"phpspec/phpspec": "~2.1",
+        "whatdafox/codeception-mailtrap":"~1.0"
+
 	},
 	"autoload": {
 		"classmap": [

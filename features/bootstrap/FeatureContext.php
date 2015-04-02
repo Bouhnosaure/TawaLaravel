@@ -3,10 +3,9 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Laracasts\Behat\Context\DatabaseTransactions;
+
 
 /**
  * Defines application features from the specific context.
@@ -14,6 +13,9 @@ use Laracasts\Behat\Context\DatabaseTransactions;
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
 {
     use DatabaseTransactions;
+
+    use AuthContext;
+    use EventContext;
 
     /**
      * Initializes context.
@@ -24,6 +26,6 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function __construct()
     {
-    }
 
+    }
 }

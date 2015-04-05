@@ -5,12 +5,12 @@
         <div class="col-md-12">
             <a href="{{ action('EventsController@edit', [ 'id' => $event->id ]) }}">{{ trans('events.edit-action') }}</a>
 
-            <h1>{{ $event->name }}</h1>
-            <h5>@ {{ $event->location }}</h5>
+            <h1 id="event-name">{{ $event->name }}</h1>
+            <h5 id="event-location">@ {{ $event->location }}</h5>
 
-            <p> {{ $event->description }} </p>
+            <p id="event-description"> {{ $event->description }} </p>
 
-            <div class="row">
+            <div class="row" id="event-carpoolings">
                 @foreach($event->carpoolings as $carpooling)
 
                     <div class="media event-list">

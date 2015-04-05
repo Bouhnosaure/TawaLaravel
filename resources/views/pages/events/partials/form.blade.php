@@ -41,5 +41,5 @@
 
     <!---  Field --->
     <div class="form-group">
-        {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary', 'name' => 'submit-event-create']) !!}
     </div>

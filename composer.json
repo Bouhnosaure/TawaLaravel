@@ -17,16 +17,13 @@
 		"laracasts/flash": "~1.3",
 		"mccool/laravel-auto-presenter": "~3.0",
 		"laracasts/generators": "dev-master",
-		"behat/behat": "~3.0",
-		"behat/mink": "~1.6",
-		"behat/mink-extension": "~2.0",
-		"laracasts/behat-laravel-extension": "~1.0",
         "codeception/codeception": "2.x@dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-        "whatdafox/codeception-mailtrap":"~1.0"
+        "whatdafox/codeception-mailtrap":"~1.0",
+        "laracasts/testdummy": "~2.0"
 
 	},
 	"autoload": {

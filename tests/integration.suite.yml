@@ -1,0 +1,6 @@
+class_name: IntegrationTester
+modules:
+    enabled: [\Helper\Integration, Laravel5]
+    config:
+        Laravel5:
+            environment_file: .env.testing

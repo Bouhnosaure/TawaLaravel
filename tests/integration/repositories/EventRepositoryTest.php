@@ -22,12 +22,12 @@ class EventRepositoryTest extends Codeception\TestCase\Test
     public function it_gets_all_events()
     {
         //given i have ten events
-        TestDummy::times(10)->create('App\Event');
+        //TestDummy::times(10)->create('App\Event');
 
         //get all
         $events = $this->repo->getAll();
 
-        $this->assertCount(10, $events);
+        $this->assertCount(100, $events);
     }
 
 }

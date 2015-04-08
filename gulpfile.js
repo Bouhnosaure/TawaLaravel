@@ -45,8 +45,8 @@ elixir(function (mix) {
             paths.tageditor + "jquery.tag-editor.js",
             paths.assets + "js/app.js"
         ], "public/js/app.js", "./")
-        .version(["public/css/app.css", "public/js/app.js"])
-        .phpUnit();
+        .version(["public/css/app.css", "public/js/app.js"]);
+        //.phpUnit();
 
 })
 ;

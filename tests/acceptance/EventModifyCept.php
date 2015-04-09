@@ -19,3 +19,5 @@ $I->click('submit-event-create');
 $text = trim($I->grabTextFrom('#event-description'));
 $I->see('TEST DESCRIPTION 3320');
 
+
+

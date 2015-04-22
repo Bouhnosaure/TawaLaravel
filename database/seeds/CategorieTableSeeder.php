@@ -1,6 +1,6 @@
 <?php
 
-use App\Categorie;
+use App\Category;
 use Faker\Factory as Faker;
 
 use Illuminate\Database\Seeder;
@@ -15,7 +15,7 @@ class CategorieTableSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 10) as $index) {
-            Categorie::create([
+            Category::create([
                 'name' => $faker->name
             ]);
 

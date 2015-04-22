@@ -22,6 +22,7 @@ class Event extends Model implements SluggableInterface, HasPresenter
         'is_private',
         'is_valid',
         'categorie_id',
+        'categorie_id',
         'tags'
     ];
 
@@ -139,9 +140,9 @@ class Event extends Model implements SluggableInterface, HasPresenter
      * An event is qualified by a category
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function categorie()
+    public function category()
     {
-        return $this->belongsTo('App\Categorie');
+        return $this->belongsTo('App\Category');
     }
 
     /**

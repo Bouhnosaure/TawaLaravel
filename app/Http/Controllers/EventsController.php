@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Categorie;
+use App\Category;
 use App\Http\Requests;
 use App\Http\Requests\EventRequest;
 use App\Repositories\EventRepositoryInterface;
@@ -59,7 +59,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        $categories = Categorie::all()->lists('name', 'id');
+        $categories = Category::all()->lists('name', 'id');
         return view('pages.events.create')->with('categories', $categories);
     }
 
@@ -88,7 +88,7 @@ class EventsController extends Controller
     public function edit($id)
     {
         $event = $this->eventRepository->getById($id);
-        $categories = Categorie::all()->lists('name', 'id');
+        $categories = Category::all()->lists('name', 'id');
 
         return view('pages.events.edit')->with(['event' => $event, 'categories' => $categories]);
     }

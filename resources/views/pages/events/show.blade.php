@@ -4,11 +4,14 @@
     <div class="row">
         <div class="col-md-12">
             <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}">{{ trans('events.edit-action') }}</a>
+            
+            <h1 id="event-name">{{ $event->name }}</h1>
 
-            <h1 id="event-name">{{ trans('events.name-field') }} {{ $event->name }}</h1>
-            <h5 id="event-location">{{ trans('events.location-field') }} {{ $event->location }}</h5>
+            {{ trans('events.location-field') }}
+            <h5 id="event-location">{{ $event->location }}</h5>
 
-            <p id="event-description">{{ trans('events.description-field') }} {{ $event->description }} </p>
+            {{ trans('events.description-field') }}
+            <p id="event-description">{{ $event->description }} </p>
 
             <hr>
 

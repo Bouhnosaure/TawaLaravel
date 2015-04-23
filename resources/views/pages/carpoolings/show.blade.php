@@ -3,13 +3,16 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('carpoolings.name-field') }} {{ $carpooling->departure }} → {{ $carpooling->arrival }}</h1>
+            <h1>{{ $carpooling->departure }} → {{ $carpooling->arrival }}</h1>
 
-            <p>{{ trans('carpoolings.description-field') }} {{ $carpooling->description }}</p>
+            {{ trans('carpoolings.description-field') }}
+            <p>{{ $carpooling->description }}</p>
 
-            <p>{{ trans('carpoolings.price-field') }} {{ $carpooling->price }} </p>
+            {{ trans('carpoolings.price-field') }}
+            <p>{{ $carpooling->price }} </p>
 
-            <p>{{ trans('carpoolings.seats-field') }} {{ $carpooling->seats }} </p>
+            {{ trans('carpoolings.seats-field') }}
+            <p>{{ $carpooling->seats }} </p>
 
             <hr>
 

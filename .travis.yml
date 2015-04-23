@@ -12,7 +12,7 @@ matrix:
 
 before_script:
   - cp .env.testing .env
-  - > storage/testing.sqlite
+  - echo '' > storage/testing.sqlite
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
   - php artisan migrate:install --database=sqlite_testing --no-interaction -vvv

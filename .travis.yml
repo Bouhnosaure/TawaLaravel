@@ -3,19 +3,25 @@ language: php
 php:
   - 5.5
   - 5.6
-  - 7.0
   - hhvm
+  - nightly
 
 matrix:
     allow_failures:
-        - php: 7.0
+        - php: nightly
 
 before_script:
+  - cp .env.testing .env
+  - > storage/testing.sqlite
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
-  - php artisan migrate --database=sqlite_testing --seed --no-interaction -vvv
+  - php artisan migrate:install --database=sqlite_testing --no-interaction -vvv
 
 script:
+  - php artisan migrate --database=sqlite_testing --no-interaction -vvv
+  - php artisan db:seed --database=sqlite_testing --no-interaction -vvv
   - vendor/bin/codecept run
 
+notifications:
+  slack: 'tawa:4lqJwQnUZQ48Y1IimLcdrRj6#tawacovoiturage'
 

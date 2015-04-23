@@ -12,12 +12,12 @@
         @foreach($events as $event)
             <div class="media event-list">
                 <div class="media-left">
-                    <a href="{{ action('EventsController@show', [ 'id' => $event->id ]) }}">
+                    <a href="{{ action('EventsController@show', [ 'id' => $event->slug ]) }}">
                         <img class="media-object events-list-img" src="{{ $event->image_min }}" alt="{{ $event->name }}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <a href="{{ action('EventsController@show', [ 'id' => $event->id ]) }}">
+                    <a href="{{ action('EventsController@show', [ 'id' => $event->slug ]) }}">
                         <h4 class="media-heading">{{ $event->name }}</h4>
                     </a>
                     <h5>@ {{ $event->location }}</h5>

@@ -55,7 +55,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function getBySlug($slug)
     {
-        return $this->model->getBySlug($slug);
+        return $this->model->findBySlug($slug);
     }
 
     /**

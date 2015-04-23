@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('carpoolings.name-field') }} {{ $carpooling->departure }} -> {{ $carpooling->arrival }}</h1>
+            <h1>{{ trans('carpoolings.name-field') }} {{ $carpooling->departure }} → {{ $carpooling->arrival }}</h1>
 
             <p>{{ trans('carpoolings.description-field') }} {{ $carpooling->description }}</p>
 

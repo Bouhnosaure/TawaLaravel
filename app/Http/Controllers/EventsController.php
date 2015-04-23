@@ -42,12 +42,12 @@ class EventsController extends Controller
     /**
      * Show One Event
      *
-     * @param $id
+     * @param $slug
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        $event = $this->eventRepository->getById($id);
+        $event = $this->eventRepository->getBySlug($slug);
 
         return view('pages.events.show')->with('event', $event);
     }
@@ -82,12 +82,12 @@ class EventsController extends Controller
     /**
      *  Show edit Form to edit an event
      *
-     * @param $id
+     * @param $slug
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $event = $this->eventRepository->getById($id);
+        $event = $this->eventRepository->getBySlug($slug);
         $categories = Category::all()->lists('name', 'id');
 
         return view('pages.events.edit')->with(['event' => $event, 'categories' => $categories]);

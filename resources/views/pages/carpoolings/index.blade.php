@@ -19,8 +19,7 @@
                 <div class="media-body">
                     <a href="{{ action('CarpoolingsController@show', [ 'id' => $carpooling->id ]) }}">
                         <h4 class="media-heading">
-                            {{ $carpooling->departure }}
-                            -> {{ $carpooling->arrival }}
+                            {{ $carpooling->departure }} → {{ $carpooling->arrival }}
                         </h4>
                     </a>
                     <h5>@ {{ $carpooling->event->name }}</h5>

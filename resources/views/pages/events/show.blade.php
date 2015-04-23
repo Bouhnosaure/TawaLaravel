@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ action('EventsController@edit', [ 'id' => $event->id ]) }}">{{ trans('events.edit-action') }}</a>
+            <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}">{{ trans('events.edit-action') }}</a>
 
             <h1 id="event-name">{{ trans('events.name-field') }} {{ $event->name }}</h1>
             <h5 id="event-location">{{ trans('events.location-field') }} {{ $event->location }}</h5>
@@ -27,7 +27,7 @@
                         <div class="media-body">
                             <a href="{{ action('CarpoolingsController@show', [ 'id' => $carpooling->id ]) }}">
                                 <h4 class="media-heading">
-                                    {{ $carpooling->PresentDeparture }} -> {{$carpooling->PresentArrival }}
+                                    {{ $carpooling->PresentDeparture }} → {{$carpooling->PresentArrival }}
                                 </h4>
                             </a>
                             <h5>{{ trans('events.events') }} {{ $carpooling->event->name }}</h5>

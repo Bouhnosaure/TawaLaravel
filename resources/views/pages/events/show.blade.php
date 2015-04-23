@@ -5,10 +5,14 @@
         <div class="col-md-12">
             <a href="{{ action('EventsController@edit', [ 'id' => $event->id ]) }}">{{ trans('events.edit-action') }}</a>
 
-            <h1 id="event-name">{{ $event->name }}</h1>
-            <h5 id="event-location">@ {{ $event->location }}</h5>
+            <h1 id="event-name">{{ trans('events.name-field') }} {{ $event->name }}</h1>
+            <h5 id="event-location">{{ trans('events.location-field') }} {{ $event->location }}</h5>
 
-            <p id="event-description"> {{ $event->description }} </p>
+            <p id="event-description">{{ trans('events.description-field') }} {{ $event->description }} </p>
+
+            <hr>
+
+            <h3>{{ trans('carpoolings.carpoolings') }}</h3>
 
             <div class="row" id="event-carpoolings">
                 @foreach($event->carpoolings as $carpooling)
@@ -23,13 +27,11 @@
                         <div class="media-body">
                             <a href="{{ action('CarpoolingsController@show', [ 'id' => $carpooling->id ]) }}">
                                 <h4 class="media-heading">
-                                    {{ $carpooling->PresentDeparture }}
-                                    -> {{$carpooling->PresentArrival }}
+                                    {{ $carpooling->PresentDeparture }} -> {{$carpooling->PresentArrival }}
                                 </h4>
                             </a>
-                            <h5>@ {{ $carpooling->event->name }}</h5>
+                            <h5>{{ trans('events.events') }} {{ $carpooling->event->name }}</h5>
 
-                            <p class="list-group-item-text">{{ $carpooling->description }}</p>
                         </div>
                     </div>
                 @endforeach

@@ -14,11 +14,19 @@ class CategorieTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        foreach (range(1, 10) as $index) {
-            Category::create([
-                'name' => $faker->name
-            ]);
+        Category::create(['name' => 'Conférences']);
+        Category::create(['name' => 'Spectacles']);
+        Category::create(['name' => 'Sports']);
+        Category::create(['name' => 'Festivals']);
+        Category::create(['name' => 'Concerts']);
+        Category::create(['name' => 'Salons']);
+        Category::create(['name' => 'Soirées']);
+        Category::create(['name' => 'Sorties']);
+        Category::create(['name' => 'Divers']);
+        Category::create(['name' => 'Expositions']);
+        Category::create(['name' => 'Cinéma']);
+        Category::create(['name' => "Sports d'hiver"]);
 
-        }
+
     }
 }

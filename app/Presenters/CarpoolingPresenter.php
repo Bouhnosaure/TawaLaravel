@@ -51,7 +51,7 @@ class CarpoolingPresenter extends BasePresenter
                 if ($stopover == end($stopovers)) {
                     $list .= $stopover['location'];
                 } else {
-                    $list .= $stopover['location'] . ',';
+                    $list .= $stopover['location'] . '|';
                 }
             }
         }

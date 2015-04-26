@@ -63,7 +63,7 @@ class CarpoolingService
         $stopovers[] = new Stopover(['location' => $data['location'], 'carpooling_order' => 0]);
 
         if ($data['stopovers'] != "") {
-            $stopovers_raw = explode(",", $data['stopovers']);
+            $stopovers_raw = explode("|", $data['stopovers']);
             foreach ($stopovers_raw as $stopover) {
                 ++$i;
                 $stopovers[] = new Stopover(['location' => $stopover, 'carpooling_order' => $i]);

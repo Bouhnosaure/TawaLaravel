@@ -43,12 +43,26 @@
             });
         },
         enable_tageditor: function (element) {
-            $("#" + element).tagEditor({});
+            var service = new google.maps.places.AutocompleteService();
+            $("#" + element).tagEditor({
+                autocomplete: {
+                    source: function (req, callback) {
+                        if (req.term.length > 2) {
+                            service.getQueryPredictions({input: req.term}, function (predictions, status) {
+                                callback($.map(predictions, function ($val, $i) {
+                                    return $val.description;
+                                }));
+                            });
+                        }
+                    }
+                },
+                delimiter: '|'
+            });
         },
         format_date_eventlist: function (element) {
 
             $('.' + element).each(function (index) {
-                var date = moment($(this).text(), "d/m/Y - H:i");
+                var date = moment($(this).text(), "d/m/Y - H:i").locale(this.lang);
                 $(this).html(date.format("E[<span>]MMM[</span>]"));
                 $(this).show();
             });

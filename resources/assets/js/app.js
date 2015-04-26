@@ -44,6 +44,15 @@
         },
         enable_tageditor: function (element) {
             $("#" + element).tagEditor({});
+        },
+        format_date_eventlist: function (element) {
+
+            $('.' + element).each(function (index) {
+                var date = moment($(this).text(), "d/m/Y - H:i");
+                $(this).html(date.format("E[<span>]MMM[</span>]"));
+                $(this).show();
+            });
         }
+
     };
 }(jQuery));

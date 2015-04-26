@@ -4,11 +4,265 @@ body {
 }
 
 /* EVENTS LIST /events */
-.event-list{
+.event-list {
   border: 1px solid #c0c0c0;
 }
 
-.events-list-img{
+.events-list-img {
   height: 100px;
   width: 100px;
 }
+
+/* ----------------------------------------------------------------
+	Blog
+-----------------------------------------------------------------*/
+
+#posts {
+  position: relative;
+}
+
+.entry {
+  position: relative;
+  margin: 0 0 50px;
+  padding: 0 0 50px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.entry-image {
+  margin-bottom: 30px;
+}
+
+.entry-image,
+.entry-image > a,
+.entry-image .slide a,
+.entry-image img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.entry-image iframe {
+  display: block;
+}
+
+.entry-image img {
+  border-radius: 3px;
+}
+
+.entry-title h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.entry-title h2 a {
+  color: #333;
+}
+
+.entry-title h2 a:hover {
+  color: #1ABC9C;
+}
+
+.entry-meta {
+  margin: 10px -10px -15px 0;
+  list-style: none;
+}
+
+.single-post .entry-meta {
+  margin-bottom: 20px;
+}
+
+.entry-meta li {
+  float: left;
+  font-size: 13px;
+  line-height: 14px;
+  margin: 0 10px 15px 0;
+  color: #999;
+  font-family: 'Crete Round', serif;
+  font-style: italic;
+}
+
+.entry-meta li:before {
+  content: '/';
+  display: inline-block;
+  margin-right: 10px;
+  opacity: 0.5
+}
+
+.entry-meta li i {
+  position: relative;
+  top: 1px;
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+.entry-meta li a {
+  color: #999;
+}
+
+.entry-meta li a:hover {
+  color: #1ABC9C;
+}
+
+.entry-meta li:first-child:before {
+  display: none;
+}
+
+.entry-meta li ins {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.entry-c {
+  position: relative;
+  overflow: hidden;
+}
+
+#posts .entry-content {
+  margin-top: 30px;
+}
+
+.single-post .entry-content .entry-image {
+  max-width: 350px;
+}
+
+.entry-content {
+  position: relative;
+}
+
+.entry-link {
+  display: block;
+  background-color: #F5F5F5;
+  padding: 30px 0;
+  text-align: center;
+  color: #444;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+body:not(.device-touch) .entry-link {
+  -webkit-transition: background-color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
+}
+
+.entry-link:hover {
+  color: #FFF;
+  background-color: #1ABC9C;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.entry-link span {
+  display: block;
+  margin-top: 5px;
+  font-family: 'Crete Round', serif;
+  font-style: italic;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  color: #AAA;
+}
+
+.entry-link:hover span {
+  color: #EEE;
+}
+
+.entry blockquote p {
+  font-weight: 400;
+  font-family: 'Crete Round', serif;
+  font-style: italic;
+}
+
+/* Small Thumbs
+-----------------------------------------------------------------*/
+
+.small-thumbs .entry-image,
+.ievent .entry-image {
+  float: left;
+  width: 300px;
+  margin: 0 30px 0 0;
+}
+
+.small-thumbs .entry-image img,
+.ievent .entry-image img {
+  border-radius: 0;
+}
+
+.small-thumbs .entry-c .entry-image,
+.ievent .entry-c .entry-image {
+  float: none;
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+.small-thumbs .entry-c .entry-image img,
+.ievent .entry-c .entry-image img {
+  border-radius: 5px;
+}
+
+.small-thumbs .entry-title h2,
+.ievent .entry-title h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+	Events
+-----------------------------------------------------------------*/
+
+.events .entry,
+.ievent {
+  padding: 20px;
+  background-color: #F9F9F9;
+  border-bottom: 3px solid #EEE;
+}
+
+.events .entry-image .entry-date,
+.ievent .entry-image .entry-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #FFF;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  width: 60px;
+  height: 64px;
+  text-align: center;
+  padding-top: 7px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.events .entry-image .entry-date span,
+.ievent .entry-image .entry-date span {
+  display: block;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.events .entry-c,
+.ievent .entry-c {
+  padding: 5px 0;
+}
+
+.entry-image img {
+  border-radius: 0;
+}
+
+.events-meta {
+  font-size: 14px;
+}
+
+.events-meta .iconlist li, .iconlist li {
+  margin: 5px 0;
+}
+
+

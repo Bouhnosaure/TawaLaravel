@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}">{{ trans('events.edit-action') }}</a>
+            <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}" class="btn btn-info">{{ trans('events.edit-action') }}</a>
             
             <h1 id="event-name">{{ $event->name }}</h1>
 

@@ -26,5 +26,7 @@ return [
     'update-success' => 'Evenement mis à jour avec success',
     'delete-success' => 'Evenement supprimé avec success',
 
+    'show-me' => 'Voir cet événement',
+
 
 ];

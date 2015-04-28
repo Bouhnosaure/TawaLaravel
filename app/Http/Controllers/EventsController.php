@@ -1,11 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Category;
+
+use App\Events\EventWasCreated;
 use App\Http\Requests;
 use App\Http\Requests\EventRequest;
 use App\Repositories\EventRepositoryInterface;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event as EventTrigger;
 use Illuminate\Support\Facades\Lang;
 use Laracasts\Flash\Flash;
 
@@ -72,9 +75,11 @@ class EventsController extends Controller
     public function store(EventRequest $request)
     {
 
-        $this->eventRepository->create(Auth::user(), $request->all());
+        $event = $this->eventRepository->create(Auth::user(), $request->all());
 
         Flash::success(Lang::get('events.create-success'));
+
+        EventTrigger::fire(new EventWasCreated(Auth::user(), $event));
 
         return redirect('events');
     }

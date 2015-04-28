@@ -10,6 +10,9 @@ matrix:
     allow_failures:
         - php: nightly
 
+services:
+  - redis-server
+
 before_script:
   - cp .env.testing .env
   - echo '' > storage/testing.sqlite

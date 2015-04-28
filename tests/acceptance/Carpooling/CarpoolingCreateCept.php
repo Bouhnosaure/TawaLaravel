@@ -10,6 +10,7 @@ $I->amOnAction('CarpoolingsController@create');
 
 //test
 $event_id = $I->grabTextFrom('//select[@id="event_id"]/option/@value');
+$I->selectOption('//select[@id="event_id"]', $event_id);
 $I->fillField(['name' => 'description'], 'Duis vel nibh at velit scelerisque suscipit Nunc nulla.');
 $I->fillField(['name' => 'start_time'], '01/01/2017 - 20:00');
 $I->fillField(['name' => 'location'], 'Bordeaux - France #TEST');

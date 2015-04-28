@@ -17,19 +17,22 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
+
+            $table->string('hashcode')->nullable();
+
             $table->text('description');
 
             $table->timestamp('start_time');
             $table->timestamp('end_time');
 
             $table->string('location');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
 
-            $table->string('image_min');
+            $table->string('image_min')->nullable();
 
-            $table->boolean('is_private');
-            $table->boolean('is_valid');
+            $table->boolean('is_private')->default(false);
+            $table->boolean('is_valid')->default(false);
 
             $table->integer('user_id')->unsigned();
             $table->integer('categorie_id')->unsigned();

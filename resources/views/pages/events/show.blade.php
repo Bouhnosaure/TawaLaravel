@@ -13,6 +13,8 @@
             {{ trans('events.description-field') }}
             <p id="event-description">{{ $event->description }} </p>
 
+            {{ trans('events.private-field') }}
+            <p id="event-description">{{ $event->is_private }} </p>
             <hr>
 
             <h3>{{ trans('carpoolings.carpoolings') }}</h3>

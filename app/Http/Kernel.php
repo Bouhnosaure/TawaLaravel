@@ -18,7 +18,6 @@ class Kernel extends HttpKernel {
 		'App\Http\Middleware\VerifyCsrfToken',
         'localize' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
         'localizationRedirect' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
-
 	];
 
 	/**

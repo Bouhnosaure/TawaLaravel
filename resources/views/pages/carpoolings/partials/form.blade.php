@@ -43,11 +43,55 @@
     </div>
 </div>
 
-<!--- Seats Field --->
+
+@if($create)
+    <!--- Seats Field --->
+    <div class="form-group">
+        {!! Form::label('seats', Lang::get('carpoolings.seats-field')) !!}
+        {!! Form::text('seats', 1, ['class' => 'form-control']) !!}
+    </div>
+@else
+    <!--- Seats Field --->
+    <div class="form-group">
+        {!! Form::label('seats', Lang::get('carpoolings.seats-field')) !!}
+        {!! Form::text('seats', null, ['class' => 'form-control']) !!}
+    </div>
+@endif
+
+<!--- Flexible Field --->
 <div class="form-group">
-    {!! Form::label('seats', Lang::get('carpoolings.seats-field')) !!}
-    {!! Form::text('seats', 1, ['class' => 'form-control']) !!}
+    {!! Form::label('is_flexible', Lang::get('carpoolings.flexible-field')) !!}
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_flexible', '1') !!}
+            {!! Form::label('is_flexible', Lang::get('general.yes')) !!}
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_flexible', '0', true) !!}
+            {!! Form::label('is_flexible', Lang::get('general.no')) !!}
+        </label>
+    </div>
 </div>
+
+<!--- luggage Field --->
+<div class="form-group">
+    {!! Form::label('is_luggage', Lang::get('carpoolings.luggage-field')) !!}
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_luggage', '1') !!}
+            {!! Form::label('is_luggage', Lang::get('general.yes')) !!}
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_luggage', '0', true) !!}
+            {!! Form::label('is_luggage', Lang::get('general.no')) !!}
+        </label>
+    </div>
+</div>
+
 
 @if($create)
     <!--- Stopovers Field --->

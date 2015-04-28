@@ -6,13 +6,13 @@
             <h1>{{ $carpooling->departure }} → {{ $carpooling->arrival }}</h1>
 
             {{ trans('carpoolings.description-field') }}
-            <p>{{ $carpooling->description }}</p>
+            <p id="carpooling-description">{{ $carpooling->description }}</p>
 
             {{ trans('carpoolings.price-field') }}
-            <p>{{ $carpooling->price }} </p>
+            <p id="carpooling-price">{{ $carpooling->price }} </p>
 
             {{ trans('carpoolings.seats-field') }}
-            <p>{{ $carpooling->seats }} </p>
+            <p id="carpooling-seats">{{ $carpooling->seats }} </p>
 
             <hr>
 

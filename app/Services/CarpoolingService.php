@@ -60,18 +60,18 @@ class CarpoolingService
     {
         $i = 0;
         $stopovers = array();
-        $stopovers[] = new Stopover(['location' => $data['location'], 'carpooling_order' => 0]);
+        $stopovers[] = new Stopover(['location' => trim($data['location']), 'carpooling_order' => 0]);
 
         if ($data['stopovers'] != "") {
             $stopovers_raw = explode("|", $data['stopovers']);
             foreach ($stopovers_raw as $stopover) {
                 ++$i;
-                $stopovers[] = new Stopover(['location' => $stopover, 'carpooling_order' => $i]);
+                $stopovers[] = new Stopover(['location' => trim($stopover), 'carpooling_order' => $i]);
             }
         }
         ++$i;
         $event = $this->eventRepository->getById($data['event_id']);
-        $stopovers[] = new Stopover(['location' => $event->location, 'carpooling_order' => $i]);
+        $stopovers[] = new Stopover(['location' => trim($event->location), 'carpooling_order' => $i]);
 
         return $stopovers;
     }

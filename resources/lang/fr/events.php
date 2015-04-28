@@ -21,6 +21,7 @@ return [
 	'location-field'     => 'Ville :',
 	'address-field'     => 'Adresse :',
 	'tags-field'     => 'Tags :',
+	'private-field'     => 'Cet évènement est privé :',
 
     'create-success' => 'Evenement crée avec success',
     'update-success' => 'Evenement mis à jour avec success',

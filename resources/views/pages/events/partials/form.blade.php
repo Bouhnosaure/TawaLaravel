@@ -39,6 +39,25 @@
     {!! Form::select('categorie_id', $categories, null, ['class' => 'form-control']) !!}
 </div>
 
+
+<!--- Private Field --->
+<div class="form-group">
+    {!! Form::label('is_private', Lang::get('events.private-field')) !!}
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_private', '1') !!}
+            {!! Form::label('is_private', Lang::get('general.yes')) !!}
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            {!! Form::radio('is_private', '0', true) !!}
+            {!! Form::label('is_private', Lang::get('general.no')) !!}
+        </label>
+    </div>
+</div>
+
+
 <!---  Field --->
 <div class="form-group">
     {!! Form::submit($submitButtonName, ['class' => 'btn btn-primary', 'name' => 'submit-event-create']) !!}

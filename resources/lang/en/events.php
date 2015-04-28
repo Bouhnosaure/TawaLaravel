@@ -21,6 +21,7 @@ return [
 	'location-field'     => 'Location :',
 	'address-field'     => 'Address :',
     'tags-field'     => 'Tags :',
+    'private-field'     => 'This event is private :',
 
     'create-success' => 'Event create successful',
     'update-success' => 'Event update successful',

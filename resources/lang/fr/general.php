@@ -13,6 +13,8 @@ return [
     'tooglenav' => 'Toggle navigation',
     'lang' => 'Langage',
     'close' => 'Fermer',
+    'yes' => 'Oui',
+    'no' => 'Non',
 
     'about' => 'A propos',
     'lorem' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,

@@ -38,7 +38,7 @@
                         </ul>
                         <div class="entry-content">
                             <p>{{ $event->description }}</p>
-                            <a href="#" class="btn btn-danger">{{ trans('events.show-me') }}</a>
+                            <a href="{{ action('EventsController@show', [ 'id' => $event->slug ]) }}" id="btn-event-show" class="btn btn-danger">{{ trans('events.show-me') }}</a>
                         </div>
                     </div>
                 </div>

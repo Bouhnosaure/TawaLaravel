@@ -25,3 +25,4 @@ $I->amOnPage('/confirmation/mail/' . $code->confirmation_code . 'FAILED');
 
 $I->seeElement('#submit-mail-code');
 $I->dontSeeRecord('users', ['id' => 1, 'mail_confirmed' => 1]);
+sleep(2);

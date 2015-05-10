@@ -16,7 +16,9 @@ return [
     'reset'     => 'Reset password',
 
 
-    'name-field'     => 'Name :',
+    'username-field'     => 'Username :',
+    'firstname-field'     => 'First Name :',
+    'lastname-field'     => 'Last Name :',
     'email-field'     => 'Email :',
     'phone-field'     => 'Phone number :',
     'password-field'     => 'Password :',

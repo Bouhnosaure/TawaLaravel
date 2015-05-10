@@ -18,7 +18,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('home',              array('uses' => 'PagesController@index'));
     Route::get('about',             array('uses' => 'PagesController@about'));
 
-    //User Validation
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('tawaboard',             array('uses' => 'UsersController@index'));
+        Route::get('profile/{slug}',    array('uses' => 'UsersController@show'));
+        Route::get('preferences',   array('uses' => 'UsersController@edit'));
+        Route::put('preferences',   array('uses' => 'UsersController@update'));
+        Route::get('carpoolings',   array('uses' => 'UsersController@carpoolings'));
+        Route::get('events',        array('uses' => 'UsersController@events'));
+    });
+
+
+    //Confirmations
     Route::group(['prefix' => 'confirmation'], function () {
         Route::get('/',             array('uses' => 'Auth\ConfirmationController@index'));
         Route::get('send/{type}',   array('uses' => 'Auth\ConfirmationController@send'));

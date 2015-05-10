@@ -51,12 +51,12 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * get user by name
-     * @param $name
+     * @param $slug
      * @return mixed
      */
-    public function getByName($name)
+    public function getBySlug($slug)
     {
-        return $this->model->where('name', '=', $name)->firstOrFail();
+        return $this->model->getBySlug($slug);
     }
 
     /**

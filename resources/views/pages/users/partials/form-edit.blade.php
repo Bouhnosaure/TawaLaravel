@@ -1,7 +1,7 @@
 <!--- username  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('username', Lang::get('auth.username-field')) !!}
+        {!! Form::label('username', Lang::get('user.username-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -12,7 +12,7 @@
 <!--- firstname  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('firstname', Lang::get('auth.firstname-field')) !!}
+        {!! Form::label('firstname', Lang::get('user.firstname-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -23,7 +23,7 @@
 <!--- lastname  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('lastname', Lang::get('auth.lastname-field')) !!}
+        {!! Form::label('lastname', Lang::get('user.lastname-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -34,7 +34,7 @@
 <!--- Email Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('email', Lang::get('auth.email-field')) !!}
+        {!! Form::label('email', Lang::get('user.email-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -45,7 +45,7 @@
 <!--- phone Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('phone', Lang::get('auth.phone-field')) !!}
+        {!! Form::label('phone', Lang::get('user.phone-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -53,30 +53,8 @@
     </div>
 </div>
 
-<!--- Password Field --->
-<div class="form-group">
-    <label class="col-md-4 control-label">
-        {!! Form::label('password', Lang::get('auth.password-field')) !!}
-    </label>
-
-    <div class="col-md-6">
-        {!! Form::password('password', ['class' => 'form-control']) !!}
-    </div>
-</div>
-
-<!--- Password confirmation Field --->
-<div class="form-group">
-    <label class="col-md-4 control-label">
-        {!! Form::label('password_confirmation', Lang::get('auth.password-confirmation-field')) !!}
-    </label>
-
-    <div class="col-md-6">
-        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-    </div>
-</div>
-
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('auth.register'), ['class' => 'btn btn-primary', 'name' => 'submit-register']) !!}
+        {!! Form::submit(Lang::get('user.register'), ['class' => 'btn btn-primary', 'name' => 'submit-edit']) !!}
     </div>
 </div>

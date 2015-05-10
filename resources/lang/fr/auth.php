@@ -16,7 +16,9 @@ return [
     'reset'     => 'Réinitialiser mon mot de passe',
 
 
-    'name-field'     => 'Nom :',
+    'username-field'     => 'Nom d\'utilisateur :',
+    'firstname-field'     => 'Prénom :',
+    'lastname-field'     => 'Nom :',
     'email-field'     => 'Email :',
     'phone-field'     => 'Telephone :',
     'password-field'     => 'Mot de passe :',

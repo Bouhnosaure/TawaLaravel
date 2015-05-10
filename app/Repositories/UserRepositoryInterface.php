@@ -8,7 +8,7 @@ interface UserRepositoryInterface
 
     public function getById($id);
 
-    public function getByName($name);
+    public function getBySlug($slug);
 
     public function create(Array $data);
 

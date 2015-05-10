@@ -17,7 +17,9 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create([
-            'name' => 'Alexandre',
+            'username' => 'Citrex',
+            'lastname' => 'Mangin',
+            'firstname' => 'Alexandre',
             'email' => 'alexandre.mangin@viacesi.fr',
             'password' => bcrypt('123123'),
             'phone' => '0616391876',
@@ -26,7 +28,9 @@ class UserTableSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1, 100) as $index) {
             User::create([
-                'name' => $faker->firstName . ' ' . $faker->lastName,
+                'username' => $faker->userName,
+                'firstname' => $faker->firstName,
+                'lastname' => $faker->lastName,
                 'email' => $faker->email,
                 'password' => bcrypt('123123'),
                 'phone' => $faker->phoneNumber,

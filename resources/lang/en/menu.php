@@ -12,4 +12,8 @@ return [
     'events'     => 'Events',
     'carpoolings'     => 'Carpoolings',
 
+    'dashboard'     => 'Dashboard',
+    'preferences'     => 'Preferences',
+    'confirmation'     => 'Validate',
+
 ];

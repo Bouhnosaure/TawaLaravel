@@ -21,40 +21,45 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>{{ trans('confirmation.mail') }}</td>
-                @if($user->mail_confirmed)
-                    <td>{{ trans('confirmation.is_valid') }}</td>
-                    <td>{{ trans('confirmation.is_valid') }}</td>
-                @else
-                    <td>
-                        {{ trans('confirmation.is_not_valid') }}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary"
-                           href="{{action('Auth\ConfirmationController@send',['type' => 'mail' ])}}">
-                            {{ trans('confirmation.send-confirmation') }}
-                        </a>
-                    </td>
-                @endif
-            </tr>
-            <tr>
-                <td>{{ trans('confirmation.phone') }}</td>
-                @if($user->phone_confirmed)
-                    <td>{{ trans('confirmation.is_valid') }}</td>
-                    <td>{{ trans('confirmation.is_valid') }}</td>
-                @else
-                    <td>
-                        {{ trans('confirmation.is_not_valid') }}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary"
-                           href="{{action('Auth\ConfirmationController@send',['type' => 'phone' ])}}">
-                            {{ trans('confirmation.send-confirmation') }}
-                        </a>
-                    </td>
-                @endif
-            </tr>
+            @if(Config::get('confirmation.mail'))
+                <tr>
+                    <td>{{ trans('confirmation.mail') }}</td>
+                    @if($user->mail_confirmed)
+                        <td>{{ trans('confirmation.is_valid') }}</td>
+                        <td>{{ trans('confirmation.is_valid') }}</td>
+                    @else
+                        <td>
+                            {{ trans('confirmation.is_not_valid') }}
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" id="submit-mail-code"
+                               href="{{action('Auth\ConfirmationController@send',['type' => 'mail' ])}}">
+                                {{ trans('confirmation.send-confirmation') }}
+                            </a>
+                        </td>
+                    @endif
+                </tr>
+            @endif
+
+            @if(Config::get('confirmation.phone'))
+                <tr>
+                    <td>{{ trans('confirmation.phone') }}</td>
+                    @if($user->phone_confirmed)
+                        <td>{{ trans('confirmation.is_valid') }}</td>
+                        <td>{{ trans('confirmation.is_valid') }}</td>
+                    @else
+                        <td>
+                            {{ trans('confirmation.is_not_valid') }}
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" id="submit-phone-code"
+                               href="{{action('Auth\ConfirmationController@send',['type' => 'phone' ])}}">
+                                {{ trans('confirmation.send-confirmation') }}
+                            </a>
+                        </td>
+                    @endif
+                </tr>
+            @endif
             </tbody>
         </table>
     </div>

@@ -1,9 +1,6 @@
 <?php
 $I = new FunctionalTester($scenario);
 
-
-//$I->amLoggedAs(\App\User::find(1));
-
 //setup
 $I->am('a user');
 $I->wantTo('retrieve the password and change it from my account');

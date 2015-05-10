@@ -35,6 +35,6 @@ return [
     | with mailtrap.io
 	|
 	*/
-    'phone_debug' => true,
+    'phone_debug' => env('PHONE_DEBUG', true),
 
 ];

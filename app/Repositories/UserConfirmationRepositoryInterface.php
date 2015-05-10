@@ -23,6 +23,8 @@ interface UserConfirmationRepositoryInterface {
 
     public function create(User $user, $type);
 
+    public function clear(User $user, $type);
+
     public function update($id, Array $data);
 
     public function delete($id);

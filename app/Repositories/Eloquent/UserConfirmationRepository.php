@@ -59,7 +59,7 @@ class UserConfirmationRepository implements UserConfirmationRepositoryInterface
      */
     public function getByConfirmationCode($code)
     {
-        return $this->model->where('confirmation_code', '=', $code)->firstOrFail();
+        return $this->model->where('confirmation_code', '=', $code)->first();
     }
 
     /**
@@ -75,9 +75,19 @@ class UserConfirmationRepository implements UserConfirmationRepositoryInterface
                 return $user->confirmations()->create(['type' => 'mail', 'confirmation_code' => str_random(30)]);
                 break;
             case 'phone':
-                return $user->confirmations()->create(['type' => 'sms', 'confirmation_code' => rand(1000, 9999)]);
+                return $user->confirmations()->create(['type' => 'phone', 'confirmation_code' => rand(1000, 9999)]);
                 break;
         }
+    }
+
+    /**
+     * Clean a entry
+     * @param User $user
+     * @param $type
+     */
+    public function clear(User $user, $type)
+    {
+        return $user->confirmations()->where('type', '=', $type)->delete();
     }
 
     /**

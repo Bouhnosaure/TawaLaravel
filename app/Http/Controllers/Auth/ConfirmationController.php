@@ -13,6 +13,7 @@ use App\Commands\SendConfirmationCode;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConfirmationRequest;
 use App\Repositories\UserConfirmationRepositoryInterface;
+use App\Services\ConfirmationService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
@@ -21,18 +22,10 @@ use Laracasts\Flash\Flash;
 class ConfirmationController extends Controller
 {
 
-    /**
-     * @var UserConfirmationRepositoryInterface
-     */
-    private $confirmationRepository;
 
-    /**
-     * @param UserConfirmationRepositoryInterface $confirmationRepository
-     */
-    public function __construct(UserConfirmationRepositoryInterface $confirmationRepository)
+    public function __construct()
     {
         $this->middleware('auth');
-        $this->confirmationRepository = $confirmationRepository;
     }
 
     /**
@@ -48,26 +41,14 @@ class ConfirmationController extends Controller
     /**
      * handles the sending of the differents types of confirmations
      * @param $type
+     * @param ConfirmationService $service
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function send($type)
+    public function send($type, ConfirmationService $service)
     {
-        if ($type == "mail" && Config::get('confirmation.mail')) {
-
-            $this->dispatch(new SendConfirmationCode(Auth::user(), $type));
-            Flash::success(Lang::get('confirmation.send-mail-success'));
-            return redirect('confirmation');
-        }
-
-        if ($type == "phone" && Config::get('confirmation.phone') && isset(Auth::user()->phone)) {
-
-            $this->dispatch(new SendConfirmationCode(Auth::user(), $type));
-            Flash::success(Lang::get('confirmation.send-phone-success'));
-            return redirect('confirmation/phone');
-        }
-
-        Flash::error(Lang::get('confirmation.send-failed'));
-        return redirect('confirmation');
+        $data = $service->send(Auth::user(), $type);
+        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        return redirect($data['redirect']);
     }
 
     /**
@@ -81,40 +62,29 @@ class ConfirmationController extends Controller
     /**
      * handle post method for the 4 digit code confirmation for the phone
      * @param ConfirmationRequest $request
+     * @param ConfirmationService $service
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function handlePhoneCode(ConfirmationRequest $request)
+    public function handlePhoneCode(ConfirmationRequest $request, ConfirmationService $service)
     {
-        $confirmation = $this->confirmationRepository->getByConfirmationCode($request->get('code'));
 
-        $ok = $confirmation->user_id == Auth::user()->id;
+        $data = $service->validate(Auth::user(), 'phone', $request->get('code'));
+        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        return redirect($data['redirect']);
 
-        //and delete
-
-        if ($ok) {
-            Flash::success(Lang::get('confirmation.success'));
-        } else {
-            Flash::error(Lang::get('confirmation.failed'));
-        }
-
-
-        return redirect('confirmation');
     }
 
     /**
      * Receive the token for authorize an user
      * @param $code
+     * @param ConfirmationService $service
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function confirmMailCode($code)
+    public function confirmMailCode($code, ConfirmationService $service)
     {
-
-        if ($code == 'azerty') {
-            Flash::success(Lang::get('confirmation.success'));
-        } else {
-            Flash::error(Lang::get('confirmation.failed'));
-        }
-        return redirect('confirmation');
+        $data = $service->validate(Auth::user(), 'mail', $code);
+        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        return redirect($data['redirect']);
     }
 
 }

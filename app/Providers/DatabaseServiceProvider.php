@@ -1,7 +1,9 @@
 <?php namespace App\Providers;
 
 use App\Repositories\Eloquent\UserConfirmationRepository;
+use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\UserConfirmationRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\EventRepositoryInterface;
 use App\Repositories\Eloquent\EventRepository;
@@ -32,6 +34,7 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
         $this->app->bind(CarpoolingRepositoryInterface::class, CarpoolingRepository::class);
         $this->app->bind(UserConfirmationRepositoryInterface::class, UserConfirmationRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
 }

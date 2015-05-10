@@ -17,17 +17,22 @@
             <tr>
                 <th>{{ trans('confirmation.type') }}</th>
                 <th>{{ trans('confirmation.is_confirmed') }}</th>
+                <th>{{ trans('confirmation.action') }}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>{{ trans('confirmation.mail') }}</td>
                 @if($user->mail_confirmed)
-                    <td class="success">{{ trans('confirmation.is_valid') }}</td>
+                    <td>{{ trans('confirmation.is_valid') }}</td>
+                    <td>{{ trans('confirmation.is_valid') }}</td>
                 @else
-                    <td class="danger">
+                    <td>
                         {{ trans('confirmation.is_not_valid') }}
-                        <a href="{{action('Auth\ConfirmationController@send',['type' => 'mail' ])}}">
+                    </td>
+                    <td>
+                        <a class="btn btn-primary"
+                           href="{{action('Auth\ConfirmationController@send',['type' => 'mail' ])}}">
                             {{ trans('confirmation.send-confirmation') }}
                         </a>
                     </td>
@@ -36,11 +41,15 @@
             <tr>
                 <td>{{ trans('confirmation.phone') }}</td>
                 @if($user->phone_confirmed)
-                    <td class="success">{{ trans('confirmation.is_valid') }}</td>
+                    <td>{{ trans('confirmation.is_valid') }}</td>
+                    <td>{{ trans('confirmation.is_valid') }}</td>
                 @else
-                    <td class="danger">
+                    <td>
                         {{ trans('confirmation.is_not_valid') }}
-                        <a href="{{action('Auth\ConfirmationController@send',['type' => 'phone' ])}}">
+                    </td>
+                    <td>
+                        <a class="btn btn-primary"
+                           href="{{action('Auth\ConfirmationController@send',['type' => 'phone' ])}}">
                             {{ trans('confirmation.send-confirmation') }}
                         </a>
                     </td>

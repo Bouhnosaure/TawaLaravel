@@ -11,6 +11,7 @@ return [
     'confirmation' => 'Validez votre profil',
 
     'type' => 'Type de validation',
+    'action' => 'Action',
 
     'is_confirmed' => 'Est confirmé ?',
     'is_not_valid' => 'n\'a pas été confirmé',
@@ -31,6 +32,8 @@ return [
     'send-phone-success' => 'Le sms de confirmation à bien été envoyé',
     'send-failed' => 'Une erreur est survenue, réessayez dans quelques minutes',
 
+    'failed-expiration' => 'Votre code de confirmation a éxpiré',
+    'failed-not-found' => 'Votre code de confirmation n\'a pas été trouvé',
 
 
 ];

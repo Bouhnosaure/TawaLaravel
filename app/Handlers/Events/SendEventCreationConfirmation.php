@@ -21,7 +21,7 @@ class SendEventCreationConfirmation implements ShouldBeQueued
     }
 
     /**
-     * Handle the event.
+     * Handle the event of sending a mail after the creation of an event or festival
      *
      * @param  EventWasCreated $event
      * @return void

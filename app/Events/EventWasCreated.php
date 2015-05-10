@@ -31,16 +31,28 @@ class EventWasCreated extends Event
         $this->event = $event;
     }
 
+    /**
+     * Get username
+     * @return mixed
+     */
     public function getUserName()
     {
         return $this->user->name;
     }
 
+    /**
+     * get user email
+     * @return mixed
+     */
     public function getUserEmail()
     {
         return $this->user->email;
     }
 
+    /**
+     * get name of the event
+     * @return mixed
+     */
     public function getEventName()
     {
         return $this->event->name;

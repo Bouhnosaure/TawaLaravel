@@ -20,6 +20,17 @@
     </div>
 </div>
 
+<!--- phone Field --->
+<div class="form-group">
+    <label class="col-md-4 control-label">
+        {!! Form::label('phone', Lang::get('auth.phone-field')) !!}
+    </label>
+
+    <div class="col-md-6">
+        {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
 <!--- Password Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">

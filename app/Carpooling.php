@@ -13,8 +13,18 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
 
     use SluggableTrait;
 
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'carpoolings';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'event_id',
         'description',
@@ -25,15 +35,34 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
         'is_luggage'
     ];
 
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
     protected $hidden = [];
 
+    /**
+     * The attributes handled as dates
+     *
+     * @var array
+     */
     protected $dates = ['start_time'];
 
+    /**
+     * The attributes for the slug trait
+     *
+     * @var array
+     */
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to' => 'slug',
     );
 
+    /**
+     * function for getting the presenter of this model
+     * @return mixed
+     */
     public function getPresenterClass()
     {
         return CarpoolingPresenter::class;
@@ -90,6 +119,14 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
     }
 
     //RELATIONS
+    /**
+     * A Carpooling has One creator
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     /**
      * A Carpooling has One event

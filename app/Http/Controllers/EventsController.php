@@ -93,6 +93,7 @@ class EventsController extends Controller
     public function edit($slug)
     {
         $event = $this->eventRepository->getBySlug($slug);
+
         $categories = Category::all()->lists('name', 'id');
 
         return view('pages.events.edit')->with(['event' => $event, 'categories' => $categories]);

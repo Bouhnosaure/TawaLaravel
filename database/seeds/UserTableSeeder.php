@@ -19,7 +19,8 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Alexandre',
             'email' => 'alexandre.mangin@viacesi.fr',
-            'password' => bcrypt('123123')
+            'password' => bcrypt('123123'),
+            'phone' => '0616391876',
         ]);
 
         $faker = Faker::create();
@@ -27,7 +28,8 @@ class UserTableSeeder extends Seeder
             User::create([
                 'name' => $faker->firstName . ' ' . $faker->lastName,
                 'email' => $faker->email,
-                'password' => bcrypt('123123')
+                'password' => bcrypt('123123'),
+                'phone' => $faker->phoneNumber,
             ]);
         }
     }

@@ -18,6 +18,7 @@ return [
 
     'name-field'     => 'Name :',
     'email-field'     => 'Email :',
+    'phone-field'     => 'Phone number :',
     'password-field'     => 'Password :',
     'password-confirmation-field'     => 'Password confirm :',
     'remember-field'     => 'Remember me ?',

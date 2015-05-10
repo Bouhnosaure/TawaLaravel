@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
 
+    /**
+     * Show the index page
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $data['foo'] = ['test', 'bar','yolo'];
-        return View('pages.index', $data);
+        return View('pages.index');
     }
 
+    /**
+     * show the about page
+     * @return \Illuminate\View\View
+     */
     public function about()
     {
         return View('pages.about');

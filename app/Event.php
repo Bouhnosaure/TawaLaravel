@@ -11,8 +11,18 @@ class Event extends Model implements SluggableInterface, HasPresenter
 {
     use SluggableTrait;
 
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'events';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'description',
@@ -26,10 +36,25 @@ class Event extends Model implements SluggableInterface, HasPresenter
         'tags'
     ];
 
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
     protected $hidden = [];
 
+    /**
+     * The attributes handled as dates
+     *
+     * @var array
+     */
     protected $dates = ['start_time', 'end_time'];
 
+    /**
+     * The attributes for the slug trait
+     *
+     * @var array
+     */
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to' => 'slug',

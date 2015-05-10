@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'phone'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -51,6 +51,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function carpoolings()
     {
         return $this->hasMany('App\Carpooling');
+    }
+
+    /**
+     * An user can have many confirmations at the same time like sms or mails
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function confirmations()
+    {
+        return $this->hasMany('App\UserConfirmation');
     }
 
 }

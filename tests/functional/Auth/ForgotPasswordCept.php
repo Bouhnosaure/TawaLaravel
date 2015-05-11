@@ -1,4 +1,5 @@
 <?php
+sleep(2);
 $I = new FunctionalTester($scenario);
 
 //setup

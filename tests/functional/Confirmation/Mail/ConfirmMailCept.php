@@ -1,5 +1,5 @@
 <?php
-
+sleep(2);
 $I = new FunctionalTester($scenario);
 
 //setup
@@ -26,4 +26,3 @@ $I->amOnPage('/confirmation/mail/' . $code->confirmation_code);
 
 $I->dontSee('#submit-mail-code');
 $I->seeRecord('users', ['id' => 1, 'mail_confirmed' => 1]);
-sleep(2);

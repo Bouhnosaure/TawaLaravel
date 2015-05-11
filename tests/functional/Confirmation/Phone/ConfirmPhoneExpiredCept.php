@@ -1,5 +1,5 @@
 <?php
-
+sleep(2);
 $I = new FunctionalTester($scenario);
 
 //setup
@@ -28,4 +28,3 @@ $I->click('submit-confirmation-code');
 $I->seeCurrentUrlEquals('/confirmation');
 $I->seeElement('#submit-phone-code');
 $I->dontSeeRecord('users', ['id' => 1, 'phone_confirmed' => 1]);
-sleep(2);

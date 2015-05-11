@@ -29,6 +29,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+        'event.owner' => 'App\Http\Middleware\EventOwner',
+        'carpooling.owner' => 'App\Http\Middleware\CarpoolingOwner',
 	];
 
 }

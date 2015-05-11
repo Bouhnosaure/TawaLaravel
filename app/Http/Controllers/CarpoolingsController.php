@@ -34,6 +34,8 @@ class CarpoolingsController extends Controller
     public function __construct(CarpoolingRepositoryInterface $carpoolingRepository, EventRepositoryInterface $eventRepository)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('carpooling.owner', ['only' => ['edit', 'update', 'destroy']]);
+
         $this->carpoolingRepository = $carpoolingRepository;
         $this->eventRepository = $eventRepository;
     }

@@ -23,7 +23,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::get('tawaboard',             array('uses' => 'UsersController@index'));
         Route::get('profile/{slug}',    array('uses' => 'UsersController@show'));
         Route::get('preferences',   array('uses' => 'UsersController@edit'));
-        Route::put('preferences',   array('uses' => 'UsersController@update'));
+        Route::patch('preferences',   array('uses' => 'UsersController@update'));
         Route::get('carpoolings',   array('uses' => 'UsersController@carpoolings'));
         Route::get('events',        array('uses' => 'UsersController@events'));
     });

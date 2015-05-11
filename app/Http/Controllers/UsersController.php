@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSettingsRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
@@ -32,6 +35,7 @@ class UsersController extends Controller
     /**
      * public profile of an user
      * @param $username
+     * @return $this
      */
     public function show($slug)
     {
@@ -49,9 +53,16 @@ class UsersController extends Controller
 
     /**
      * update of a user
+     * @param UserSettingsRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update()
+    public function update(UserSettingsRequest $request)
     {
+        $this->userRepository->update(Auth::user()->id, $request->all());
+
+        Flash::success(Lang::get('user.update-success'));
+
+        return redirect(action('UsersController@edit'));
 
     }
 

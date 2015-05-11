@@ -1,1 +1,1 @@
-{{$user->name}}|{{ $code->confirmation_code }}
+{{$user->username}}|{{ $code->confirmation_code }}

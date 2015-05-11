@@ -121,12 +121,12 @@ return [
 
     //'pretend' => false,
 
-    "driver" => "smtp",
-    "host" => "mailtrap.io",
-    "port" => 2525,
+    "driver" => env('MAIL_DRIVER','smtp'),
+    "host" => env('MAIL_HOST'),
+    "port" => env('MAIL_PORT'),
     "from" => ["address" => "admin@tawa.com", "name" => "Tawa"],
-    "username" => "3079034fe8ee084cd",
-    "password" => "17bd16a1ac018f",
+    "username" => env('MAIL_USERNAME'),
+    "password" => env('MAIL_PASSWORD'),
     "sendmail" => "/usr/sbin/sendmail -bs",
     "pretend" => false
 

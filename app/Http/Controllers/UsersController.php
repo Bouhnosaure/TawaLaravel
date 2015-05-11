@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth');
         $this->userRepository = $userRepository;
     }
 
@@ -71,7 +71,7 @@ class UsersController extends Controller
      */
     public function carpoolings()
     {
-
+        return view('pages.users.carpoolings')->with('carpoolings', Auth::user()->carpoolings()->get());
     }
 
     /**
@@ -79,7 +79,7 @@ class UsersController extends Controller
      */
     public function events()
     {
-
+        return view('pages.users.events')->with('events', Auth::user()->events()->get());
     }
 
 }

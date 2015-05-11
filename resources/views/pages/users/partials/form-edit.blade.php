@@ -55,6 +55,6 @@
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('user.register'), ['class' => 'btn btn-primary', 'name' => 'submit-edit']) !!}
+        {!! Form::submit(Lang::get('user.submit-edit'), ['class' => 'btn btn-primary', 'name' => 'submit-edit']) !!}
     </div>
 </div>

@@ -16,6 +16,12 @@
                     <a href="{{action('UsersController@index')}}">{{ trans('menu.dashboard') }}</a>
                 </li>
                 <li>
+                    <a href="{{action('UsersController@carpoolings')}}">{{ trans('menu.user-carpoolings') }}</a>
+                </li>
+                <li>
+                    <a href="{{action('UsersController@events')}}">{{ trans('menu.user-events') }}</a>
+                </li>
+                <li>
                     <a href="{{action('UsersController@edit')}}">{{ trans('menu.preferences') }}</a>
                 </li>
                 <li>

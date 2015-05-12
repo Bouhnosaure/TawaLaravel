@@ -1,6 +1,12 @@
 /vendor
 /node_modules
 
+/public/build/*
+/public/css/*
+/public/fonts/*
+/public/img/*
+/public/js/*
+/storage/testing.sqlite
 
 .env
 

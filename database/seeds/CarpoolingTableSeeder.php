@@ -20,6 +20,17 @@ class CarpoolingTableSeeder extends Seeder
 
         $faker = Faker::create();
 
+        Carpooling::create([
+            'start_time' => $start_time = $faker->dateTimeBetween('now', '+30 days')->format('d/m/Y - H:i'),
+            'description' => $faker->text(200),
+            'seats' => 4,
+            'price' => 10,
+            'is_flexible' => $faker->boolean(),
+            'is_luggage' => $faker->boolean(),
+            'user_id' => 1,
+            'event_id' => 1,
+        ]);
+
         foreach (range(1, 10) as $index) {
             Carpooling::create([
                 'start_time' => $start_time = $faker->dateTimeBetween('now', '+30 days')->format('d/m/Y - H:i'),
@@ -28,7 +39,7 @@ class CarpoolingTableSeeder extends Seeder
                 'price' => $faker->randomDigit(),
                 'is_flexible' => $faker->boolean(),
                 'is_luggage' => $faker->boolean(),
-                'user_id' => 1,
+                'user_id' => $faker->numberBetween('1', '5'),
                 'event_id' => $faker->numberBetween(1, 20),
             ]);
         }

@@ -4,7 +4,7 @@ $I->am('an user');
 $I->wantTo('Modify to a Carpooling witch is not mine');
 
 //setup
-$I->amLoggedAs(\App\User::find(2));
+$I->amLoggedAs(\App\User::find(6));
 
 //test
 $I->amOnAction('CarpoolingsController@edit', ['id' => 1]);

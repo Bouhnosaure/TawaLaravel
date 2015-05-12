@@ -22,7 +22,7 @@ class EventRepositoryTest extends Codeception\TestCase\Test
     public function it_gets_all_events()
     {
         $events = $this->repo->getAll();
-        $this->assertCount(100, $events);
+        $this->assertCount(101, $events);
     }
 
 }

@@ -24,7 +24,7 @@ class StopoverTableSeeder extends Seeder
             Stopover::create([
                 'location' => $faker->city . ' ' . $faker->streetAddress,
                 'carpooling_order' => $faker->numberBetween(1, 5),
-                'carpooling_id' => $faker->numberBetween(1, 10),
+                'carpooling_id' => $faker->numberBetween(1, 11),
             ]);
 
         }

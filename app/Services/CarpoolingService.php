@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class CarpoolingService
 {
     /**
+     * @var stopovers
+     */
+    private $stopovers = array();
+
+    /**
+     * @var position
+     */
+    private $position = 0;
+
+    /**
      * @var CarpoolingRepositoryInterface
      */
     private $carpoolingRepository;
@@ -38,7 +48,7 @@ class CarpoolingService
      */
     public function create(User $user, array $data)
     {
-        return $this->carpoolingRepository->create($user, $data, $this->extractStopovers($data));
+        return $this->carpoolingRepository->create($user, $data, $this->processData($data));
     }
 
     /**
@@ -48,7 +58,40 @@ class CarpoolingService
      */
     public function edit($id, array $data)
     {
-        return $this->carpoolingRepository->update($id, $data, $this->extractStopovers($data));
+        return $this->carpoolingRepository->update($id, $data, $this->processData($data));
+    }
+
+    /**
+     * prepare and return an array of stopovers
+     * @param array $data
+     * @return array
+     */
+    public function processData(array $data)
+    {
+        $this->extractDeparture($data);
+        $this->extractStopovers($data);
+        $this->extractArrival($data);
+        return $this->stopovers;
+    }
+
+    /**
+     * Add departure stopover
+     * @param array $data
+     */
+    public function extractDeparture(array $data)
+    {
+        $this->addStopover($data['location'], 0);
+    }
+
+    /**
+     * Add last stopover
+     * @param array $data
+     */
+    public function extractArrival(array $data)
+    {
+        $this->position++;
+        $event = $this->eventRepository->getById($data['event_id']);
+        $this->addStopover($event->location);
     }
 
     /**
@@ -58,22 +101,37 @@ class CarpoolingService
      */
     public function extractStopovers(array $data)
     {
-        $i = 0;
-        $stopovers = array();
-        $stopovers[] = new Stopover(['location' => trim($data['location']), 'carpooling_order' => 0]);
-
         if ($data['stopovers'] != "") {
             $stopovers_raw = explode("|", $data['stopovers']);
             foreach ($stopovers_raw as $stopover) {
-                ++$i;
-                $stopovers[] = new Stopover(['location' => trim($stopover), 'carpooling_order' => $i]);
+                $this->addStopover($stopover, ++$this->position);
             }
         }
-        ++$i;
-        $event = $this->eventRepository->getById($data['event_id']);
-        $stopovers[] = new Stopover(['location' => trim($event->location), 'carpooling_order' => $i]);
+    }
 
-        return $stopovers;
+    /**
+     * add a simple stopover project
+     * @param $location
+     */
+    public function addStopover($location)
+    {
+        $this->stopovers[] = new Stopover(['location' => trim($location), 'carpooling_order' => $this->position]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getStopovers()
+    {
+        return $this->stopovers;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
 }

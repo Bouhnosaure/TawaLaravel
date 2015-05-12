@@ -7,7 +7,7 @@
 /public/fonts/*
 /public/img/*
 /public/js/*
-
+/storage/testing.sqlite
 
 .env
 

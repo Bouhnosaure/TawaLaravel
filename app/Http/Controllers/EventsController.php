@@ -78,9 +78,9 @@ class EventsController extends Controller
 
         $event = $this->eventRepository->create(Auth::user(), $request->all());
 
-        Flash::success(Lang::get('events.create-success'));
-
         EventTrigger::fire(new EventWasCreated(Auth::user(), $event));
+
+        Flash::success(Lang::get('events.create-success'));
 
         return redirect('events');
     }

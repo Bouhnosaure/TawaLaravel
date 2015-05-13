@@ -2,6 +2,7 @@
 
 use App\Carpooling;
 use App\Event;
+use App\Events\CarpoolingWasCreated;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -11,6 +12,7 @@ use App\Repositories\EventRepositoryInterface;
 use App\Services\CarpoolingService;
 use App\Stopover;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event as EventTrigger;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Laracasts\Flash\Flash;
@@ -72,7 +74,9 @@ class CarpoolingsController extends Controller
      */
     public function store(CarpoolingRequest $request, CarpoolingService $service)
     {
-        $service->create(Auth::user(), $request->all());
+        $carpooling = $service->create(Auth::user(), $request->all());
+
+        EventTrigger::fire(new CarpoolingWasCreated(Auth::user(), $carpooling));
 
         Flash::success(Lang::get('carpoolings.create-success'));
 

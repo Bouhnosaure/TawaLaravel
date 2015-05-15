@@ -4,11 +4,6 @@ php:
   - 5.5
   - 5.6
   - hhvm
-  - nightly
-
-matrix:
-    allow_failures:
-        - php: nightly
 
 services:
   - redis-server
@@ -17,7 +12,7 @@ before_script:
   - cp .env.testing .env
   - echo '' > storage/testing.sqlite
   - composer self-update
-  - composer install --prefer-source --no-interaction --dev
+  - composer install  --prefer-dist --no-interaction --dev
   - php artisan migrate:install --database=sqlite_testing --no-interaction -vvv
 
 script:

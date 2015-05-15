@@ -5,7 +5,7 @@
     $(document).ready(function () {
         var App = new $.App('{{ LaravelLocalization::getCurrentLocale() }}');
         App.enable_flash_modal();
-        @yield('js-apps-cope')
+        @yield('js-app-scope')
     });
 </script>
 

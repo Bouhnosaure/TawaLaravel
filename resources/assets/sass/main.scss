@@ -265,4 +265,21 @@ body:not(.device-touch) .entry-link {
   margin: 5px 0;
 }
 
+/* ----------------------------------------------------------------
+	Cropper
+-----------------------------------------------------------------*/
 
+.cropper-wrapper {
+  height: 364px;
+  width: 100%;
+  margin-top: 15px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+  background-color: #fcfcfc;
+  overflow: hidden;
+}
+
+.cropper-wrapper img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}

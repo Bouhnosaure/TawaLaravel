@@ -19,6 +19,8 @@ class CreateUserProfilesTable extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('phone')->unique()->nullable();
+            $table->string('image_min')->nullable();
+            $table->string('image_wide')->nullable();
             $table->boolean('mail_confirmed')->default(0);
             $table->boolean('phone_confirmed')->default(0);
             $table->integer('user_id')->unsigned();

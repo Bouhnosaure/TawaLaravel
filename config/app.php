@@ -145,6 +145,7 @@ return [
         'Laracasts\Flash\FlashServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
         'Laracasts\Generators\GeneratorsServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 
         /*
          * Application Service Providers...
@@ -213,6 +214,7 @@ return [
         'Date' => 'Jenssegers\Date\Date',
         'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
         'Flash' => 'Laracasts\Flash\Flash',
+        'Image' => 'Intervention\Image\Facades\Image'
 
     ],
 

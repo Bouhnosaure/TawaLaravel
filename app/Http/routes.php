@@ -11,34 +11,37 @@
 |
 */
 
+use Intervention\Image\Facades\Image;
+
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     //Pages Misc
-    Route::get('/',                 array('uses' => 'PagesController@index'));
-    Route::get('home',              array('uses' => 'PagesController@index'));
-    Route::get('about',             array('uses' => 'PagesController@about'));
+    Route::get('/', array('uses' => 'PagesController@index'));
+    Route::get('home', array('uses' => 'PagesController@index'));
+    Route::get('about', array('uses' => 'PagesController@about'));
 
 
     Route::group(['prefix' => 'profile'], function () {
-        Route::get('/',              array('uses' => 'UsersController@index'));
-        Route::get('edit',           array('uses' => 'ProfileController@edit'));
-        Route::patch('edit',    array('uses' => 'ProfileController@update'));
-        Route::get('{slug}',         array('uses' => 'ProfileController@show'));
+        Route::get('/', array('uses' => 'UsersController@index'));
+        Route::get('edit', array('uses' => 'ProfileController@edit'));
+        Route::patch('edit', array('uses' => 'ProfileController@update'));
+        Route::patch('upload', array('uses' => 'ProfileController@upload'));
+        Route::get('{slug}', array('uses' => 'ProfileController@show'));
     });
 
     Route::group(['prefix' => 'my'], function () {
-        Route::get('carpoolings',   array('uses' => 'UsersController@carpoolings'));
-        Route::get('events',        array('uses' => 'UsersController@events'));
+        Route::get('carpoolings', array('uses' => 'UsersController@carpoolings'));
+        Route::get('events', array('uses' => 'UsersController@events'));
     });
 
 
     //Confirmations
     Route::group(['prefix' => 'confirmation'], function () {
-        Route::get('/',             array('uses' => 'Auth\ConfirmationController@index'));
-        Route::get('send/{type}',   array('uses' => 'Auth\ConfirmationController@send'));
-        Route::get('phone',         array('uses' => 'Auth\ConfirmationController@submitPhoneCode'));
-        Route::post('phone',        array('uses' => 'Auth\ConfirmationController@handlePhoneCode'));
-        Route::get('mail/{code}',   array('uses' => 'Auth\ConfirmationController@confirmMailCode'));
+        Route::get('/', array('uses' => 'Auth\ConfirmationController@index'));
+        Route::get('send/{type}', array('uses' => 'Auth\ConfirmationController@send'));
+        Route::get('phone', array('uses' => 'Auth\ConfirmationController@submitPhoneCode'));
+        Route::post('phone', array('uses' => 'Auth\ConfirmationController@handlePhoneCode'));
+        Route::get('mail/{code}', array('uses' => 'Auth\ConfirmationController@confirmMailCode'));
     });
 
     //Restful events
@@ -52,6 +55,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         'auth' => 'Auth\AuthController',
         'password' => 'Auth\PasswordController'
     ]);
+
+    Route::get('images/{dir}/{image}', function ($dir, $img) {
+
+        // determine a lifetime and return as object instead of string
+        $photo = Image::cache(function ($image) use ($dir, $img) {
+            return $image->make(storage_path() . '/app/images/' . $dir . '/' . $img);
+        }, 1, false);
+
+        return Response::make($photo, 200, array('Content-Type' => 'image/jpeg'));
+
+    });
 
 });
 

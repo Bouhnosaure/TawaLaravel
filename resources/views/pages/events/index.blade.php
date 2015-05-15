@@ -50,7 +50,7 @@
 @stop
 
 
-@section('js-apps-cope')
+@section('js-app-scope')
     App.format_date_eventlist('entry-date');
 @stop
 

@@ -23,6 +23,8 @@ class UserProfile extends Model
         'phone',
         'mail_confirmed',
         'phone_confirmed',
+        'image_min',
+        'image_wide',
         'user_id'
     ];
 

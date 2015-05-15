@@ -20,7 +20,8 @@ var paths = {
     "jqueryuidatetime": "./vendor/bower_components/datetimepicker/",
     "bootstraptouchspin": "./vendor/bower_components/bootstrap-touchspin/src/",
     "tageditor": "./vendor/bower_components/jquery-tag-editor/",
-    "moment" : "./vendor/bower_components/moment/"
+    "moment" : "./vendor/bower_components/moment/",
+    "cropper" : "./vendor/bower_components/cropper/dist/"
 }
 
 
@@ -45,6 +46,7 @@ elixir(function (mix) {
             paths.tageditor + "jquery.caret.min.js",
             paths.tageditor + "jquery.tag-editor.js",
             paths.moment + "moment.js",
+            paths.cropper + "cropper.min.js",
             paths.assets + "js/app.js"
         ], "public/js/app.js", "./")
         .version(["public/css/app.css", "public/js/app.js"]);

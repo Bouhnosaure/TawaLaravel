@@ -26,7 +26,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 @stop
 
-@section('js-apps-cope')
+@section('js-app-scope')
     App.datetimepicker_event();
     App.googlemaps_autocomplete('location');
     App.enable_tageditor('tags');

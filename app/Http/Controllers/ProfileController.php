@@ -1,16 +1,17 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\ImageRequest;
 use App\Http\Requests\UserProfileRequest;
-use App\Http\Requests\UserSettingsRequest;
-use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Http\Request;
+use App\Services\ImageService;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
+use Intervention\Image\Facades\Image;
 use Laracasts\Flash\Flash;
+use Spatie\Glide\GlideImage;
 
 class ProfileController extends Controller
 {
@@ -66,6 +67,27 @@ class ProfileController extends Controller
         $this->userRepository->update(Auth::user()->id, $request->all());
 
         Flash::success(Lang::get('profile.update-success'));
+
+        return redirect(action('ProfileController@edit'));
+
+    }
+
+    /**
+     * Handles the process of upload images
+     * @param ImageRequest $request
+     * @param ImageService $imageService
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function upload(ImageRequest $request, ImageService $imageService)
+    {
+        if ($request->hasFile('image')) {
+
+            $filename = $imageService->processTo('users/', $request);
+
+            $data['profile']['image_'.$request->get('image_type')] = $filename;
+            $this->userRepository->update(Auth::user()->id, $data);
+
+        }
 
         return redirect(action('ProfileController@edit'));
 

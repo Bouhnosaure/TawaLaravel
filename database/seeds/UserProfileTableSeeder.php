@@ -16,19 +16,23 @@ class UserProfileTableSeeder extends Seeder
     {
         DB::table('user_profiles')->delete();
 
+        $faker = Faker::create();
+
         UserProfile::create([
             'lastname' => 'Mangin',
             'firstname' => 'Alexandre',
             'phone' => '0616391876',
+            'image_min' => $faker->imageUrl(400, 400),
             'user_id' => 1,
         ]);
 
-        $faker = Faker::create();
+
         foreach (range(1, 20) as $index) {
             UserProfile::create([
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
                 'phone' => $faker->phoneNumber,
+                'image_min' => $faker->imageUrl(400, 400),
                 'user_id' => $index + 1,
             ]);
         }

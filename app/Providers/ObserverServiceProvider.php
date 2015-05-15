@@ -1,7 +1,5 @@
 <?php namespace App\Providers;
 
-use App\Event;
-use App\Observers\EventObserver;
 use Illuminate\Support\ServiceProvider;
 
 class ObserverServiceProvider extends ServiceProvider
@@ -24,7 +22,7 @@ class ObserverServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Event::observe(new EventObserver);
+        //User::observe(new UserObserver);
     }
 
 }

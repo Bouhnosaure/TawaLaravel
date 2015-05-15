@@ -19,11 +19,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('about',             array('uses' => 'PagesController@about'));
 
 
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('tawaboard',             array('uses' => 'UsersController@index'));
-        Route::get('profile/{slug}',    array('uses' => 'UsersController@show'));
-        Route::get('preferences',   array('uses' => 'UsersController@edit'));
-        Route::patch('preferences',   array('uses' => 'UsersController@update'));
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/',              array('uses' => 'UsersController@index'));
+        Route::get('edit',           array('uses' => 'ProfileController@edit'));
+        Route::patch('edit',    array('uses' => 'ProfileController@update'));
+        Route::get('{slug}',         array('uses' => 'ProfileController@show'));
+    });
+
+    Route::group(['prefix' => 'my'], function () {
         Route::get('carpoolings',   array('uses' => 'UsersController@carpoolings'));
         Route::get('events',        array('uses' => 'UsersController@events'));
     });

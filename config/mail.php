@@ -125,6 +125,7 @@ return [
     "host" => env('MAIL_HOST'),
     "port" => env('MAIL_PORT'),
     "from" => ["address" => "admin@tawa.com", "name" => "Tawa"],
+    'encryption' => '',
     "username" => env('MAIL_USERNAME'),
     "password" => env('MAIL_PASSWORD'),
     "sendmail" => "/usr/sbin/sendmail -bs",

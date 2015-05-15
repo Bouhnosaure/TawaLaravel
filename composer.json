@@ -22,7 +22,7 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-        "whatdafox/codeception-mailtrap":"~1.0",
+        "captbaritone/mailcatcher-codeception-module": "1.*",
         "laracasts/testdummy": "~2.0",
         "codeception/codeception": "dev-master"
 

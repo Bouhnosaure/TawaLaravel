@@ -33,40 +33,6 @@ class UsersController extends Controller
     }
 
     /**
-     * public profile of an user
-     * @param $username
-     * @return $this
-     */
-    public function show($slug)
-    {
-        $user = $this->userRepository->getBySlug($slug);
-        return view('pages.users.profile')->with('user', $user);
-    }
-
-    /**
-     *Page for edit an user
-     */
-    public function edit()
-    {
-        return view('pages.users.preferences')->with('user', Auth::user());
-    }
-
-    /**
-     * update of a user
-     * @param UserSettingsRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function update(UserSettingsRequest $request)
-    {
-        $this->userRepository->update(Auth::user()->id, $request->all());
-
-        Flash::success(Lang::get('user.update-success'));
-
-        return redirect(action('UsersController@edit'));
-
-    }
-
-    /**
      * List of carpoolings of an user
      */
     public function carpoolings()

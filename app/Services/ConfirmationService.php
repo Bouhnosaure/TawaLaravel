@@ -56,7 +56,7 @@ class ConfirmationService
             return $this->data;
         }
 
-        if ($type == "phone" && Config::get('confirmation.phone') && isset(Auth::user()->phone)) {
+        if ($type == "phone" && Config::get('confirmation.phone') && isset(Auth::user()->profile->phone)) {
             $code = $this->confirmationRepository->create($user, $type);
             Bus::dispatch(new SendConfirmationCodePhone($user, $code));
             $this->dataReturn('send-phone-success');
@@ -103,10 +103,10 @@ class ConfirmationService
             $this->dataReturn('expired');
         } else {
             if ($user_test && $type_test) {
-                $this->userRepository->update($user->id, ["{$type}_confirmed" => true]);
+                $this->userRepository->update($user->id, ["profile" =>["{$type}_confirmed" => true]]);
                 $this->dataReturn('success');
             } else {
-                $this->userRepository->update($user->id, ["{$type}_confirmed" => false]);
+                $this->userRepository->update($user->id, ["profile" =>["{$type}_confirmed" => false]]);
                 $this->dataReturn('failed');
             }
         }

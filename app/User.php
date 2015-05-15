@@ -26,14 +26,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-        'username',
-        'firstname',
-        'lastname',
+        'name',
         'email',
         'password',
-        'phone',
-        'mail_confirmed',
-        'phone_confirmed'
     ];
 
     /**
@@ -44,7 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     protected $sluggable = array(
-        'build_from' => 'username',
+        'build_from' => 'name',
         'save_to' => 'slug',
     );
 
@@ -76,6 +71,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function confirmations()
     {
         return $this->hasMany('App\UserConfirmation');
+    }
+
+    /**
+     * An user has one profile
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne('App\UserProfile');
     }
 
 }

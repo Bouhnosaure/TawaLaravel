@@ -46,7 +46,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->with('profile')->findOrFail($id);
     }
 
     /**
@@ -56,7 +56,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getBySlug($slug)
     {
-        return $this->model->getBySlug($slug);
+        return $this->model->where('slug', '=', $slug)->orWhere('id', '=', $slug)->with('profile')->firstOrFail();
     }
 
     /**
@@ -77,7 +77,13 @@ class UserRepository implements UserRepositoryInterface
      */
     public function update($id, Array $data)
     {
-        return $this->model->findOrFail($id)->update($data);
+        $user = $this->model->findOrFail($id)->update($data);
+
+        if (isset($data['profile'])) {
+            $this->model->findOrFail($id)->profile()->update($data['profile']);
+        }
+
+        return $user;
     }
 
     /**
@@ -87,7 +93,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function delete($id)
     {
-        return $this->model->findOrFail($id)->delete();
+        return $this->model->with('profile')->findOrFail($id)->delete();
     }
 
     /**
@@ -97,6 +103,6 @@ class UserRepository implements UserRepositoryInterface
      */
     public function paginate($number)
     {
-        return $this->model->latest('created_at')->paginate($number);
+        return $this->model->with('profile')->latest('created_at')->paginate($number);
     }
 }

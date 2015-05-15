@@ -5,9 +5,7 @@ $I = new FunctionalTester($scenario);
 $I->am('a user');
 $I->wantTo('login into my account');
 $I->haveInDatabase('users',[
-    'username' => 'JohnDoe',
-    'firstname' => 'John',
-    'lastname' => 'Doe',
+    'name' => 'JohnDoe',
     'slug' => 'johndoe',
     'email' => 'john.doe@mail.com',
     'password' => bcrypt('password'),

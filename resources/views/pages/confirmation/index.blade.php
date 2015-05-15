@@ -24,7 +24,7 @@
             @if(Config::get('confirmation.mail'))
                 <tr>
                     <td>{{ trans('confirmation.mail') }}</td>
-                    @if($user->mail_confirmed)
+                    @if($user->profile->mail_confirmed)
                         <td>{{ trans('confirmation.is_valid') }}</td>
                         <td>{{ trans('confirmation.is_valid') }}</td>
                     @else
@@ -44,7 +44,7 @@
             @if(Config::get('confirmation.phone'))
                 <tr>
                     <td>{{ trans('confirmation.phone') }}</td>
-                    @if($user->phone_confirmed)
+                    @if($user->profile->phone_confirmed)
                         <td>{{ trans('confirmation.is_valid') }}</td>
                         <td>{{ trans('confirmation.is_valid') }}</td>
                     @else

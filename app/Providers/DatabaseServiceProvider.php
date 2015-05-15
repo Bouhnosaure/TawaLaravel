@@ -1,8 +1,10 @@
 <?php namespace App\Providers;
 
 use App\Repositories\Eloquent\UserConfirmationRepository;
+use App\Repositories\Eloquent\UserProfileRepository;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\UserConfirmationRepositoryInterface;
+use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\EventRepositoryInterface;

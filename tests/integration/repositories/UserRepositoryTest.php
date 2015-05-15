@@ -31,7 +31,7 @@ class UserRepositoryTest extends Codeception\TestCase\Test
     public function it_gets_one_user()
     {
         $user = $this->repo->getById(1);
-        $this->assertEquals('Citrex', $user->username);
+        $this->assertEquals('Citrex', $user->name);
         $this->assertEquals('alexandre.mangin@viacesi.fr', $user->email);
     }
 
@@ -40,10 +40,10 @@ class UserRepositoryTest extends Codeception\TestCase\Test
      */
     public function it_update_one_user()
     {
-        $this->repo->update(1, array('firstname' => 'Yolo', 'phone' => '0708090405'));
+        $this->repo->update(1, array('name' => 'Yolo', 'email' => 'alex@viacesi.fr'));
         $user = $this->repo->getById(1);
-        $this->assertEquals('Yolo', $user->firstname);
-        $this->assertEquals('0708090405', $user->phone);
+        $this->assertEquals('Yolo', $user->name);
+        $this->assertEquals('alex@viacesi.fr', $user->email);
     }
 
 

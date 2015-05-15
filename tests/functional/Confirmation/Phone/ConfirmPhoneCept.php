@@ -1,6 +1,6 @@
 <?php
-sleep(2);
 $I = new FunctionalTester($scenario);
+$I->resetEmails();
 
 //setup
 $I->am('a user');
@@ -13,8 +13,8 @@ $I->amOnPage('/confirmation');
 $I->click('#submit-phone-code');
 
 //step2
-$I->receiveAnEmailFromEmail('admin@tawa.com');
-$I->receiveAnEmailWithSubject('Confirmation Code');
+$I->seeInLastEmail('admin@tawa.com');
+$I->seeInLastEmail('Confirmation Code');
 
 //step3
 $I->seeRecord('users_confirmations', ['user_id' => 1, 'type' => 'phone']);
@@ -26,4 +26,4 @@ $I->fillField(['name' => 'code'], $code->confirmation_code);
 $I->click('submit-confirmation-code');
 
 $I->dontSee('#submit-phone-code');
-$I->seeRecord('users', ['id' => 1, 'phone_confirmed' => 1]);
+$I->seeRecord('user_profiles', ['user_id' => 1, 'phone_confirmed' => 1]);

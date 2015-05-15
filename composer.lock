@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a399f0a71f01b590bedbad01b5494087",
+    "hash": "19d13f4fb9faba08f5a0651b57ee8df7",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2824,17 +2824,50 @@
     ],
     "packages-dev": [
         {
+            "name": "captbaritone/mailcatcher-codeception-module",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/captbaritone/codeception-mailcatcher-module.git",
+                "reference": "7702c0c4788ccbb61bc49d5def37e5201c35431f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/captbaritone/codeception-mailcatcher-module/zipball/7702c0c4788ccbb61bc49d5def37e5201c35431f",
+                "reference": "7702c0c4788ccbb61bc49d5def37e5201c35431f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzle/guzzle": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\Module\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Jordan Eldredge",
+                    "email": "jordan@jordaneldredge.com"
+                }
+            ],
+            "description": "Test emails in your Codeception acceptance tests",
+            "time": "2015-04-04 18:22:30"
+        },
+        {
             "name": "codeception/codeception",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "ba2c7174b9f15ca1a3812874fae5280c1422030e"
+                "reference": "7088068c567a7a6f2eec6c67a3947933fcb117cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/ba2c7174b9f15ca1a3812874fae5280c1422030e",
-                "reference": "ba2c7174b9f15ca1a3812874fae5280c1422030e",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/7088068c567a7a6f2eec6c67a3947933fcb117cf",
+                "reference": "7088068c567a7a6f2eec6c67a3947933fcb117cf",
                 "shasum": ""
             },
             "require": {
@@ -2902,7 +2935,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-05-12 12:16:29"
+            "time": "2015-05-13 20:53:42"
         },
         {
             "name": "doctrine/instantiator",
@@ -2960,16 +2993,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "v0.5.1",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509"
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bbcb697efb394d17bd9ec3d467e7da847cde4509",
-                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
                 "shasum": ""
             },
             "require": {
@@ -2997,7 +3030,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2014-11-05 20:53:09"
+            "time": "2015-02-09 19:39:34"
         },
         {
             "name": "guzzle/guzzle",
@@ -4324,48 +4357,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2015-05-02 15:18:45"
-        },
-        {
-            "name": "whatdafox/codeception-mailtrap",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WhatDaFox/Codeception-Mailtrap.git",
-                "reference": "cfb4f7fbf6cb5b7815b4fc99215bdb2f68e8e8a2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WhatDaFox/Codeception-Mailtrap/zipball/cfb4f7fbf6cb5b7815b4fc99215bdb2f68e8e8a2",
-                "reference": "cfb4f7fbf6cb5b7815b4fc99215bdb2f68e8e8a2",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "*",
-                "guzzle/guzzle": "~3.9",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Codeception\\Module\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Valentin Prugnaud",
-                    "email": "valentin@whatdafox.com"
-                }
-            ],
-            "description": "Mailtrap module for Codeception",
-            "keywords": [
-                "codeception",
-                "mailtrap"
-            ],
-            "time": "2015-03-30 09:17:42"
         }
     ],
     "aliases": [],

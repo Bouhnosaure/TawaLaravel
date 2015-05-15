@@ -17,23 +17,17 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create([
-            'username' => 'Citrex',
-            'lastname' => 'Mangin',
-            'firstname' => 'Alexandre',
+            'name' => 'Citrex',
             'email' => 'alexandre.mangin@viacesi.fr',
-            'password' => bcrypt('123123'),
-            'phone' => '0616391876',
+            'password' => bcrypt('123123')
         ]);
 
         $faker = Faker::create();
         foreach (range(1, 20) as $index) {
             User::create([
-                'username' => $faker->userName,
-                'firstname' => $faker->firstName,
-                'lastname' => $faker->lastName,
+                'name' => $faker->userName,
                 'email' => $faker->email,
-                'password' => bcrypt('123123'),
-                'phone' => $faker->phoneNumber,
+                'password' => bcrypt('123123')
             ]);
         }
     }

@@ -4,7 +4,7 @@ use App\Http\Requests\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 
-class UserSettingsRequest extends Request
+class UserProfileRequest extends Request
 {
     /**
      * @var Guard
@@ -41,11 +41,11 @@ class UserSettingsRequest extends Request
         $id = $this->auth->user()->id;
 
         $rules = [
-            'username' => 'required|max:255|unique:users,username,' . $id,
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
+            'name' => 'required|max:255|unique:users,name,' . $id,
             'email' => 'required|email|max:255|unique:users,email,' . $id,
-            'phone' => 'required|min:10|unique:users,phone,' . $id,
+            'profile.firstname' => 'required|max:255',
+            'profile.lastname' => 'required|max:255',
+            'profile.phone' => 'required|min:10|unique:user_profiles,phone,' . $id . ',user_id'
         ];
 
         return $rules;

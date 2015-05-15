@@ -1,33 +1,11 @@
 <!--- username  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('username', Lang::get('auth.username-field')) !!}
+        {!! Form::label('name', Lang::get('auth.username-field')) !!}
     </label>
 
     <div class="col-md-6">
-        {!! Form::text('username', null, ['class' => 'form-control']) !!}
-    </div>
-</div>
-
-<!--- firstname  Field --->
-<div class="form-group">
-    <label class="col-md-4 control-label">
-        {!! Form::label('firstname', Lang::get('auth.firstname-field')) !!}
-    </label>
-
-    <div class="col-md-6">
-        {!! Form::text('firstname', null, ['class' => 'form-control']) !!}
-    </div>
-</div>
-
-<!--- lastname  Field --->
-<div class="form-group">
-    <label class="col-md-4 control-label">
-        {!! Form::label('lastname', Lang::get('auth.lastname-field')) !!}
-    </label>
-
-    <div class="col-md-6">
-        {!! Form::text('lastname', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
 </div>
 
@@ -39,17 +17,6 @@
 
     <div class="col-md-6">
         {!! Form::email('email', null, ['class' => 'form-control']) !!}
-    </div>
-</div>
-
-<!--- phone Field --->
-<div class="form-group">
-    <label class="col-md-4 control-label">
-        {!! Form::label('phone', Lang::get('auth.phone-field')) !!}
-    </label>
-
-    <div class="col-md-6">
-        {!! Form::text('phone', null, ['class' => 'form-control']) !!}
     </div>
 </div>
 

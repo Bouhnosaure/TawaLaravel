@@ -1,6 +1,6 @@
 <?php
-sleep(2);
 $I = new FunctionalTester($scenario);
+$I->resetEmails();
 
 //setup
 $I->am('a user');
@@ -16,8 +16,8 @@ $I->fillField(['name' => 'email'], $user->email);
 $I->click('submit-password');
 
 //step2
-$I->receiveAnEmailFromEmail('admin@tawa.com');
-$I->receiveAnEmailWithSubject('Your Password Reset Link');
+$I->seeInLastEmail('admin@tawa.com');
+$I->seeInLastEmail('Your Password Reset Link');
 
 //step3
 $I->seeRecord('password_resets',['email' => $user->email]);

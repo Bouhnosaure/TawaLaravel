@@ -14,8 +14,6 @@ services:
   - redis-server
 
 before_script:
-  - gem install mailcatcher
-  - mailcatcher
   - cp .env.testing .env
   - echo '' > storage/testing.sqlite
   - composer self-update

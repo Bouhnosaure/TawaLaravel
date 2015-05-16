@@ -15,12 +15,8 @@ class ImageService
     private $originalImageName;
 
 
-    public function __construct()
-    {
-
-    }
-
     /**
+     * handle of upload and process of image
      * @param $folder
      * @param ImageRequest $request
      * @return string
@@ -42,11 +38,20 @@ class ImageService
     }
 
 
+    /**
+     * after upload, move to folder
+     * @param $file
+     */
     public function store($file)
     {
         $file->move($this->directory, $this->originalImageName);
     }
 
+    /**
+     * crop with parameters and return name of image
+     * @param $json
+     * @return string
+     */
     public function crop($json)
     {
         $options = json_decode($json);

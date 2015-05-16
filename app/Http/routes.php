@@ -56,8 +56,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         'password' => 'Auth\PasswordController'
     ]);
 
-    Route::get('images/{dir}/{image}', function ($dir, $img) {
-
+    Route::get('images/{dir}/{img}', function ($dir, $img) {
+        // serve an image with cache !
         // determine a lifetime and return as object instead of string
         $photo = Image::cache(function ($image) use ($dir, $img) {
             return $image->make(storage_path() . '/app/images/' . $dir . '/' . $img);

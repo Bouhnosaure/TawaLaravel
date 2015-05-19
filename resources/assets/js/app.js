@@ -76,7 +76,7 @@
             var $submit = $("#cropper-submit_" + type);
             var $url = null;
 
-            //on load image
+
             $input.change(function () {
                 inputchange(this);
             });

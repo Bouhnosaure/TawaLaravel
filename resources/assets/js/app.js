@@ -67,24 +67,18 @@
                 $(this).show();
             });
         },
-        cropper_profile_initialize: function () {
-            var $image = $('#cropper-wrapper > img'), cropBoxData, canvasData;
-            var $input_min = $("#image_profile_min");
-            var $input_wide = $("#image_profile_wide");
-            var $modal = $("#cropper-modal");
+        cropper_initialize: function (type) {
+            var $image = $('#cropper-wrapper_' + type + ' > img');
+            var cropBoxData = [];
+            var canvasData = [];
+            var $input = $("#image_profile_" + type);
+            var $modal = $("#cropper-modal_" + type);
+            var $submit = $("#cropper-submit_" + type);
             var $url = null;
-            var type = null;
-
 
             //on load image
-            $input_min.change(function () {
+            $input.change(function () {
                 inputchange(this);
-                type = 'min';
-            });
-
-            $input_wide.change(function () {
-                inputchange(this);
-                type = 'wide';
             });
 
             //get image from input
@@ -101,15 +95,13 @@
             }
 
             //on submit
-            $("#cropper-submit").click(function () {
-
+            $submit.click(function () {
                 var datacrop = $image.cropper("getData");
-                console.log(datacrop);
-                $("#crop_options_"+type).attr('value', JSON.stringify(datacrop));
-                $("#form_image_"+type).trigger('submit');
+                $("#crop_options_" + type).attr('value', JSON.stringify(datacrop));
+                $("#form_image_" + type).trigger('submit');
             });
 
-            $('#cropper-modal').on('shown.bs.modal', function () {
+            $modal.on('shown.bs.modal', function () {
                 $image.cropper("replace", $url);
                 if (type == 'min') {
                     $image.cropper("setAspectRatio", 1);
@@ -121,24 +113,21 @@
                     autoCropArea: 0.5,
                     built: function () {
                         // Strict mode: set crop box data first
-                        $image.cropper('setCropBoxData', cropBoxData);
-                        $image.cropper('setCanvasData', canvasData);
+                        $image.cropper('setCropBoxData', cropBoxData[type]);
+                        $image.cropper('setCanvasData', canvasData[type]);
                     }
                 });
             }).on('hidden.bs.modal', function () {
-                cropBoxData = $image.cropper('getCropBoxData');
-                canvasData = $image.cropper('getCanvasData');
-                $("#crop_options_"+type).attr('value', '');
-                $("#form_image_"+type).trigger('reset');
-                type = null;
+                cropBoxData[type] = $image.cropper('getCropBoxData');
+                canvasData[type] = $image.cropper('getCanvasData');
+                $("#crop_options_" + type).attr('value', '');
+                $("#form_image_" + type).trigger('reset');
                 $image.cropper('destroy');
             });
-
-        },
-
-        load_img_from_input: function (input, target) {
 
         }
 
     };
+
+    return $.App;
 }(jQuery));

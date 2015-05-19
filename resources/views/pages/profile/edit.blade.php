@@ -31,7 +31,9 @@
 
                     {!! Form::open(['method' => 'PATCH','action' => 'ProfileController@upload', 'id' => 'form_image_min', 'files' => true, 'class'=> 'form-horizontal']) !!}
 
-                    @include('pages.profile.partials.cropper-min')
+                    <img src="{{asset('images/'.$user->profile->image_min)}}" class="img-responsive" id="img-min-preview" alt="Responsive image">
+
+                    @include('pages.profile.partials.cropper',['type' => 'min'])
 
                     {!! Form::close() !!}
 
@@ -50,7 +52,9 @@
 
                     {!! Form::open(['method' => 'PATCH','action' => 'ProfileController@upload', 'id' => 'form_image_wide', 'files' => true, 'class'=> 'form-horizontal']) !!}
 
-                    @include('pages.profile.partials.cropper-wide')
+                    <img src="{{asset('images/'.$user->profile->image_wide)}}" class="img-responsive" id="img-wide-preview" alt="Responsive image">
+
+                    @include('pages.profile.partials.cropper',['type' => 'wide'])
 
                     {!! Form::close() !!}
 
@@ -59,6 +63,7 @@
         </div>
     </div>
 
-    @include('pages.profile.partials.modal-cropper')
+    @include('pages.profile.partials.modal-cropper',['type' => 'min'])
+    @include('pages.profile.partials.modal-cropper',['type' => 'wide'])
 
 @endsection

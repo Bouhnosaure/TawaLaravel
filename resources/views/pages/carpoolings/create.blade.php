@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('carpoolings.create-action') }}</h1>
+            <h1>{{ _('title.carpoolings.create-action') }}</h1>
 
             <hr/>
 
@@ -11,7 +11,7 @@
 
             {!! Form::open(['action' => 'CarpoolingsController@store']) !!}
 
-            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.create-action'), 'create' => true])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>_('button.carpoolings.create-action'), 'create' => true])
 
             {!! Form::close() !!}
 

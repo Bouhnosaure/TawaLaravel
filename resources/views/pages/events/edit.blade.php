@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('events.edit-action') }} : {{ $event->name }}</h1>
+            <h1>{{ _('title.events.edit-action') }} : {{ $event->name }}</h1>
 
             <hr/>
 
@@ -11,7 +11,7 @@
 
             {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventsController@update', $event->id ]]) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>Lang::get('events.edit-action'), 'create' => false])
+            @include('pages.events.partials.form',['submitButtonName'=>_('button.events.edit-action'), 'create' => false])
 
             {!! Form::close() !!}
 

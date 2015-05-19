@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('carpoolings.edit-action') }} : {{ $carpooling->name }}</h1>
+            <h1>{{ _('title.carpoolings.edit-action') }} : {{ $carpooling->name }}</h1>
 
             <hr/>
 
@@ -11,7 +11,7 @@
 
             {!! Form::model($carpooling, ['method' => 'PATCH', 'action' => ['CarpoolingsController@update', $carpooling->id ]]) !!}
 
-            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.edit-action'), 'create' => false])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>_('button.carpoolings.edit-action'), 'create' => false])
 
             {!! Form::close() !!}
 

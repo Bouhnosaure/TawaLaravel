@@ -47,7 +47,7 @@ class ConfirmationController extends Controller
     public function send($type, ConfirmationService $service)
     {
         $data = $service->send(Auth::user(), $type);
-        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        Flash::$data['flash_type']($data['flash_message']);
         return redirect($data['redirect']);
     }
 
@@ -69,7 +69,7 @@ class ConfirmationController extends Controller
     {
 
         $data = $service->validate(Auth::user(), 'phone', $request->get('code'));
-        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        Flash::$data['flash_type']($data['flash_message']);
         return redirect($data['redirect']);
 
     }
@@ -83,7 +83,7 @@ class ConfirmationController extends Controller
     public function confirmMailCode($code, ConfirmationService $service)
     {
         $data = $service->validate(Auth::user(), 'mail', $code);
-        Flash::$data['flash_type'](Lang::get($data['flash_message']));
+        Flash::$data['flash_type']($data['flash_message']);
         return redirect($data['redirect']);
     }
 

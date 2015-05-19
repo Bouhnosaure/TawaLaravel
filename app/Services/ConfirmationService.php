@@ -46,7 +46,7 @@ class ConfirmationService
      */
     public function send(User $user, $type)
     {
-
+        _('SUCCESSS');
         $this->confirmationRepository->clear($user, $type);
 
         if ($type == "mail" && Config::get('confirmation.mail')) {
@@ -122,42 +122,42 @@ class ConfirmationService
         switch ($code) {
             case 'expired':
                 $this->data['flash_type'] = 'error';
-                $this->data['flash_message'] = Lang::get('confirmation.failed-expiration');
+                $this->data['flash_message'] = _('flash.confirmation.failed-expiration');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
             case 'not-found-mail':
                 $this->data['flash_type'] = 'error';
-                $this->data['flash_message'] = Lang::get('confirmation.failed-not-found');
+                $this->data['flash_message'] = _('flash.confirmation.failed-not-found');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
             case 'not-found-phone':
                 $this->data['flash_type'] = 'error';
-                $this->data['flash_message'] = Lang::get('confirmation.failed-not-found');
+                $this->data['flash_message'] = _('flash.confirmation.failed-not-found');
                 $this->data['redirect'] = action('Auth\ConfirmationController@submitPhoneCode');
                 break;
             case 'failed':
                 $this->data['flash_type'] = 'error';
-                $this->data['flash_message'] = Lang::get('confirmation.failed');
+                $this->data['flash_message'] = _('flash.confirmation.failed');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
             case 'success':
                 $this->data['flash_type'] = 'success';
-                $this->data['flash_message'] = Lang::get('confirmation.success');
+                $this->data['flash_message'] = _('flash.confirmation.success');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
             case 'send-mail-success':
                 $this->data['flash_type'] = 'success';
-                $this->data['flash_message'] = Lang::get('confirmation.send-mail-success');
+                $this->data['flash_message'] = _('flash.confirmation.send-mail-success');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
             case 'send-phone-success':
                 $this->data['flash_type'] = 'success';
-                $this->data['flash_message'] = Lang::get('confirmation.send-phone-success');
+                $this->data['flash_message'] = _('flash.confirmation.send-phone-success');
                 $this->data['redirect'] = action('Auth\ConfirmationController@submitPhoneCode');
                 break;
             case 'send-failed':
                 $this->data['flash_type'] = 'error';
-                $this->data['flash_message'] = Lang::get('confirmation.send-failed');
+                $this->data['flash_message'] = _('flash.confirmation.send-failed');
                 $this->data['redirect'] = action('Auth\ConfirmationController@index');
                 break;
 

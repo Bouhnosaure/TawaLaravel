@@ -66,7 +66,7 @@ class ProfileController extends Controller
 
         $this->userRepository->update(Auth::user()->id, $request->all());
 
-        Flash::success(Lang::get('profile.update-success'));
+        Flash::success(_('flash.profile.update-success'));
 
         return redirect(action('ProfileController@edit'));
 

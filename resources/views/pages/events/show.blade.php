@@ -3,21 +3,21 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}" class="btn btn-info">{{ trans('events.edit-action') }}</a>
+            <a href="{{ action('EventsController@edit', [ 'id' => $event->slug ]) }}" class="btn btn-info">{{ _('link.events.edit-action') }}</a>
             
             <h1 id="event-name">{{ $event->name }}</h1>
 
-            {{ trans('events.location-field') }}
+            {{ _('label.events.location-field') }}
             <h5 id="event-location">{{ $event->location }}</h5>
 
-            {{ trans('events.description-field') }}
+            {{ _('label.events.description-field') }}
             <p id="event-description">{{ $event->description }} </p>
 
-            {{ trans('events.private-field') }}
+            {{ _('label.events.private-field') }}
             <p id="event-description">{{ $event->is_private }} </p>
             <hr>
 
-            <h3>{{ trans('carpoolings.carpoolings') }}</h3>
+            <h3>{{ _('title.carpoolings.carpoolings') }}</h3>
 
             <div class="row" id="event-carpoolings">
                 @foreach($event->carpoolings as $carpooling)
@@ -35,7 +35,7 @@
                                     {{ $carpooling->PresentDeparture }} → {{$carpooling->PresentArrival }}
                                 </h4>
                             </a>
-                            <h5>{{ trans('events.events') }} {{ $carpooling->event->name }}</h5>
+                            <h5>{{ _('title.events.event') }} {{ $carpooling->event->name }}</h5>
 
                         </div>
                     </div>

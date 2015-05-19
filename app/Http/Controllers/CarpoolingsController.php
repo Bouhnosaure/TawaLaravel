@@ -78,7 +78,7 @@ class CarpoolingsController extends Controller
 
         EventTrigger::fire(new CarpoolingWasCreated(Auth::user(), $carpooling));
 
-        Flash::success(Lang::get('carpoolings.create-success'));
+        Flash::success(_('flash.carpoolings.create-success'));
 
         return redirect('carpoolings');
     }
@@ -119,7 +119,7 @@ class CarpoolingsController extends Controller
     {
         $carpooling = $service->edit($id, $request->all());
 
-        Flash::success(Lang::get('carpoolings.create-success'));
+        Flash::success(_('flash.carpoolings.create-success'));
 
         return redirect(action('CarpoolingsController@show', $carpooling->toArray()));
     }
@@ -134,7 +134,7 @@ class CarpoolingsController extends Controller
     {
         $this->carpoolingRepository->delete($id);
 
-        Flash::success(Lang::get('carpoolings.delete-success'));
+        Flash::success(_('flash.carpoolings.delete-success'));
 
         return redirect(action('CarpoolingsController@index'));
     }

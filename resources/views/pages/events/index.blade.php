@@ -4,11 +4,11 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h1>{{ trans('events.events') }}</h1>
+            <h1>{{ _('title.events.events') }}</h1>
         </div>
         <div class="col-md-6">
             <a href="{{ action('EventsController@create') }}"
-               class="btn btn-info pull-right">{{ trans('events.create-action') }}</a>
+               class="btn btn-info pull-right">{{ _('link.events.create-action') }}</a>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
                         </ul>
                         <div class="entry-content">
                             <p>{{ $event->description }}</p>
-                            <a href="{{ action('EventsController@show', [ 'id' => $event->slug ]) }}" id="btn-event-show" class="btn btn-danger">{{ trans('events.show-me') }}</a>
+                            <a href="{{ action('EventsController@show', [ 'id' => $event->slug ]) }}" id="btn-event-show" class="btn btn-danger">{{ _('link.events.show') }}</a>
                         </div>
                     </div>
                 </div>

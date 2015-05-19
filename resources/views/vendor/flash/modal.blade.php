@@ -12,7 +12,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('general.close') }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ _('button.general.close') }}</button>
             </div>
         </div>
     </div>

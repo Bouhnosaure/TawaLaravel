@@ -1,10 +1,10 @@
 <ul class="nav navbar-nav navbar-right">
     @if (Auth::guest())
         <li>
-            <a href="{{action('Auth\AuthController@getLogin')}}">{{ trans('auth.login') }}</a>
+            <a href="{{action('Auth\AuthController@getLogin')}}">{{ _('menu.auth.login') }}</a>
         </li>
         <li>
-            <a href="{{action('Auth\AuthController@getRegister')}}">{{ trans('auth.register') }}</a>
+            <a href="{{action('Auth\AuthController@getRegister')}}">{{ _('menu.auth.register') }}</a>
         </li>
     @else
         <li class="dropdown">
@@ -13,22 +13,22 @@
             </a>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a href="{{action('UsersController@index')}}">{{ trans('menu.dashboard') }}</a>
+                    <a href="{{action('UsersController@index')}}">{{ _('menu.dashboard') }}</a>
                 </li>
                 <li>
-                    <a href="{{action('UsersController@carpoolings')}}">{{ trans('menu.user-carpoolings') }}</a>
+                    <a href="{{action('UsersController@carpoolings')}}">{{ _('menu.user-carpoolings') }}</a>
                 </li>
                 <li>
-                    <a href="{{action('UsersController@events')}}">{{ trans('menu.user-events') }}</a>
+                    <a href="{{action('UsersController@events')}}">{{ _('menu.user-events') }}</a>
                 </li>
                 <li>
-                    <a href="{{action('ProfileController@edit')}}">{{ trans('menu.preferences') }}</a>
+                    <a href="{{action('ProfileController@edit')}}">{{ _('menu.preferences') }}</a>
                 </li>
                 <li>
-                    <a href="{{action('Auth\ConfirmationController@index')}}">{{ trans('menu.confirmation') }}</a>
+                    <a href="{{action('Auth\ConfirmationController@index')}}">{{ _('menu.confirmation') }}</a>
                 </li>
                 <li>
-                    <a href="{{action('Auth\AuthController@getLogout')}}">{{ trans('auth.logout') }}</a>
+                    <a href="{{action('Auth\AuthController@getLogout')}}">{{ _('menu.auth.logout') }}</a>
                 </li>
             </ul>
         </li>

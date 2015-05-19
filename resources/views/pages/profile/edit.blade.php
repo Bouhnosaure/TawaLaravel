@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('user.preferences') }}</div>
+                <div class="panel-heading">{{ _('title.user.preferences') }}</div>
                 <div class="panel-body">
 
                     @include('errors.auth')
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('user.image-min') }}</div>
+                <div class="panel-heading">{{ _('title.user.image-min') }}</div>
                 <div class="panel-body">
 
                     @include('errors.auth')
@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('user.image-wide') }}</div>
+                <div class="panel-heading">{{ _('title.user.image-wide') }}</div>
                 <div class="panel-body">
 
                     @include('errors.auth')

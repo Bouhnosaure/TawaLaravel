@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ trans('confirmation.phone-validation') }}</h1>
+            <h1>{{ _('title.confirmation.phone-validation') }}</h1>
 
             <hr/>
 

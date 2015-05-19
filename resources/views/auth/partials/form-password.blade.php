@@ -2,7 +2,7 @@
 <!--- Email Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('email', Lang::get('auth.email-field')) !!}
+        {!! Form::label('email', _('label.auth.email-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -12,6 +12,6 @@
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('auth.reset'), ['class' => 'btn btn-primary', 'name' => 'submit-password']) !!}
+        {!! Form::submit(_('button.auth.reset'), ['class' => 'btn btn-primary', 'name' => 'submit-password']) !!}
     </div>
 </div>

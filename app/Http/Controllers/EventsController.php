@@ -80,7 +80,7 @@ class EventsController extends Controller
 
         EventTrigger::fire(new EventWasCreated(Auth::user(), $event));
 
-        Flash::success(Lang::get('events.create-success'));
+        Flash::success(_('flash.events.create-success'));
 
         return redirect('events');
     }
@@ -111,7 +111,7 @@ class EventsController extends Controller
     {
         $this->eventRepository->update($id, $request->all());
 
-        Flash::success(Lang::get('events.update-success'));
+        Flash::success(_('flash.events.update-success'));
 
         return redirect(action('EventsController@show', $id));
     }
@@ -126,7 +126,7 @@ class EventsController extends Controller
     {
         $this->eventRepository->delete($id);
 
-        Flash::success(Lang::get('events.delete-success'));
+        Flash::success(_('flash.events.delete-success'));
 
         return redirect(action('EventsController@index'));
     }

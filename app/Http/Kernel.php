@@ -16,8 +16,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'App\Http\Middleware\VerifyCsrfToken',
-        'localize' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-        'localizationRedirect' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+        'Xinax\LaravelGettext\Middleware\GettextMiddleware',
 	];
 
 	/**

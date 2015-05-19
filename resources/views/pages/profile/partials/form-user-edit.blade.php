@@ -1,7 +1,7 @@
 <!--- username  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('name', Lang::get('user.username-field')) !!}
+        {!! Form::label('name', _('label.user.username-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -12,7 +12,7 @@
 <!--- Email Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('email', Lang::get('user.email-field')) !!}
+        {!! Form::label('email', _('label.user.email-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -23,7 +23,7 @@
 <!--- firstname  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('profile[firstname]', Lang::get('user.firstname-field')) !!}
+        {!! Form::label('profile[firstname]', _('label.user.firstname-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -34,7 +34,7 @@
 <!--- lastname  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('profile[lastname]', Lang::get('user.lastname-field')) !!}
+        {!! Form::label('profile[lastname]', _('label.user.lastname-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -45,7 +45,7 @@
 <!--- phone Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('profile[phone]', Lang::get('user.phone-field')) !!}
+        {!! Form::label('profile[phone]', _('label.user.phone-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -56,6 +56,6 @@
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('user.submit-edit'), ['class' => 'btn btn-primary', 'name' => 'submit-edit']) !!}
+        {!! Form::submit(_('button.user.submit-edit'), ['class' => 'btn btn-primary', 'name' => 'submit-edit']) !!}
     </div>
 </div>

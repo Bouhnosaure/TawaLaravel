@@ -4,12 +4,12 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">{{ trans('general.tooglenav') }}</span>
+                <span class="sr-only">{{ _('menu.tooglenav') }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{action('PagesController@index')}}">{{ trans('general.home') }}</a>
+            <a class="navbar-brand" href="{{action('PagesController@index')}}">{{ _('menu.home') }}</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

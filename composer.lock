@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a630563631ca8793d243cce3fa09b148",
+    "hash": "59421b3c9b13007d97a3bedaa4981c67",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -126,12 +126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "c5e96e71122e9f2bc5e8247ac1629e8413b0233d"
+                "reference": "8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/c5e96e71122e9f2bc5e8247ac1629e8413b0233d",
-                "reference": "c5e96e71122e9f2bc5e8247ac1629e8413b0233d",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96",
+                "reference": "8aaf4c4909eb2f571ba72dd7bf1ba4eca87d0f96",
                 "shasum": ""
             },
             "require": {
@@ -168,7 +168,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2015-05-11 02:32:55"
+            "time": "2015-05-18 21:14:15"
         },
         {
             "name": "danielstjules/stringy",
@@ -734,12 +734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "1dc7404280b32ee661ea65606efcf792be6fc4ca"
+                "reference": "7c4b939fd0ba771766386e1718b7e7006d04b1bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1dc7404280b32ee661ea65606efcf792be6fc4ca",
-                "reference": "1dc7404280b32ee661ea65606efcf792be6fc4ca",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/7c4b939fd0ba771766386e1718b7e7006d04b1bf",
+                "reference": "7c4b939fd0ba771766386e1718b7e7006d04b1bf",
                 "shasum": ""
             },
             "require": {
@@ -778,7 +778,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-04-27 20:30:06"
+            "time": "2015-05-19 13:47:13"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1638,54 +1638,6 @@
                 "debug"
             ],
             "time": "2015-02-05 07:51:20"
-        },
-        {
-            "name": "mcamara/laravel-localization",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcamara/laravel-localization.git",
-                "reference": "952d26841ab9f4bc76460514609d38b98311c898"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/952d26841ab9f4bc76460514609d38b98311c898",
-                "reference": "952d26841ab9f4bc76460514609d38b98311c898",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.0.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.0.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [],
-                "psr-0": {
-                    "Mcamara\\LaravelLocalization": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marc Cámara",
-                    "email": "mcamara88@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easy localization for Laravel",
-            "homepage": "https://github.com/mcamara/laravel-localization",
-            "keywords": [
-                "laravel",
-                "localization",
-                "php"
-            ],
-            "time": "2015-03-11 16:51:00"
         },
         {
             "name": "mccool/laravel-auto-presenter",
@@ -2929,6 +2881,55 @@
                 "environment"
             ],
             "time": "2014-12-05 15:19:21"
+        },
+        {
+            "name": "xinax/laravel-gettext",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xinax/laravel-gettext.git",
+                "reference": "3dad4d5461a6a7945b974ec7f7ae63666c3ca4ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xinax/laravel-gettext/zipball/3dad4d5461a6a7945b974ec7f7ae63666c3ca4ef",
+                "reference": "3dad4d5461a6a7945b974ec7f7ae63666c3ca4ef",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Xinax\\LaravelGettext\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolás Daniel Palumbo",
+                    "email": "n@xinax.net"
+                }
+            ],
+            "description": "Adds localization support to laravel applications in an easy way using PoEdit and GNU-Gettext.",
+            "homepage": "https://github.com/xinax/laravel-gettext",
+            "keywords": [
+                "gettext",
+                "laravel",
+                "laravel-gettext",
+                "localization",
+                "poEdit",
+                "translation"
+            ],
+            "time": "2015-04-30 16:38:12"
         }
     ],
     "packages-dev": [
@@ -2971,12 +2972,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "7088068c567a7a6f2eec6c67a3947933fcb117cf"
+                "reference": "9ea5d6a11dfdff065c73c404dcf25d32d8b341eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/7088068c567a7a6f2eec6c67a3947933fcb117cf",
-                "reference": "7088068c567a7a6f2eec6c67a3947933fcb117cf",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9ea5d6a11dfdff065c73c404dcf25d32d8b341eb",
+                "reference": "9ea5d6a11dfdff065c73c404dcf25d32d8b341eb",
                 "shasum": ""
             },
             "require": {
@@ -3044,7 +3045,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2015-05-13 20:53:42"
+            "time": "2015-05-19 20:33:53"
         },
         {
             "name": "doctrine/instantiator",

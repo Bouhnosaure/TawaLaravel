@@ -133,5 +133,4 @@ class CarpoolingService
     {
         return $this->position;
     }
-
 }

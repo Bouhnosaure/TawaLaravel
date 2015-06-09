@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendCarpoolingCreationConfirmation implements ShouldQueue
 {
-
     use InteractsWithQueue;
 
     /**
@@ -32,5 +31,4 @@ class SendCarpoolingCreationConfirmation implements ShouldQueue
             $message->subject('CarpoolingCreate');
         });
     }
-
 }

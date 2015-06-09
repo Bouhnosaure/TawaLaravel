@@ -5,8 +5,8 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller {
-
+class AuthController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -67,5 +67,4 @@ class AuthController extends Controller {
 
         return $user;
     }
-
 }

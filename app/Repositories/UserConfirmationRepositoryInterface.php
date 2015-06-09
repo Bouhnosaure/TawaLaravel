@@ -8,11 +8,10 @@
 
 namespace App\Repositories;
 
-
 use App\User;
 
-interface UserConfirmationRepositoryInterface {
-
+interface UserConfirmationRepositoryInterface
+{
     public function getAll();
 
     public function getById($id);
@@ -30,5 +29,4 @@ interface UserConfirmationRepositoryInterface {
     public function delete($id);
 
     public function paginate($number);
-
 }

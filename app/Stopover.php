@@ -36,5 +36,4 @@ class Stopover extends Model
     {
         return $this->belongsTo('App\Carpooling');
     }
-
 }

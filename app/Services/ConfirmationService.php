@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Lang;
 
 class ConfirmationService
 {
-
     use DispatchesJobs;
 
     /**
@@ -34,8 +33,10 @@ class ConfirmationService
      * @param UserConfirmationRepositoryInterface $confirmationRepository
      * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserConfirmationRepositoryInterface $confirmationRepository, UserRepositoryInterface $userRepository)
-    {
+    public function __construct(
+        UserConfirmationRepositoryInterface $confirmationRepository,
+        UserRepositoryInterface $userRepository
+    ) {
         $this->confirmationRepository = $confirmationRepository;
         $this->userRepository = $userRepository;
     }
@@ -49,13 +50,13 @@ class ConfirmationService
      */
     public function send(User $user, $type)
     {
-
         $this->confirmationRepository->clear($user, $type);
 
         if ($type == "mail" && Config::get('confirmation.mail')) {
             $code = $this->confirmationRepository->create($user, $type);
             $this->dispatch(new SendConfirmationCodeMail($user, $code));
             $this->dataReturn('send-mail-success');
+
             return $this->data;
         }
 
@@ -63,10 +64,12 @@ class ConfirmationService
             $code = $this->confirmationRepository->create($user, $type);
             $this->dispatch(new SendConfirmationCodePhone($user, $code));
             $this->dataReturn('send-phone-success');
+
             return $this->data;
         }
 
         $this->dataReturn('send-failed');
+
         return $this->data;
     }
 
@@ -93,6 +96,7 @@ class ConfirmationService
                     $this->dataReturn('not-found-phone');
                     break;
             }
+
             return $this->data;
         }
 
@@ -106,10 +110,10 @@ class ConfirmationService
             $this->dataReturn('expired');
         } else {
             if ($user_test && $type_test) {
-                $this->userRepository->update($user->id, ["profile" =>["{$type}_confirmed" => true]]);
+                $this->userRepository->update($user->id, ["profile" => ["{$type}_confirmed" => true]]);
                 $this->dataReturn('success');
             } else {
-                $this->userRepository->update($user->id, ["profile" =>["{$type}_confirmed" => false]]);
+                $this->userRepository->update($user->id, ["profile" => ["{$type}_confirmed" => false]]);
                 $this->dataReturn('failed');
             }
         }
@@ -166,5 +170,4 @@ class ConfirmationService
 
         }
     }
-
 }

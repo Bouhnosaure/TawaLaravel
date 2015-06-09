@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model implements SluggableInterface
 {
-
     use SluggableTrait;
 
     /**
@@ -51,5 +50,4 @@ class Category extends Model implements SluggableInterface
     {
         return $this->hasMany('App\Event');
     }
-
 }

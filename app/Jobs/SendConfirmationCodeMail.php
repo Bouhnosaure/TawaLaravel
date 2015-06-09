@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendConfirmationCodeMail extends Job implements ShouldQueue, SelfHandling
 {
-
     use InteractsWithQueue, SerializesModels;
 
     /**
@@ -47,7 +46,5 @@ class SendConfirmationCodeMail extends Job implements ShouldQueue, SelfHandling
             $message->to($_user->email, $_user->name);
             $message->subject('Confirmation Code');
         });
-
     }
-
 }

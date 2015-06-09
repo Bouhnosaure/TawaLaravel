@@ -9,13 +9,11 @@ use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\EventRepositoryInterface;
 use App\Repositories\Eloquent\EventRepository;
-
 use App\Repositories\CarpoolingRepositoryInterface;
 use App\Repositories\Eloquent\CarpoolingRepository;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -38,5 +36,4 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->app->bind(UserConfirmationRepositoryInterface::class, UserConfirmationRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
-
 }

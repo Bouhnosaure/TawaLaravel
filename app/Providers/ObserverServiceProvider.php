@@ -4,7 +4,6 @@ use Illuminate\Support\ServiceProvider;
 
 class ObserverServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -24,5 +23,4 @@ class ObserverServiceProvider extends ServiceProvider
     {
         //User::observe(new UserObserver);
     }
-
 }

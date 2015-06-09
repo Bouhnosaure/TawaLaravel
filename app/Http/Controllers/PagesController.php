@@ -2,12 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-
     /**
      * Show the index page
      * @return \Illuminate\View\View
@@ -25,5 +23,4 @@ class PagesController extends Controller
     {
         return View('pages.about');
     }
-
 }

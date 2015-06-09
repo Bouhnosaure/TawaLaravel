@@ -16,7 +16,6 @@ class UserRepository implements UserRepositoryInterface
      */
     public function __construct(User $user)
     {
-
         $this->model = $user;
     }
 

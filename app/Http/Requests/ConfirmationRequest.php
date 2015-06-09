@@ -4,7 +4,6 @@ use App\Http\Requests\Request;
 
 class ConfirmationRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,5 +27,4 @@ class ConfirmationRequest extends Request
 
         return $rules;
     }
-
 }

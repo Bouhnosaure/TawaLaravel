@@ -37,7 +37,6 @@ class CarpoolingOwner
      */
     public function handle($request, Closure $next)
     {
-
         $carpooling_id = array_values(Route::getCurrentRoute()->parameters())[0];
 
         $carpooling = $this->carpoolingRepository->getById($carpooling_id);
@@ -50,7 +49,5 @@ class CarpoolingOwner
         }
 
         return redirect(action('PagesController@index'));
-
     }
-
 }

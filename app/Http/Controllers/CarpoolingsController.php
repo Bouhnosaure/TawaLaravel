@@ -5,7 +5,6 @@ use App\Event;
 use App\Events\CarpoolingWasCreated;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\CarpoolingRequest;
 use App\Repositories\CarpoolingRepositoryInterface;
 use App\Repositories\EventRepositoryInterface;
@@ -138,5 +137,4 @@ class CarpoolingsController extends Controller
 
         return redirect(action('CarpoolingsController@index'));
     }
-
 }

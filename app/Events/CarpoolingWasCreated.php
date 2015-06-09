@@ -2,13 +2,11 @@
 
 use App\Carpooling;
 use App\Events\Event;
-
 use App\User;
 use Illuminate\Queue\SerializesModels;
 
 class CarpoolingWasCreated extends Event
 {
-
     use SerializesModels;
     /**
      * @var User
@@ -59,5 +57,4 @@ class CarpoolingWasCreated extends Event
     {
         return $this->carpooling->event()->first()->name;
     }
-
 }

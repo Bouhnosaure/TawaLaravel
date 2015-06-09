@@ -19,5 +19,4 @@ interface EventRepositoryInterface
     public function delete($id);
 
     public function paginate($number);
-
 }

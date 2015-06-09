@@ -1,12 +1,10 @@
 <?php namespace App\Services;
 
-
 use App\Http\Requests\ImageRequest;
 use Intervention\Image\Facades\Image;
 
 class ImageService
 {
-
     /**
      * @var directory
      */
@@ -34,7 +32,6 @@ class ImageService
         ///crop image
         $filename = $this->crop($request->get('crop_options'));
         return $folder . $filename;
-
     }
 
 
@@ -63,6 +60,4 @@ class ImageService
 
         return $filename;
     }
-
-
 }

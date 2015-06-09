@@ -10,7 +10,6 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, SluggableInterface
 {
-
     use Authenticatable, CanResetPassword, SluggableTrait;
 
     /**
@@ -81,5 +80,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasOne('App\UserProfile');
     }
-
 }

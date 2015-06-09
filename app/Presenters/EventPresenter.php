@@ -2,7 +2,6 @@
 
 namespace App\Presenters;
 
-
 use App\Carpooling;
 use App\Event;
 use McCool\LaravelAutoPresenter\BasePresenter;

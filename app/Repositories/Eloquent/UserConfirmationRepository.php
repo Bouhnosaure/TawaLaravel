@@ -8,14 +8,12 @@
 
 namespace App\Repositories\Eloquent;
 
-
 use App\Repositories\UserConfirmationRepositoryInterface;
 use App\User;
 use App\UserConfirmation;
 
 class UserConfirmationRepository implements UserConfirmationRepositoryInterface
 {
-
     private $model;
 
     public function __construct(UserConfirmation $userConfirmation)

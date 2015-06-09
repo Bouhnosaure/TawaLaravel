@@ -1,6 +1,5 @@
 <?php namespace App\Presenters;
 
-
 use App\Carpooling;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
@@ -43,7 +42,6 @@ class CarpoolingPresenter extends BasePresenter
         $stopovers = $stopovers->getQuery()->orderBy('carpooling_order', 'ASC')->get()->toArray();
 
         if (sizeof($stopovers) > 2) {
-
             array_shift($stopovers);
             array_pop($stopovers);
 
@@ -58,5 +56,4 @@ class CarpoolingPresenter extends BasePresenter
 
         return $list;
     }
-
 }

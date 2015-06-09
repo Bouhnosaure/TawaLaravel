@@ -36,7 +36,6 @@ class EventOwner
      */
     public function handle($request, Closure $next)
     {
-
         $event_id_or_slug = array_values(Route::getCurrentRoute()->parameters())[0];
 
         $event = $this->eventRepository->getBySlug($event_id_or_slug);
@@ -49,7 +48,5 @@ class EventOwner
         }
 
         return redirect(action('PagesController@index'));
-
     }
-
 }

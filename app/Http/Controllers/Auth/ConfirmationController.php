@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-
 use App\Commands\SendConfirmationCode;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConfirmationRequest;
@@ -21,8 +20,6 @@ use Laracasts\Flash\Flash;
 
 class ConfirmationController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -67,11 +64,9 @@ class ConfirmationController extends Controller
      */
     public function handlePhoneCode(ConfirmationRequest $request, ConfirmationService $service)
     {
-
         $data = $service->validate(Auth::user(), 'phone', $request->get('code'));
         Flash::$data['flash_type'](Lang::get($data['flash_message']));
         return redirect($data['redirect']);
-
     }
 
     /**
@@ -86,5 +81,4 @@ class ConfirmationController extends Controller
         Flash::$data['flash_type'](Lang::get($data['flash_message']));
         return redirect($data['redirect']);
     }
-
 }

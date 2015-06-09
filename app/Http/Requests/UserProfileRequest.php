@@ -16,7 +16,6 @@ class UserProfileRequest extends Request
      */
     public function __construct(Guard $auth)
     {
-
         $this->auth = $auth;
     }
 
@@ -37,7 +36,6 @@ class UserProfileRequest extends Request
      */
     public function rules()
     {
-
         $id = $this->auth->user()->id;
 
         $rules = [
@@ -50,5 +48,4 @@ class UserProfileRequest extends Request
 
         return $rules;
     }
-
 }

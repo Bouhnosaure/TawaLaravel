@@ -178,6 +178,4 @@ class Event extends Model implements SluggableInterface, HasPresenter
     {
         return $this->hasMany('App\Carpooling');
     }
-
-
 }

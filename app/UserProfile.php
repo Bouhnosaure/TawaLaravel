@@ -4,7 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserProfile extends Model
 {
-
     /**
      * The database table used by the model.
      *
@@ -37,5 +36,4 @@ class UserProfile extends Model
     {
         return $this->belongsTo('App\User');
     }
-
 }

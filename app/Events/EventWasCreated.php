@@ -1,13 +1,11 @@
 <?php namespace App\Events;
 
 use App\Events\Event;
-
 use App\User;
 use Illuminate\Queue\SerializesModels;
 
 class EventWasCreated extends Event
 {
-
     use SerializesModels;
     /**
      * @var User
@@ -57,5 +55,4 @@ class EventWasCreated extends Event
     {
         return $this->event->name;
     }
-
 }

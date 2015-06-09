@@ -16,7 +16,6 @@ class EventRepository implements EventRepositoryInterface
      */
     public function __construct(Event $event)
     {
-
         $this->model = $event;
     }
 
@@ -99,5 +98,4 @@ class EventRepository implements EventRepositoryInterface
     {
         return $this->model->latest('created_at')->NotFinished()->paginate($number);
     }
-
 }

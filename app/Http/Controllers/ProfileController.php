@@ -15,7 +15,6 @@ use Spatie\Glide\GlideImage;
 
 class ProfileController extends Controller
 {
-
     /**
      * @var UserRepositoryInterface
      */
@@ -63,13 +62,11 @@ class ProfileController extends Controller
      */
     public function update(UserProfileRequest $request)
     {
-
         $this->userRepository->update(Auth::user()->id, $request->all());
 
         Flash::success(Lang::get('profile.update-success'));
 
         return redirect(action('ProfileController@edit'));
-
     }
 
     /**
@@ -81,16 +78,12 @@ class ProfileController extends Controller
     public function upload(ImageRequest $request, ImageService $imageService)
     {
         if ($request->hasFile('image')) {
-
             $filename = $imageService->processTo('users/', $request);
 
             $data['profile']['image_'.$request->get('image_type')] = $filename;
             $this->userRepository->update(Auth::user()->id, $data);
-
         }
 
         return redirect(action('ProfileController@edit'));
-
     }
-
 }

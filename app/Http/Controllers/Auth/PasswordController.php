@@ -5,8 +5,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller {
-
+class PasswordController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -33,5 +33,4 @@ class PasswordController extends Controller {
         $this->redirectPath = action('EventsController@index');
         $this->middleware('guest');
     }
-
 }

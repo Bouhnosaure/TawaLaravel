@@ -10,7 +10,6 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Carpooling extends Model implements SluggableInterface, HasPresenter
 {
-
     use SluggableTrait;
 
     /**
@@ -110,11 +109,13 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
 
     //CUSTOM ATTRIBUTES
 
-    public function getPresentDepartureAttribute(){
+    public function getPresentDepartureAttribute()
+    {
         return AutoPresenter::decorate($this)->departure;
     }
 
-    public function getPresentArrivalAttribute(){
+    public function getPresentArrivalAttribute()
+    {
         return AutoPresenter::decorate($this)->arrival;
     }
 
@@ -145,5 +146,4 @@ class Carpooling extends Model implements SluggableInterface, HasPresenter
     {
         return $this->hasMany('App\Stopover');
     }
-
 }

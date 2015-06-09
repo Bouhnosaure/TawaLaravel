@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendConfirmationCodePhone extends Job implements ShouldQueue, SelfHandling
 {
-
     use InteractsWithQueue, SerializesModels;
 
     /**
@@ -52,9 +51,6 @@ class SendConfirmationCodePhone extends Job implements ShouldQueue, SelfHandling
         } else {
 
             //SMS GATEWAY IMPLEMENTATION
-
         }
-
     }
-
 }

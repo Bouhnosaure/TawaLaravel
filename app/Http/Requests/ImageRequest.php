@@ -16,7 +16,6 @@ class ImageRequest extends Request
      */
     public function __construct(Guard $auth)
     {
-
         $this->auth = $auth;
     }
 
@@ -37,7 +36,6 @@ class ImageRequest extends Request
      */
     public function rules()
     {
-
         $rules = [
             'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:5000',
             'crop_options' => 'required',
@@ -46,5 +44,4 @@ class ImageRequest extends Request
 
         return $rules;
     }
-
 }

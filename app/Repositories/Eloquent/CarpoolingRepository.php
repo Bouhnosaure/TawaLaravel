@@ -16,7 +16,6 @@ class CarpoolingRepository implements CarpoolingRepositoryInterface
      */
     public function __construct(Carpooling $carpooling)
     {
-
         $this->model = $carpooling;
     }
 

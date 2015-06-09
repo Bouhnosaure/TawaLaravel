@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Category;
-
 use App\Events\EventWasCreated;
 use App\Http\Requests;
 use App\Http\Requests\EventRequest;
@@ -75,7 +74,6 @@ class EventsController extends Controller
      */
     public function store(EventRequest $request)
     {
-
         $event = $this->eventRepository->create(Auth::user(), $request->all());
 
         EventTrigger::fire(new EventWasCreated(Auth::user(), $event));
@@ -130,6 +128,4 @@ class EventsController extends Controller
 
         return redirect(action('EventsController@index'));
     }
-
-
 }

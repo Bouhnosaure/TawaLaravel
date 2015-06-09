@@ -47,5 +47,4 @@ class UsersController extends Controller
     {
         return view('pages.users.events')->with('events', Auth::user()->events()->get());
     }
-
 }

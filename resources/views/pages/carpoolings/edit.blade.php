@@ -11,7 +11,7 @@
 
             {!! Form::model($carpooling, ['method' => 'PATCH', 'action' => ['CarpoolingsController@update', $carpooling->id ]]) !!}
 
-            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.edit-action'), 'create' => false])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>trans('carpoolings.edit-action'), 'create' => false])
 
             {!! Form::close() !!}
 

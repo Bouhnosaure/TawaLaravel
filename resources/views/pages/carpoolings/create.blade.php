@@ -11,7 +11,7 @@
 
             {!! Form::open(['action' => 'CarpoolingsController@store']) !!}
 
-            @include('pages.carpoolings.partials.form',['submitButtonName'=>Lang::get('carpoolings.create-action'), 'create' => true])
+            @include('pages.carpoolings.partials.form',['submitButtonName'=>trans('carpoolings.create-action'), 'create' => true])
 
             {!! Form::close() !!}
 

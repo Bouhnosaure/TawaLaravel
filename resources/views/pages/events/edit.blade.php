@@ -11,7 +11,7 @@
 
             {!! Form::model($event, ['method' => 'PATCH', 'action' => ['EventsController@update', $event->id ]]) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>Lang::get('events.edit-action'), 'create' => false])
+            @include('pages.events.partials.form',['submitButtonName'=>trans('events.edit-action'), 'create' => false])
 
             {!! Form::close() !!}
 

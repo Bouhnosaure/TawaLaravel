@@ -1,7 +1,7 @@
 <!--- username  Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('name', Lang::get('auth.username-field')) !!}
+        {!! Form::label('name', trans('auth.username-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -12,7 +12,7 @@
 <!--- Email Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('email', Lang::get('auth.email-field')) !!}
+        {!! Form::label('email', trans('auth.email-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -23,7 +23,7 @@
 <!--- Password Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('password', Lang::get('auth.password-field')) !!}
+        {!! Form::label('password', trans('auth.password-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -34,7 +34,7 @@
 <!--- Password confirmation Field --->
 <div class="form-group">
     <label class="col-md-4 control-label">
-        {!! Form::label('password_confirmation', Lang::get('auth.password-confirmation-field')) !!}
+        {!! Form::label('password_confirmation', trans('auth.password-confirmation-field')) !!}
     </label>
 
     <div class="col-md-6">
@@ -44,6 +44,6 @@
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        {!! Form::submit(Lang::get('auth.register'), ['class' => 'btn btn-primary', 'name' => 'submit-register']) !!}
+        {!! Form::submit(trans('auth.register'), ['class' => 'btn btn-primary', 'name' => 'submit-register']) !!}
     </div>
 </div>

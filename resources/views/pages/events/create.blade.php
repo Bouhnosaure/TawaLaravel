@@ -11,7 +11,7 @@
 
             {!! Form::open(['action' => 'EventsController@store']) !!}
 
-            @include('pages.events.partials.form',['submitButtonName'=>Lang::get('events.create-action'), 'create' => true])
+            @include('pages.events.partials.form',['submitButtonName'=>trans('events.create-action'), 'create' => true])
 
             {!! Form::close() !!}
 

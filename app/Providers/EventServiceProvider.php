@@ -2,8 +2,8 @@
 
 use App\Events\CarpoolingWasCreated;
 use App\Events\EventWasCreated;
-use App\Handlers\Events\SendCarpoolingCreationConfirmation;
-use App\Handlers\Events\SendEventCreationConfirmation;
+use App\Listeners\SendCarpoolingCreationConfirmation;
+use App\Listeners\SendEventCreationConfirmation;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,9 +16,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'event.name' => [
-            'EventListener',
-        ],
         EventWasCreated::class => [
             SendEventCreationConfirmation::class,
         ],

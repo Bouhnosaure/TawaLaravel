@@ -1,18 +1,21 @@
 <?php namespace App\Services;
 
-use App\Commands\SendConfirmationCodeMail;
-use App\Commands\SendConfirmationCodePhone;
+use App\Jobs\SendConfirmationCodeMail;
+use App\Jobs\SendConfirmationCodePhone;
 use App\Repositories\UserConfirmationRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 
 class ConfirmationService
 {
+
+    use DispatchesJobs;
+
     /**
      * @var data return
      */
@@ -51,14 +54,14 @@ class ConfirmationService
 
         if ($type == "mail" && Config::get('confirmation.mail')) {
             $code = $this->confirmationRepository->create($user, $type);
-            Bus::dispatch(new SendConfirmationCodeMail($user, $code));
+            $this->dispatch(new SendConfirmationCodeMail($user, $code));
             $this->dataReturn('send-mail-success');
             return $this->data;
         }
 
         if ($type == "phone" && Config::get('confirmation.phone') && isset(Auth::user()->profile->phone)) {
             $code = $this->confirmationRepository->create($user, $type);
-            Bus::dispatch(new SendConfirmationCodePhone($user, $code));
+            $this->dispatch(new SendConfirmationCodePhone($user, $code));
             $this->dataReturn('send-phone-success');
             return $this->data;
         }

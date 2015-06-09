@@ -34362,7 +34362,7 @@ Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0
             var $submit = $("#cropper-submit_" + type);
             var $url = null;
 
-            //on load image
+
             $input.change(function () {
                 inputchange(this);
             });

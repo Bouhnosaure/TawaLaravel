@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller {
 
@@ -25,17 +25,47 @@ class AuthController extends Controller {
     /**
      * Create a new authentication controller instance.
      *
-     * @param  \Illuminate\Contracts\Auth\Guard  $auth
-     * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-     * @return void
+     * @internal param Guard $auth
+     * @internal param Registrar $registrar
      */
-    public function __construct(Guard $auth, Registrar $registrar)
+    public function __construct()
     {
-        $this->auth = $auth;
-        $this->registrar = $registrar;
         $this->redirectPath = action('EventsController@index');
-
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6'
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array $data
+     * @return User
+     */
+    public function create(array $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
+
+        $user->profile()->create(['user_id' => $user->id]);
+
+        return $user;
     }
 
 }

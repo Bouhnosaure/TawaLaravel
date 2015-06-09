@@ -1,13 +1,13 @@
-<?php namespace App\Commands;
+<?php namespace App\Jobs;
 
 use App\User;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendConfirmationCodeMail extends Command implements ShouldBeQueued, SelfHandling
+class SendConfirmationCodeMail extends Job implements ShouldQueue, SelfHandling
 {
 
     use InteractsWithQueue, SerializesModels;

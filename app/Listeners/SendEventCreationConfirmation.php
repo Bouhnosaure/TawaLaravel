@@ -1,12 +1,12 @@
-<?php namespace App\Handlers\Events;
+<?php namespace App\Listeners;
 
 use App\Events\EventWasCreated;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Illuminate\Support\Facades\Mail;
 
-class SendEventCreationConfirmation implements ShouldBeQueued
+class SendEventCreationConfirmation implements ShouldQueue
 {
 
     use InteractsWithQueue;

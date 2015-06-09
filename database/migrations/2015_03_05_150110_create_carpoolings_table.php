@@ -17,7 +17,7 @@ class CreateCarpoolingsTable extends Migration
             $table->increments('id');
             //$table->string('name');
 
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->nullable();
 
             $table->timestamp('start_time');
             $table->text('description');

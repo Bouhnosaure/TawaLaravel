@@ -140,7 +140,6 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-        'Jenssegers\Date\DateServiceProvider',
         'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
@@ -151,7 +150,6 @@ return [
          * Application Service Providers...
          */
         'App\Providers\AppServiceProvider',
-        'App\Providers\BusServiceProvider',
         'App\Providers\ConfigServiceProvider',
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
@@ -211,7 +209,6 @@ return [
         'HTML' => 'Illuminate\Html\HtmlFacade',
         'Form' => 'Illuminate\Html\FormFacade',
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
-        'Date' => 'Jenssegers\Date\Date',
         'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
         'Flash' => 'Laracasts\Flash\Flash',
         'Image' => 'Intervention\Image\Facades\Image'

@@ -3,7 +3,7 @@ $I = new FunctionalTester($scenario);
 
 //setup
 $I->am('a user');
-$I->wantTo('activate my phone number');
+$I->wantTo('activate my phone number with expired code');
 $I->amLoggedAs(\App\User::find(1));
 
 $I->haveRecord('users_confirmations', [
